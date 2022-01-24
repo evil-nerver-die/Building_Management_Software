@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     List<Customer> getByCustomerNameContaining(String name);
