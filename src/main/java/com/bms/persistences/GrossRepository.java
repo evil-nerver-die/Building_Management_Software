@@ -1,6 +1,6 @@
 package com.bms.persistences;
 
-import com.bms.models.Customer;
+import com.bms.models.Gross;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-interface CustomerRepository extends CrudRepository<Customer, Integer> {
+interface GrossRepository extends CrudRepository<Gross, Integer> {
 
-    List<Customer> getByCusNameContaining(String cus_name);
+    List<Gross> getByGroNameContaining(String gro_name);
 
-    Customer save(Customer customer);
+    Gross save(Gross gross);
 
-    void deleteById(Integer cus_id);
+    void deleteById(Integer gro_id);
 
 }
