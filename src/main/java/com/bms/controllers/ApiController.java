@@ -1,10 +1,12 @@
 package com.bms.controllers;
 
 import com.bms.models.Customer;
+import com.bms.models.Premises;
 import com.bms.models.Services;
 import com.bms.persistences.CustomerService;
 import com.bms.models.Gross;
 import com.bms.persistences.GrossService;
+import com.bms.persistences.PremiseService;
 import com.bms.persistences.ServicesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +16,17 @@ public class ApiController {
     CustomerService customerService;
     GrossService grossService;
     ServicesService servicesService;
+    PremiseService premiseService;
 
     // Constructor injection
-    public ApiController(CustomerService customerService, GrossService grossService, ServicesService servicesService) {
+    public ApiController(CustomerService customerService,
+                         GrossService grossService,
+                         ServicesService servicesService,
+                         PremiseService premiseService) {
         this.customerService = customerService;
         this.grossService = grossService;
         this.servicesService = servicesService;
+        this.premiseService = premiseService;
 
 
     }
@@ -80,8 +87,26 @@ public class ApiController {
     }
 
     @PostMapping(value = "/api/delete_services_by_id")
-    ResponseEntity<?> deleteById(Integer id) {
+    ResponseEntity<?> deleteServiceById(Integer id) {
         servicesService.deleteBySerId(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/api/premises")
+    Iterable<Premises> premises() {
+        Iterable<Premises> premises = premiseService.findAll();
+        return premises;
+    }
+
+    @PostMapping(value = "/api/add_premises")
+    ResponseEntity<?> reserve(Premises premises) {
+        premiseService.save(premises);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value = "/api/delete_premises_by_id")
+    ResponseEntity<?> deleteByPremisesId(Integer id) {
+        premiseService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 

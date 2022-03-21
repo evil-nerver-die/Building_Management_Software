@@ -1,4 +1,4 @@
-package com.bms.persistences.premise;
+package com.bms.persistences;
 
 import com.bms.models.Premises;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.LinkedList;
 
-public interface PremiseRepository extends CrudRepository {
+public interface PremiseRepository extends CrudRepository<Premises, Integer> {
     LinkedList<Premises> getByPremiseName(String premiseName);
 
     Premises save(Premises premises);

@@ -1,10 +1,11 @@
-package com.bms.persistences.premise;
+package com.bms.persistences;
 
 import com.bms.models.Premises;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 
+@Service
 public class PremiseServiceImpl implements PremiseService {
 
     PremiseRepository repository;
