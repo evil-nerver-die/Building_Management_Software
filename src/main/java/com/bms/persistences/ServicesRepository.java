@@ -7,9 +7,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.bms.models.Services;
 
 public interface ServicesRepository extends CrudRepository<Services, Long> {
-    List<Services> getServiceName(String ser_name);
+    List<Services> getBySerNameContaining(String serName);
 
     Services save(Services services);
 
-    void deleteById(Integer ser_id);
+    void deleteBySerId(Integer serId);
 }

@@ -15,8 +15,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public List<Customer> getByCustomerNameContaining(String name) {
-        return repository.getByCustomerNameContaining(name);
+    public List<Customer> getByCusNameContaining(String cusName) {
+        return repository.getByCusNameContaining(cusName);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public void deleteByID(Integer id) {
-        repository.deleteById(id);
+    public void deleteByCusID(Integer cusId) {
+        repository.deleteByCusId(cusId);
     }
 }

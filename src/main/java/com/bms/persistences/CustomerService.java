@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface CustomerService {
-    List<Customer> getByCustomerNameContaining(String name);
+    List<Customer> getByCusNameContaining(String name);
 
     Iterable<Customer> findAll();
 
     Customer save(Customer customer);
 
-    void deleteByID(Integer id);
+    void deleteByCusID(Integer cusId);
 
 
 }
