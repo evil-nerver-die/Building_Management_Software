@@ -10,7 +10,6 @@ import java.util.List;
 
 interface GrossRepository extends CrudRepository<Gross, Integer> {
 
-    List<Gross> getByGroNameContaining(String gro_name);
 
     Gross save(Gross gross);
 

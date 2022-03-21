@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface GrossService {
-    List<Gross> getByGroNameContaining(String name);
 
     Iterable<Gross> findAll();
 

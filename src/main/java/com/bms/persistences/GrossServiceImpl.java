@@ -14,10 +14,6 @@ public class GrossServiceImpl implements GrossService{
         this.repository = repository;
     }
 
-    @Override
-    public List<Gross> getByGroNameContaining(String gro_name) {
-        return repository.getByGroNameContaining(gro_name);
-    }
 
     @Override
     public Iterable<Gross> findAll() {
