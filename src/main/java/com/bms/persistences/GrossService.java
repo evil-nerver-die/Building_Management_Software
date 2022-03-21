@@ -11,7 +11,7 @@ public interface GrossService {
 
     Gross save(Gross gross);
 
-    void deleteByID(Integer cus_id);
+    void deleteByGroID(Integer groId);
 
 
 }

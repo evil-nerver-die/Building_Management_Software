@@ -14,6 +14,6 @@ interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
     Customer save(Customer customer);
 
-    void deleteById(Integer cus_id);
+    void deleteByCusId(Integer cusId);
 
 }

@@ -1,9 +1,11 @@
 package com.bms.controllers;
 
 import com.bms.models.Customer;
+import com.bms.models.Services;
 import com.bms.persistences.CustomerService;
 import com.bms.models.Gross;
 import com.bms.persistences.GrossService;
+import com.bms.persistences.ServicesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +13,15 @@ import org.springframework.web.bind.annotation.*;
 public class ApiController {
     CustomerService customerService;
     GrossService grossService;
+    ServicesService servicesService;
 
     // Constructor injection
-    public ApiController(CustomerService customerService,GrossService grossService) {
+    public ApiController(CustomerService customerService, GrossService grossService, ServicesService servicesService) {
         this.customerService = customerService;
         this.grossService = grossService;
+        this.servicesService = servicesService;
+
+
     }
 
 
@@ -35,7 +41,7 @@ public class ApiController {
 
     @PostMapping(value = "/api/delete_reserve_by_id")
     ResponseEntity<?> deleteReserveById(Integer id) {
-        customerService.deleteByID(id);
+        customerService.deleteByCusID(id);
         return ResponseEntity.ok().build();
     }
 
@@ -57,7 +63,25 @@ public class ApiController {
 
     @PostMapping(value = "/api/delete_gross_by_id")
     ResponseEntity<?> deleteGrossById(Integer id) {
-        customerService.deleteByID(id);
+        grossService.deleteByGroID(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/api/services")
+    Iterable<Services> services() {
+        Iterable<Services> services = servicesService.findAll();
+        return services;
+    }
+
+    @PostMapping(value = "/api/add_services")
+    ResponseEntity<?> reserve(Services services) {
+        servicesService.save(services);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value = "/api/delete_services_by_id")
+    ResponseEntity<?> deleteById(Integer id) {
+        servicesService.deleteBySerId(id);
         return ResponseEntity.ok().build();
     }
 

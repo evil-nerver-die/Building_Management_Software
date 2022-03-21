@@ -17,29 +17,29 @@ public class Customer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cus_id;
+    private Integer cusId;
 
     private String cusName;
 
-    private String cus_dob;
+    private String cusDob;
 
-    private String cus_phone;
+    private String cusPhone;
 
-    private String cus_email;
+    private String cusEmail;
 
-    private boolean cus_gender;
+    private boolean cusGender;
 
-    private Integer cus_role;
+    private Integer cusRole;
 
-    private Integer cus_us_id;
+    private Integer cusUsId;
 
-    private String cus_avatar;
+    private String cusAvatar;
 
-    private String cus_des;
+    private String cusDes;
 
-    private boolean cus_status;
+    private boolean cusStatus;
 
-    private String cus_file;
+    private String cusFile;
 
 
 

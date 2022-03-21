@@ -25,7 +25,7 @@ public class GrossServiceImpl implements GrossService{
     }
 
     @Override
-    public void deleteByID(Integer gos_id) {
-        repository.deleteById(gos_id);
+    public void deleteByGroID(Integer gosId) {
+        repository.deleteByGroId(gosId);
     }
 }

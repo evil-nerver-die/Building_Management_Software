@@ -13,6 +13,6 @@ interface GrossRepository extends CrudRepository<Gross, Integer> {
 
     Gross save(Gross gross);
 
-    void deleteById(Integer gro_id);
+    void deleteByGroId(Integer groId);
 
 }

@@ -15,8 +15,8 @@ public class ServicesImplement implements ServicesService {
     }
 
     @Override
-    public List<Services> getServiceName(String ser_name) {
-        return repo.getServiceName(ser_name);
+    public List<Services> getBySerNameContaining(String serName) {
+        return repo.getBySerNameContaining(serName);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ServicesImplement implements ServicesService {
     }
 
     @Override
-    public void deleteById(Integer ser_id) {
-        repo.deleteById(ser_id);
+    public void deleteBySerId(Integer serId) {
+        repo.deleteBySerId(serId);
     }
 }

@@ -15,15 +15,15 @@ public class Gross {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer gro_id;
+    private Integer groId;
 
-    private Integer gro_income_id;
+    private Integer groIncomeId;
 
-    private Integer gro_type;
+    private Integer groType;
 
-    private Double gro_profit;
+    private Double groProfit;
 
-    private Integer con_id;
+    private Integer conId;
 
 
 }

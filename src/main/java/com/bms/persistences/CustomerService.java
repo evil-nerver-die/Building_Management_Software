@@ -12,7 +12,7 @@ public interface CustomerService {
 
     Customer save(Customer customer);
 
-    void deleteByID(Integer cus_id);
+    void deleteByCusID(Integer cusId);
 
 
 }

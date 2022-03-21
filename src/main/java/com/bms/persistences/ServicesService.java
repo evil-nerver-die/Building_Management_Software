@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import com.bms.models.Services;
 
 public interface ServicesService {
-    List<Services> getServiceName(String ser_name);
+    List<Services> getBySerNameContaining(String serName);
 
     Iterable<Services> findAll();
 
     Services save(Services services);
 
-    void deleteById(Integer ser_id);
+    void deleteBySerId(Integer serId);
 }
