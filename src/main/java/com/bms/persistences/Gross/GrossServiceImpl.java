@@ -1,9 +1,7 @@
-package com.bms.persistences;
+package com.bms.persistences.Gross;
 
 import com.bms.models.Gross;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class GrossServiceImpl implements GrossService{

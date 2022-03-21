@@ -1,6 +1,7 @@
-package com.bms.persistences;
+package com.bms.persistences.Premise;
 
 import com.bms.models.Premises;
+import com.bms.persistences.PremiseService;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package com.bms.persistences;
+package com.bms.persistences.Services;
 
 import java.util.List;
 

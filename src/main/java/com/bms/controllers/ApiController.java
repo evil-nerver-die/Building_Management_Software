@@ -3,11 +3,11 @@ package com.bms.controllers;
 import com.bms.models.Customer;
 import com.bms.models.Premises;
 import com.bms.models.Services;
-import com.bms.persistences.CustomerService;
+import com.bms.persistences.Customer.CustomerService;
 import com.bms.models.Gross;
-import com.bms.persistences.GrossService;
+import com.bms.persistences.Gross.GrossService;
 import com.bms.persistences.PremiseService;
-import com.bms.persistences.ServicesService;
+import com.bms.persistences.Services.ServicesService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

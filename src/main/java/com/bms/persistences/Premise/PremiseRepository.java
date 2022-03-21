@@ -1,4 +1,4 @@
-package com.bms.persistences;
+package com.bms.persistences.Premise;
 
 import com.bms.models.Premises;
 import org.springframework.context.annotation.Bean;

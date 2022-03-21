@@ -1,4 +1,4 @@
-package com.bms.persistences;
+package com.bms.persistences.Customer;
 
 import com.bms.models.Customer;
 import org.springframework.stereotype.Service;

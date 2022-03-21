@@ -1,4 +1,4 @@
-package com.bms.persistences;
+package com.bms.persistences.Gross;
 
 import com.bms.models.Gross;
 import org.springframework.context.annotation.Bean;
