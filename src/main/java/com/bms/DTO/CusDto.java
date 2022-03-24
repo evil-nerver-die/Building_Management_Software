@@ -1,11 +1,10 @@
-package com.bms.models;
+package com.bms.DTO;
 
+import com.bms.models.Customer;
 import lombok.Getter;
 
 @Getter
 public class CusDto {
-    Integer id;
-
     String name;
 
     String dob;
@@ -16,22 +15,16 @@ public class CusDto {
 
     boolean gender;
 
+    String avatar;
+
     public CusDto(Customer customer) {
-        this.id = customer.getCusId();
         this.name = customer.getCusName();
         this.dob = customer.getCusDob();
         this.phone = customer.getCusPhone();
         this.email = customer.getCusEmail();
         this.gender = customer.isCusGender();
+        this.avatar = customer.getCusAvatar();
     }
 
 
-    public void loadFromEntity(Customer entity) {
-        this.id = entity.getCusId();
-        this.name = entity.getCusName();
-        this.dob = entity.getCusDob();
-        this.phone = entity.getCusPhone();
-        this.email = entity.getCusEmail();
-        this.gender = entity.isCusGender();
-    }
 }

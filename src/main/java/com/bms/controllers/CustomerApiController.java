@@ -1,6 +1,6 @@
 package com.bms.controllers;
 
-import com.bms.models.CusDto;
+import com.bms.DTO.CusDto;
 import com.bms.models.Customer;
 import com.bms.persistences.Customer.CustomerService;
 import org.modelmapper.ModelMapper;

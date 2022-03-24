@@ -1,9 +1,8 @@
 package com.bms.models;
 
 
+import com.bms.DTO.CusDto;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,13 +41,14 @@ public class Customer {
     private String cusFile;
 
     public void loadFromDto(CusDto dto) {
-        this.cusId = dto.getId();
         this.cusName = dto.getName();
         this.cusDob = dto.getDob();
         this.cusPhone = dto.getPhone();
         this.cusEmail = dto.getEmail();
         this.cusGender = dto.isGender();
+        this.cusAvatar = dto.getAvatar();
     }
+
 
 
 
