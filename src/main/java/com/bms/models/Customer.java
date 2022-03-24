@@ -41,6 +41,15 @@ public class Customer {
 
     private String cusFile;
 
+    public void loadFromDto(CusDto dto) {
+        this.cusId = dto.getId();
+        this.cusName = dto.getName();
+        this.cusDob = dto.getDob();
+        this.cusPhone = dto.getPhone();
+        this.cusEmail = dto.getEmail();
+        this.cusGender = dto.isGender();
+    }
+
 
 
 
