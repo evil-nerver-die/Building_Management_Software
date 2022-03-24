@@ -16,8 +16,14 @@ public class CusDto {
 
     boolean gender;
 
-
-
+    public CusDto(Customer customer) {
+        this.id = customer.getCusId();
+        this.name = customer.getCusName();
+        this.dob = customer.getCusDob();
+        this.phone = customer.getCusPhone();
+        this.email = customer.getCusEmail();
+        this.gender = customer.isCusGender();
+    }
 
 
     public void loadFromEntity(Customer entity) {

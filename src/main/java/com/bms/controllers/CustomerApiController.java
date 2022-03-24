@@ -1,5 +1,6 @@
 package com.bms.controllers;
 
+import com.bms.models.CusDto;
 import com.bms.models.Customer;
 import com.bms.persistences.Customer.CustomerService;
 import org.modelmapper.ModelMapper;
@@ -8,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.function.Consumer;
 
 @RestController
 public class CustomerApiController {
@@ -23,8 +27,15 @@ public class CustomerApiController {
 
 
     @GetMapping("/api/customers")
-    Iterable<Customer> customers() {
-        Iterable<Customer> customers = customerService.findAll();
+    ArrayList<CusDto> customers() {
+        ArrayList<CusDto> customers = new ArrayList<>();
+        customerService.findAll().forEach(new Consumer<Customer>() {
+            @Override
+            public void accept(Customer customer) {
+                CusDto cusDto = new CusDto(customer);
+                customers.add(cusDto);
+            }
+        });
         return customers;
     }
 
