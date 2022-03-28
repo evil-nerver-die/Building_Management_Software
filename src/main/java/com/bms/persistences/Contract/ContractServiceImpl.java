@@ -30,7 +30,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Iterable<Contract> findAll() {
+    public List<Contract> findAll() {
         return repository.findAll();
     }
 
@@ -40,6 +40,6 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public void deleteByConID(Integer conId) {
-        repository.deleteByConId(conId);
+        repository.deleteById(conId);
     }
 }

@@ -11,7 +11,7 @@ public interface ContractService {
 
     List<Contract> findByConCreatedContaining(String conCreated);
 
-    Iterable<Contract> findAll();
+    List<Contract> findAll();
 
     Contract save(Contract contract);
 

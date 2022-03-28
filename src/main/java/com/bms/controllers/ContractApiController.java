@@ -1,17 +1,21 @@
 package com.bms.controllers;
 
-import com.bms.DTO.ConDto;
+import com.bms.DTO.ContractDto;
+import com.bms.DTO.SaveContractDto;
 import com.bms.models.Contract;
 import com.bms.persistences.Contract.ContractService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
+@RestController
+@RequestMapping("/api/contract")
 public class ContractApiController {
     @Autowired
     private ModelMapper modelMapper;
@@ -24,57 +28,52 @@ public class ContractApiController {
     }
 
 
-    @GetMapping("/api/contracts")
-    ArrayList<ConDto> contracts() {
-        ArrayList<ConDto> contracts = new ArrayList<>();
-        contractService.findAll().forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                contracts.add(conDto);
-            }
-        });
-        return contracts;
+    @GetMapping
+    List<ContractDto> contracts() {
+        return contractService.findAll().stream()
+                .map(contract -> modelMapper.map(contract, ContractDto.class))
+                .collect(Collectors.toList());
+
     }
 
-    @PostMapping("/api/contracts/search")
-    ArrayList<ConDto> Search(String input) {
-        ArrayList<ConDto> contracts = new ArrayList<>();
-        contractService.findByConNameContaining(input).forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                if(!contracts.contains(conDto)){
-                    contracts.add(conDto);}
-            }
-        });
-        contractService.findByConCodeContaining(input).forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                if(!contracts.contains(conDto)){
-                    contracts.add(conDto);}
-            }
-        });
-        contractService.findByConCreatedContaining(input).forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                if(!contracts.contains(conDto)){
-                    contracts.add(conDto);}
-            }
-        });
-        return contracts;
-    }
+    //@PostMapping("/search")
+//    ArrayList<ContractDto> Search(String input) {
+//        ArrayList<ContractDto> contracts = new ArrayList<>();
+//        contractService.findByConNameContaining(input).forEach(new Consumer<Contract>() {
+//            @Override
+//            public void accept(Contract contract) {
+//                ContractDto conDto = new ContractDto(contract);
+//                if(!contracts.contains(conDto)){
+//                    contracts.add(conDto);}
+//            }
+//        });
+//        contractService.findByConCodeContaining(input).forEach(new Consumer<Contract>() {
+//            @Override
+//            public void accept(Contract contract) {
+//                ContractDto conDto = new ContractDto(contract);
+//                if(!contracts.contains(conDto)){
+//                    contracts.add(conDto);}
+//            }
+//        });
+//        contractService.findByConCreatedContaining(input).forEach(new Consumer<Contract>() {
+//            @Override
+//            public void accept(Contract contract) {
+//                ContractDto conDto = new ContractDto(contract);
+//                if(!contracts.contains(conDto)){
+//                    contracts.add(conDto);}
+//            }
+//        });
+//        return contracts;
+//    }
 
-    @PostMapping(value = "/api/reserve")
-    ResponseEntity<?> reserve(Contract contract) {
-        contractService.save(contract);
+    @PostMapping(value = "/reserve")
+    ResponseEntity<?> reserve(SaveContractDto contractDto) {
+        contractService.save(modelMapper.map(contractDto, Contract.class));
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping(value = "/api/delete_reserve_by_id")
-    ResponseEntity<?> deleteReserveById(Integer id) {
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteReserveById(@PathVariable Integer id) {
         contractService.deleteByConID(id);
         return ResponseEntity.ok().build();
     }

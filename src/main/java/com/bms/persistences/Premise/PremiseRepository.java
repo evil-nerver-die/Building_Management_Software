@@ -15,5 +15,5 @@ public interface PremiseRepository extends CrudRepository<Premises, Integer> {
 
     Premises save(Premises premises);
 
-    void deleteByPremiseID(Integer id);
+    //void deleteByPremiseID(Integer id);
 }
