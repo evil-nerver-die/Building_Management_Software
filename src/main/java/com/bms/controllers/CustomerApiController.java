@@ -39,12 +39,49 @@ public class CustomerApiController {
         return customers;
     }
 
+    @PostMapping("/api/customers/searh")
+    ArrayList<CusDto> Search(String input) {
+        ArrayList<CusDto> customers = new ArrayList<>();
+        customerService.findByCusNameContaining(input).forEach(new Consumer<Customer>() {
+            @Override
+            public void accept(Customer customer) {
+                CusDto cusDto = new CusDto(customer);
+                if(!customers.contains(cusDto)){
+                customers.add(cusDto);}
+            }
+        });
+        customerService.findByCusPhoneContaining(input).forEach(new Consumer<Customer>() {
+            @Override
+            public void accept(Customer customer) {
+                CusDto cusDto = new CusDto(customer);
+                if(!customers.contains(cusDto)){
+                    customers.add(cusDto);}
+            }
+        });
+        customerService.findByCusEmailContaining(input).forEach(new Consumer<Customer>() {
+            @Override
+            public void accept(Customer customer) {
+                CusDto cusDto = new CusDto(customer);
+                if(!customers.contains(cusDto)){
+                    customers.add(cusDto);}
+            }
+        });
+        return customers;
+    }
+
+
+
+
 
     @PostMapping(value = "/api/reserve")
     ResponseEntity<?> reserve(Customer customer) {
         customerService.save(customer);
         return ResponseEntity.ok().build();
     }
+
+
+
+
 
 
     @PostMapping(value = "/api/delete_reserve_by_id")

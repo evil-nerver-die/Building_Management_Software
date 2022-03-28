@@ -10,7 +10,11 @@ import java.util.List;
 
 interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
-    List<Customer> getByCusNameContaining(String cusName);
+    List<Customer> findByCusNameContaining(String cusName);
+
+    List<Customer> findByCusPhoneContaining(String cusPhone);
+
+    List<Customer> findByCusEmailContaining(String cusEmail);
 
     Customer save(Customer customer);
 
