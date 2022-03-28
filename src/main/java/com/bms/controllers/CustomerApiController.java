@@ -68,32 +68,16 @@ public class CustomerApiController {
         });
         return customers;
     }
-
-
-
-
-
+    
     @PostMapping(value = "/api/reserve")
     ResponseEntity<?> reserve(Customer customer) {
         customerService.save(customer);
         return ResponseEntity.ok().build();
     }
 
-
-
-
-
-
     @PostMapping(value = "/api/delete_reserve_by_id")
     ResponseEntity<?> deleteReserveById(Integer id) {
         customerService.deleteByCusID(id);
         return ResponseEntity.ok().build();
     }
-
-
-
-
-
-
-
 }
