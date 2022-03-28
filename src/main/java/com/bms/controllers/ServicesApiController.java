@@ -27,9 +27,6 @@ public class ServicesApiController {
         this.servicesService = servicesService;
     }
 
-
-
-
     @GetMapping("/api/services")
     ArrayList<ServicesDto> services() {
         ArrayList<ServicesDto> services = new ArrayList<>();
@@ -38,6 +35,36 @@ public class ServicesApiController {
             public void accept(Services service) {
                 ServicesDto servicesDto = new ServicesDto(service);
                 services.add(servicesDto);
+            }
+        });
+        return services;
+    }
+
+    @PostMapping("/api/service/search")
+    ArrayList<ServicesDto> Search(String input) {
+        ArrayList<ServicesDto> services = new ArrayList<>();
+        servicesService.findByServiceName(input).forEach(new Consumer<Services>() {
+            @Override
+            public void accept(Services service) {
+                ServicesDto servicesDto = new ServicesDto(service);
+                if(!services.contains(servicesDto)){
+                    services.add(servicesDto);}
+            }
+        });
+        servicesService.findByServicePrice(input).forEach(new Consumer<Services>() {
+            @Override
+            public void accept(Services service) {
+                ServicesDto servicesDto = new ServicesDto(service);
+                if(!services.contains(servicesDto)){
+                    services.add(servicesDto);}
+            }
+        });
+        servicesService.findByServiceProvider(input).forEach(new Consumer<Services>() {
+            @Override
+            public void accept(Services service) {
+                ServicesDto servicesDto = new ServicesDto(service);
+                if(!services.contains(servicesDto)){
+                    services.add(servicesDto);}
             }
         });
         return services;
@@ -54,8 +81,4 @@ public class ServicesApiController {
         servicesService.deleteBySerId(id);
         return ResponseEntity.ok().build();
     }
-
-
-
-
 }
