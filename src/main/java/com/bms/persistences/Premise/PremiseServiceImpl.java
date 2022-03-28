@@ -5,6 +5,7 @@ import com.bms.persistences.Premise.PremiseService;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
+import java.util.List;
 
 @Service
 public class PremiseServiceImpl implements PremiseService {
@@ -16,17 +17,17 @@ public class PremiseServiceImpl implements PremiseService {
     }
 
     @Override
-    public LinkedList<Premises> findByPremiseName(String premiseName) {
+    public List<Premises> findByPremiseName(String premiseName) {
         return repository.findByPremiseNameContaining(premiseName);
     }
 
     @Override
-    public LinkedList<Premises> findByPremiseFloor(Integer floor) {
+    public List<Premises> findByPremiseFloor(Integer floor) {
         return repository.findByPremiseFloorContaining(floor);
     }
 
     @Override
-    public Iterable<Premises> findAll() {
+    public List<Premises> findAll() {
         return repository.findAll();
     }
 
@@ -36,7 +37,8 @@ public class PremiseServiceImpl implements PremiseService {
     }
 
     @Override
-    public void deleteByPremiseId(Integer id) {
-        repository.deleteByPremiseId(id);
+    public void deleteByID(Integer id) {
+        repository.deleteById(id);
+
     }
 }

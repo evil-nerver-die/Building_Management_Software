@@ -4,15 +4,17 @@ import com.bms.models.Premises;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public interface PremiseService {
-    LinkedList<Premises> findByPremiseName(String premiseName);
+    List<Premises> findByPremiseName(String premiseName);
 
-    LinkedList<Premises> findByPremiseFloor(Integer floor);
+    List<Premises> findByPremiseFloor(Integer floor);
 
-    Iterable<Premises> findAll();
+    List<Premises> findAll();
 
     Premises save(Premises premises);
 
-    void deleteByPremiseId(Integer id);
+    void deleteByID(Integer id);
+
 }

@@ -39,7 +39,8 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public void deleteByConID(Integer conId) {
-        repository.deleteByConId(conId);
+
+    public void deleteByID(Integer conId) {
+        repository.deleteById(conId);
     }
 }

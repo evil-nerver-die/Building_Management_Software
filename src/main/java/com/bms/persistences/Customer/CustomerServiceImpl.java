@@ -30,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Iterable<Customer> findAll() {
+    public List<Customer> findAll() {
         return repository.findAll();
     }
 
@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public void deleteByCusID(Integer cusId) {
-        repository.deleteByCusId(cusId);
+    public void deleteByID(Integer cusId) {
+        repository.deleteById(cusId);
     }
 }

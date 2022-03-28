@@ -1,7 +1,7 @@
 package com.bms.models;
 
 
-import com.bms.DTO.CusDto;
+import com.bms.DTO.CustomerDto;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -40,7 +40,7 @@ public class Customer {
 
     private String cusFile;
 
-    public void loadFromDto(CusDto dto) {
+    public void loadFromDto(CustomerDto dto) {
         this.cusName = dto.getName();
         this.cusDob = dto.getDob();
         this.cusPhone = dto.getPhone();

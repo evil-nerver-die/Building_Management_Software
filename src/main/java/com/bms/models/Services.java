@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer serId;
+    private Integer id;
 
     private String serName;
 

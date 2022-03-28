@@ -1,6 +1,6 @@
 package com.bms.models;
 
-import com.bms.DTO.ConDto;
+import com.bms.DTO.ContractDto;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -45,7 +45,7 @@ public class Contract {
 
     private Integer usIdCreated;
 
-    public void loadFromDto(ConDto dto){
+    public void loadFromDto(ContractDto dto){
         this.conName = dto.getConName();
         this.conCode = dto.getConCode();
         this.conCreated = dto.getConCreated();

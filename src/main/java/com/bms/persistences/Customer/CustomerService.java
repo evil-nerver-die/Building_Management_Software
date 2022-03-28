@@ -12,11 +12,11 @@ public interface CustomerService {
 
     List<Customer> findByCusEmailContaining(String cusEmail);
 
-    Iterable<Customer> findAll();
+    List<Customer> findAll();
 
     Customer save(Customer customer);
 
-    void deleteByCusID(Integer cusId);
+    void deleteByID(Integer cusId);
 
 
 }

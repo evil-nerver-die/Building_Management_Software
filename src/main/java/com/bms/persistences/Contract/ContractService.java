@@ -15,7 +15,7 @@ public interface ContractService {
 
     Contract save(Contract contract);
 
-    void deleteByConID(Integer conId);
+    void deleteByID(Integer conId);
 
 
 }

@@ -30,7 +30,7 @@ public class ServicesImplement implements ServicesService {
     }
 
     @Override
-    public Iterable<Services> findAll() {
+    public List<Services> findAll() {
         return repo.findAll();
     }
 
@@ -40,7 +40,7 @@ public class ServicesImplement implements ServicesService {
     }
 
     @Override
-    public void deleteBySerId(Integer serId) {
-        repo.deleteBySerId(serId);
+    public void deleteById(Integer serId) {
+        repo.deleteById(serId);
     }
 }

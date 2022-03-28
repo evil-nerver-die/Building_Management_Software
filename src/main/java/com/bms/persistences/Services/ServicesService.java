@@ -13,9 +13,9 @@ public interface ServicesService {
 
     List<Services> findBySerProvider(String serProvider);
 
-    Iterable<Services> findAll();
+    List<Services> findAll();
 
     Services save(Services services);
 
-    void deleteBySerId(Integer serId);
+    void deleteById(Integer serId);
 }

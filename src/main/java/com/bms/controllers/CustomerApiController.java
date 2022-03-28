@@ -1,19 +1,19 @@
 package com.bms.controllers;
 
-import com.bms.DTO.CusDto;
+import com.bms.DTO.CustomerDto;
+import com.bms.DTO.SaveCustomerDto;
 import com.bms.models.Customer;
 import com.bms.persistences.Customer.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/api/customer")
 public class CustomerApiController {
     @Autowired
     private ModelMapper modelMapper;
@@ -26,58 +26,75 @@ public class CustomerApiController {
     }
 
 
-    @GetMapping("/api/customers")
-    ArrayList<CusDto> customers() {
-        ArrayList<CusDto> customers = new ArrayList<>();
-        customerService.findAll().forEach(new Consumer<Customer>() {
-            @Override
-            public void accept(Customer customer) {
-                CusDto cusDto = new CusDto(customer);
-                customers.add(cusDto);
-            }
-        });
-        return customers;
+    @GetMapping
+    List<CustomerDto> customers() {
+        return customerService.findAll().stream()
+                .map(customer -> modelMapper.map(customer, CustomerDto.class))
+                .collect(Collectors.toList());
     }
 
-    @PostMapping("/api/customers/search")
-    ArrayList<CusDto> Search(String input) {
-        ArrayList<CusDto> customers = new ArrayList<>();
-        customerService.findByCusNameContaining(input).forEach(new Consumer<Customer>() {
-            @Override
-            public void accept(Customer customer) {
-                CusDto cusDto = new CusDto(customer);
-                if(!customers.contains(cusDto)){
-                customers.add(cusDto);}
-            }
-        });
-        customerService.findByCusPhoneContaining(input).forEach(new Consumer<Customer>() {
-            @Override
-            public void accept(Customer customer) {
-                CusDto cusDto = new CusDto(customer);
-                if(!customers.contains(cusDto)){
-                    customers.add(cusDto);}
-            }
-        });
-        customerService.findByCusEmailContaining(input).forEach(new Consumer<Customer>() {
-            @Override
-            public void accept(Customer customer) {
-                CusDto cusDto = new CusDto(customer);
-                if(!customers.contains(cusDto)){
-                    customers.add(cusDto);}
-            }
-        });
-        return customers;
+    @GetMapping("/findName")
+    List<CustomerDto> findName(String input) {
+        return customerService.findByCusNameContaining(input).stream()
+                .map(customer -> modelMapper.map(customer, CustomerDto.class))
+                .collect(Collectors.toList());
+
     }
+
+    @GetMapping("/findCode")
+    List<CustomerDto> findPhone(String input) {
+        return customerService.findByCusPhoneContaining(input).stream()
+                .map(customer -> modelMapper.map(customer, CustomerDto.class))
+                .collect(Collectors.toList());
+
+    }
+
+    @GetMapping("/findConCreated")
+    List<CustomerDto> findEmail(String input) {
+        return customerService.findByCusEmailContaining(input).stream()
+                .map(customer -> modelMapper.map(customer, CustomerDto.class))
+                .collect(Collectors.toList());
+    }
+
+//    @PostMapping("/api/customers/search")
+//    ArrayList<CusDto> Search(String input) {
+//        ArrayList<CusDto> customers = new ArrayList<>();
+//        customerService.findByCusNameContaining(input).forEach(new Consumer<Customer>() {
+//            @Override
+//            public void accept(Customer customer) {
+//                CusDto cusDto = new CusDto(customer);
+//                if(!customers.contains(cusDto)){
+//                customers.add(cusDto);}
+//            }
+//        });
+//        customerService.findByCusPhoneContaining(input).forEach(new Consumer<Customer>() {
+//            @Override
+//            public void accept(Customer customer) {
+//                CusDto cusDto = new CusDto(customer);
+//                if(!customers.contains(cusDto)){
+//                    customers.add(cusDto);}
+//            }
+//        });
+//        customerService.findByCusEmailContaining(input).forEach(new Consumer<Customer>() {
+//            @Override
+//            public void accept(Customer customer) {
+//                CusDto cusDto = new CusDto(customer);
+//                if(!customers.contains(cusDto)){
+//                    customers.add(cusDto);}
+//            }
+//        });
+//        return customers;
+//    }
     
-    @PostMapping(value = "/api/reserve")
-    ResponseEntity<?> reserve(Customer customer) {
-        customerService.save(customer);
+    @PostMapping(value = "/reserve")
+    ResponseEntity<?> reserve(SaveCustomerDto customerDto) {
+        customerService.save(modelMapper.map(customerDto, Customer.class));
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping(value = "/api/delete_reserve_by_id")
-    ResponseEntity<?> deleteReserveById(Integer id) {
-        customerService.deleteByCusID(id);
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteById(@PathVariable Integer id) {
+        customerService.deleteByID(id);
         return ResponseEntity.ok().build();
     }
 }

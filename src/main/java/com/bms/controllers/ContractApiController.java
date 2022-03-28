@@ -1,17 +1,22 @@
 package com.bms.controllers;
 
-import com.bms.DTO.ConDto;
+import com.bms.DTO.ContractDto;
+import com.bms.DTO.SaveContractDto;
+import com.bms.DTO.SaveCustomerDto;
 import com.bms.models.Contract;
+import com.bms.models.Customer;
 import com.bms.persistences.Contract.ContractService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.stream.Collectors;
 
+
+@RestController
+@RequestMapping("/api/contract")
 public class ContractApiController {
     @Autowired
     private ModelMapper modelMapper;
@@ -24,58 +29,41 @@ public class ContractApiController {
     }
 
 
-    @GetMapping("/api/contracts")
-    ArrayList<ConDto> contracts() {
-        ArrayList<ConDto> contracts = new ArrayList<>();
-        contractService.findAll().forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                contracts.add(conDto);
-            }
-        });
-        return contracts;
+
+
+
+    @GetMapping("/findName")
+    List<ContractDto> findName(String input) {
+        return contractService.findByConNameContaining(input).stream()
+                .map(contract -> modelMapper.map(contract, ContractDto.class))
+                .collect(Collectors.toList());
+
     }
 
-    @PostMapping("/api/contracts/search")
-    ArrayList<ConDto> Search(String input) {
-        ArrayList<ConDto> contracts = new ArrayList<>();
-        contractService.findByConNameContaining(input).forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                if(!contracts.contains(conDto)){
-                    contracts.add(conDto);}
-            }
-        });
-        contractService.findByConCodeContaining(input).forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                if(!contracts.contains(conDto)){
-                    contracts.add(conDto);}
-            }
-        });
-        contractService.findByConCreatedContaining(input).forEach(new Consumer<Contract>() {
-            @Override
-            public void accept(Contract contract) {
-                ConDto conDto = new ConDto(contract);
-                if(!contracts.contains(conDto)){
-                    contracts.add(conDto);}
-            }
-        });
-        return contracts;
+    @GetMapping("/findCode")
+    List<ContractDto> findCode(String input) {
+        return contractService.findByConCodeContaining(input).stream()
+                .map(contract -> modelMapper.map(contract, ContractDto.class))
+                .collect(Collectors.toList());
+
     }
 
-    @PostMapping(value = "/api/reserve")
-    ResponseEntity<?> reserve(Contract contract) {
-        contractService.save(contract);
+    @GetMapping("/findConCreated")
+    List<ContractDto> findConCreated(String input) {
+        return contractService.findByConCreatedContaining(input).stream()
+                .map(contract -> modelMapper.map(contract, ContractDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @PostMapping(value = "/reserve")
+    ResponseEntity<?> reserve(SaveContractDto contractDto) {
+        contractService.save(modelMapper.map(contractDto, Contract.class));
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping(value = "/api/delete_reserve_by_id")
-    ResponseEntity<?> deleteReserveById(Integer id) {
-        contractService.deleteByConID(id);
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteById(@PathVariable Integer id) {
+        contractService.deleteByID(id);
         return ResponseEntity.ok().build();
     }
 }

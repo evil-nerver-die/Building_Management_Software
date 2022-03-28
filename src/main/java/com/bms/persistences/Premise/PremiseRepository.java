@@ -1,19 +1,16 @@
 package com.bms.persistences.Premise;
 
 import com.bms.models.Premises;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.LinkedList;
+import java.util.List;
 
-public interface PremiseRepository extends CrudRepository<Premises, Integer> {
-    LinkedList<Premises> findByPremiseNameContaining(String premiseName);
+public interface PremiseRepository extends JpaRepository<Premises, Integer> {
+    List<Premises> findByPremiseNameContaining(String premiseName);
 
-    LinkedList<Premises> findByPremiseFloorContaining(Integer floor);
+    List<Premises> findByPremiseFloorContaining(Integer floor);
 
     Premises save(Premises premises);
 
-    void deleteByPremiseId(Integer id);
+    void deleteById(Integer id);
 }

@@ -4,7 +4,7 @@ import com.bms.models.Customer;
 import lombok.Getter;
 
 @Getter
-public class CusDto {
+public class CustomerDto {
     String name;
 
     String dob;
@@ -17,7 +17,7 @@ public class CusDto {
 
     String avatar;
 
-    public CusDto(Customer customer) {
+    public CustomerDto(Customer customer) {
         this.name = customer.getCusName();
         this.dob = customer.getCusDob();
         this.phone = customer.getCusPhone();
