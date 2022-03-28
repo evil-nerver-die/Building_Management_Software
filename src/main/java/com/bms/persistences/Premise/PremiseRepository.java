@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.LinkedList;
 
 public interface PremiseRepository extends CrudRepository<Premises, Integer> {
-    LinkedList<Premises> getByPremiseName(String premiseName);
+    LinkedList<Premises> findByPremiseNameContaining(String premiseName);
+
+    LinkedList<Premises> findByPremiseFloorContaining(Integer floor);
 
     Premises save(Premises premises);
 
-    void deleteById(Integer id);
+    void deleteByPremiseID(Integer id);
 }

@@ -4,7 +4,7 @@ import com.bms.DTO.PremisesDto;
 import com.bms.DTO.ServicesDto;
 import com.bms.models.Premises;
 import com.bms.models.Services;
-import com.bms.persistences.PremiseService;
+import com.bms.persistences.Premise.PremiseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,9 +50,31 @@ public class PremisesApiController {
     }
 
     @PostMapping(value = "/api/delete_premises_by_id")
-    ResponseEntity<?> deleteByPremisesId(Integer id) {
-        premiseService.deleteById(id);
+    ResponseEntity<?> deleteByPremisesID(Integer id) {
+        premiseService.deleteByPremiseID(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value = "/api/premises/search")
+    ArrayList<PremisesDto> searchPremisesName(String input) {
+        ArrayList<PremisesDto> premises = new ArrayList<>();
+        premiseService.findByPremiseName(input).forEach(new Consumer<Premises>() {
+            @Override
+            public void accept(Premises premise) {
+                PremisesDto premisesDto = new PremisesDto(premise);
+                if (!premises.contains(premisesDto)){
+                premises.add(premisesDto);}
+            }
+        });
+        premiseService.findByPremiseFloor(Integer.parseInt(input)).forEach(new Consumer<Premises>() {
+            @Override
+            public void accept(Premises premise) {
+                PremisesDto premisesDto = new PremisesDto(premise);
+                if (!premises.contains(premisesDto)){
+                premises.add(premisesDto);}
+            }
+        });
+        return premises;
     }
 
 
