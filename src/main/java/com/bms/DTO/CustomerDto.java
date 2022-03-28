@@ -9,26 +9,16 @@ import lombok.Setter;
 public class CustomerDto {
     private Integer cusId;
 
-    String name;
+    private String cusName;
 
-    String dob;
+    private String cusDob;
 
-    String phone;
+    private String cusPhone;
 
-    String email;
+    private String cusEmail;
 
-    boolean gender;
+    private boolean cusGender;
 
-    String avatar;
-
-//    public CustomerDto(Customer customer) {
-//        this.name = customer.getCusName();
-//        this.dob = customer.getCusDob();
-//        this.phone = customer.getCusPhone();
-//        this.email = customer.getCusEmail();
-//        this.gender = customer.isCusGender();
-//        this.avatar = customer.getCusAvatar();
-//    }
 
 
 }

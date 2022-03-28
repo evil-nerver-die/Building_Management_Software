@@ -8,34 +8,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PremisesDto {
-    private Integer premiseId;
+  private Integer premiseId;
 
-     String name;
+  private String premiseName;
 
-     Double area;
+  private Double area;
 
-     Integer floor;
+  private Integer premiseFloor;
 
-     Integer num;
+  private Integer num;
 
-     Double price;
+  private Double price;
 
-     boolean status = false;
-
-     String des;
-
-     String picture;
-
-//    public PremisesDto(Premises premise) {
-//        this.name = premise.getPremiseName();
-//        this.area = premise.getArea();
-//        this.floor = premise.getPremiseFloor();
-//        this.num = premise.getNum();
-//        this.price = premise.getPrice();
-//        this.status = premise.isStatus();
-//        this.des = premise.getDes();
-//        this.picture = premise.getPicture();
-//    }
-
+  private String des;
 
 }

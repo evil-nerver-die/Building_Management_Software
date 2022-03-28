@@ -60,7 +60,7 @@ public class ContractApiController {
     }
 
     @PostMapping(value = "/reserve")
-    ResponseEntity<?> reserve(SaveContractDto contractDto) {
+    ResponseEntity<?> reserve(@RequestBody SaveContractDto contractDto) {
         contractService.save(modelMapper.map(contractDto, Contract.class));
         return ResponseEntity.ok().build();
     }

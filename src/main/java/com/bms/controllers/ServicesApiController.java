@@ -35,35 +35,35 @@ public class ServicesApiController {
 
 
 
-    @PostMapping("/api/service/search")
-    ArrayList<ServicesDto> Search(String input) {
-        ArrayList<ServicesDto> services = new ArrayList<>();
-        servicesService.findBySerName(input).forEach(new Consumer<Services>() {
-            @Override
-            public void accept(Services service) {
-                ServicesDto servicesDto = new ServicesDto(service);
-                if(!services.contains(servicesDto)){
-                    services.add(servicesDto);}
-            }
-        });
-        servicesService.findBySerPrice(input).forEach(new Consumer<Services>() {
-            @Override
-            public void accept(Services service) {
-                ServicesDto servicesDto = new ServicesDto(service);
-                if(!services.contains(servicesDto)){
-                    services.add(servicesDto);}
-            }
-        });
-        servicesService.findBySerProvider(input).forEach(new Consumer<Services>() {
-            @Override
-            public void accept(Services service) {
-                ServicesDto servicesDto = new ServicesDto(service);
-                if(!services.contains(servicesDto)){
-                    services.add(servicesDto);}
-            }
-        });
-        return services;
-    }
+//    @PostMapping("/api/service/search")
+//    ArrayList<ServicesDto> Search(String input) {
+//        ArrayList<ServicesDto> services = new ArrayList<>();
+//        servicesService.findBySerName(input).forEach(new Consumer<Services>() {
+//            @Override
+//            public void accept(Services service) {
+//                ServicesDto servicesDto = new ServicesDto(service);
+//                if(!services.contains(servicesDto)){
+//                    services.add(servicesDto);}
+//            }
+//        });
+//        servicesService.findBySerPrice(input).forEach(new Consumer<Services>() {
+//            @Override
+//            public void accept(Services service) {
+//                ServicesDto servicesDto = new ServicesDto(service);
+//                if(!services.contains(servicesDto)){
+//                    services.add(servicesDto);}
+//            }
+//        });
+//        servicesService.findBySerProvider(input).forEach(new Consumer<Services>() {
+//            @Override
+//            public void accept(Services service) {
+//                ServicesDto servicesDto = new ServicesDto(service);
+//                if(!services.contains(servicesDto)){
+//                    services.add(servicesDto);}
+//            }
+//        });
+//        return services;
+//    }
 
 
 
@@ -88,8 +88,8 @@ public class ServicesApiController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping(value = "add")
-    ResponseEntity<?> reserve(SaveServiceDto serviceDto) {
+    @PostMapping(value = "/reserve")
+    ResponseEntity<?> reserve(@RequestBody SaveServiceDto serviceDto) {
         servicesService.save(modelMapper.map(serviceDto, Services.class));
         return ResponseEntity.ok().build();
     }

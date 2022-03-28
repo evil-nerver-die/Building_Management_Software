@@ -39,18 +39,4 @@ public class Customer {
     private boolean cusStatus;
 
     private String cusFile;
-
-    public void loadFromDto(CustomerDto dto) {
-        this.cusName = dto.getName();
-        this.cusDob = dto.getDob();
-        this.cusPhone = dto.getPhone();
-        this.cusEmail = dto.getEmail();
-        this.cusGender = dto.isGender();
-        this.cusAvatar = dto.getAvatar();
-    }
-
-
-
-
-
 }

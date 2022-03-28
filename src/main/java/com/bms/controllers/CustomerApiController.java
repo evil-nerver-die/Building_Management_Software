@@ -87,7 +87,7 @@ public class CustomerApiController {
 //    }
     
     @PostMapping(value = "/reserve")
-    ResponseEntity<?> reserve(SaveCustomerDto customerDto) {
+    ResponseEntity<?> reserve(@RequestBody SaveCustomerDto customerDto) {
         customerService.save(modelMapper.map(customerDto, Customer.class));
         return ResponseEntity.ok().build();
     }

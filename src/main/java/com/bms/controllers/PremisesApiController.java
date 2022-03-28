@@ -34,8 +34,8 @@ public class PremisesApiController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping(value = "add")
-    ResponseEntity<?> reserve(Premises premises) {
+    @PostMapping(value = "/reserve")
+    ResponseEntity<?> reserve(@RequestBody Premises premises) {
         premiseService.save(premises);
         return ResponseEntity.ok().build();
     }
