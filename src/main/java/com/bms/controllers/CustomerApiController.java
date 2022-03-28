@@ -39,7 +39,7 @@ public class CustomerApiController {
         return customers;
     }
 
-    @PostMapping("/api/customers/searh")
+    @PostMapping("/api/customers/search")
     ArrayList<CusDto> Search(String input) {
         ArrayList<CusDto> customers = new ArrayList<>();
         customerService.findByCusNameContaining(input).forEach(new Consumer<Customer>() {
