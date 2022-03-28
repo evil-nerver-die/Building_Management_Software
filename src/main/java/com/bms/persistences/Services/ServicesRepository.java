@@ -7,11 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 import com.bms.models.Services;
 
 public interface ServicesRepository extends CrudRepository<Services, Long> {
-    List<Services> findByServiceName(String serName);
+    List<Services> findBySerName(String serName);
 
-    List<Services> findByServicePrice(String serPrice);
+    List<Services> findBySerPrice(String serPrice);
 
-    List<Services> findByServiceProvider(String serProvider);
+    List<Services> findBySerProvider(String serProvider);
 
     Services save(Services services);
 

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import com.bms.models.Services;
 
 public interface ServicesService {
-    List<Services> findByServiceName(String serName);
+    List<Services> findBySerName(String serName);
 
-    List<Services> findByServicePrice(String serPrice);
+    List<Services> findBySerPrice(String serPrice);
 
-    List<Services> findByServiceProvider(String serProvider);
+    List<Services> findBySerProvider(String serProvider);
 
     Iterable<Services> findAll();
 

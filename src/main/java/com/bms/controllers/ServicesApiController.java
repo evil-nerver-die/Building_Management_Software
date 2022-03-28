@@ -43,7 +43,7 @@ public class ServicesApiController {
     @PostMapping("/api/service/search")
     ArrayList<ServicesDto> Search(String input) {
         ArrayList<ServicesDto> services = new ArrayList<>();
-        servicesService.findByServiceName(input).forEach(new Consumer<Services>() {
+        servicesService.findBySerName(input).forEach(new Consumer<Services>() {
             @Override
             public void accept(Services service) {
                 ServicesDto servicesDto = new ServicesDto(service);
@@ -51,7 +51,7 @@ public class ServicesApiController {
                     services.add(servicesDto);}
             }
         });
-        servicesService.findByServicePrice(input).forEach(new Consumer<Services>() {
+        servicesService.findBySerPrice(input).forEach(new Consumer<Services>() {
             @Override
             public void accept(Services service) {
                 ServicesDto servicesDto = new ServicesDto(service);
@@ -59,7 +59,7 @@ public class ServicesApiController {
                     services.add(servicesDto);}
             }
         });
-        servicesService.findByServiceProvider(input).forEach(new Consumer<Services>() {
+        servicesService.findBySerProvider(input).forEach(new Consumer<Services>() {
             @Override
             public void accept(Services service) {
                 ServicesDto servicesDto = new ServicesDto(service);
