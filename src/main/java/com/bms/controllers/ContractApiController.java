@@ -1,10 +1,9 @@
 package com.bms.controllers;
 
 import com.bms.DTO.ContractDto;
+import com.bms.DTO.CustomerDto;
 import com.bms.DTO.SaveContractDto;
-import com.bms.DTO.SaveCustomerDto;
 import com.bms.models.Contract;
-import com.bms.models.Customer;
 import com.bms.persistences.Contract.ContractService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,12 @@ public class ContractApiController {
     }
 
 
-
+    @GetMapping
+    List<ContractDto> customers() {
+        return contractService.findAll().stream()
+                .map(contract -> modelMapper.map(contract, ContractDto.class))
+                .collect(Collectors.toList());
+    }
 
 
     @GetMapping("/findName")

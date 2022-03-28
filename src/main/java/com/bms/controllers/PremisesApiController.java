@@ -1,19 +1,14 @@
 package com.bms.controllers;
 
-import com.bms.DTO.CustomerDto;
 import com.bms.DTO.PremisesDto;
-import com.bms.DTO.ServicesDto;
 import com.bms.models.Premises;
-import com.bms.models.Services;
 import com.bms.persistences.Premise.PremiseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 @RestController
