@@ -50,8 +50,8 @@ public class PremisesApiController {
     }
 
     @PostMapping(value = "/api/delete_premises_by_id")
-    ResponseEntity<?> deleteByPremisesID(Integer id) {
-        premiseService.deleteByPremiseID(id);
+    ResponseEntity<?> deleteByPremisesId(Integer id) {
+        premiseService.deleteByPremiseId(id);
         return ResponseEntity.ok().build();
     }
 

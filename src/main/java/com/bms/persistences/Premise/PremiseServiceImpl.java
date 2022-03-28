@@ -36,7 +36,7 @@ public class PremiseServiceImpl implements PremiseService {
     }
 
     @Override
-    public void deleteByPremiseID(Integer id) {
-        repository.deleteByPremiseID(id);
+    public void deleteByPremiseId(Integer id) {
+        repository.deleteByPremiseId(id);
     }
 }

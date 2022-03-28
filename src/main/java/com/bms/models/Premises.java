@@ -13,7 +13,7 @@ public class Premises {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer premiseId;
 
     private String premiseName;
 

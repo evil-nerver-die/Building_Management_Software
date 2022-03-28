@@ -13,8 +13,8 @@ interface ContractRepository extends CrudRepository<Contract, Integer> {
 
     List<Contract> findByConCreatedContaining(String conCreated);
 
-    Contract save(Contract customer);
+    Contract save(Contract contract);
 
-    void deleteByConId(Integer cusId);
+    void deleteByConId(Integer conId);
 
 }

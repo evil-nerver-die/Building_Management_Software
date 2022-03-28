@@ -14,5 +14,5 @@ public interface PremiseService {
 
     Premises save(Premises premises);
 
-    void deleteByPremiseID(Integer id);
+    void deleteByPremiseId(Integer id);
 }
