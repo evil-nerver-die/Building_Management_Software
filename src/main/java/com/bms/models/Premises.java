@@ -19,7 +19,7 @@ public class Premises {
 
     private Double area;
 
-    private Integer floor;
+    private Integer premiseFloor;
 
     private Integer num;
 

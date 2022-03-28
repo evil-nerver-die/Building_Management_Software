@@ -25,7 +25,7 @@ public class PremisesDto {
     public PremisesDto(Premises premise) {
         this.name = premise.getPremiseName();
         this.area = premise.getArea();
-        this.floor = premise.getFloor();
+        this.floor = premise.getPremiseFloor();
         this.num = premise.getNum();
         this.price = premise.getPrice();
         this.status = premise.isStatus();
