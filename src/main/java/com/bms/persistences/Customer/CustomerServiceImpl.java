@@ -15,8 +15,18 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public List<Customer> getByCusNameContaining(String cusName) {
-        return repository.getByCusNameContaining(cusName);
+    public List<Customer> findByCusNameContaining(String cusName) {
+        return repository.findByCusNameContaining(cusName);
+    }
+
+    @Override
+    public List<Customer> findByCusPhoneContaining(String cusPhone) {
+        return repository.findByCusPhoneContaining(cusPhone);
+    }
+
+    @Override
+    public List<Customer> findByCusEmailContaining(String cusEmail) {
+        return repository.findByCusEmailContaining(cusEmail);
     }
 
     @Override
