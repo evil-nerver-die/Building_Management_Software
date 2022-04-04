@@ -17,13 +17,13 @@ public class PremiseServiceImpl implements PremiseService {
     }
 
     @Override
-    public List<Premises> findByPremiseName(String premiseName) {
-        return repository.findByPremiseNameContaining(premiseName);
+    public List<Premises> findByName(String premiseName) {
+        return repository.findByNameContaining(premiseName);
     }
 
     @Override
-    public List<Premises> findByPremiseFloor(Integer floor) {
-        return repository.findByPremiseFloorContaining(floor);
+    public List<Premises> findByFloor(Integer floor) {
+        return repository.findByFloorContaining(floor);
     }
 
     @Override

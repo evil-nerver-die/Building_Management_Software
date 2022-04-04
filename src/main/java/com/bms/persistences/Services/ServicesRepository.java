@@ -9,13 +9,13 @@ import com.bms.models.Services;
 
 
 public interface ServicesRepository extends JpaRepository<Services, Long> {
-    List<Services> findBySerName(String serName);
+    List<Services> findByName(String serName);
 
-    List<Services> findBySerPrice(String serPrice);
+    List<Services> findByPrice(String serPrice);
 
-    List<Services> findBySerProvider(String serProvider);
+    List<Services> findByProvider(String serProvider);
 
-    List<Services> getBySerNameContaining(String serName);
+    List<Services> getByNameContaining(String serName);
 
     Services save(Services services);
 

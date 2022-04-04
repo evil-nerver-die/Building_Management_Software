@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PremiseRepository extends JpaRepository<Premises, Integer> {
-    List<Premises> findByPremiseNameContaining(String premiseName);
+    List<Premises> findByNameContaining(String premiseName);
 
-    List<Premises> findByPremiseFloorContaining(Integer floor);
+    List<Premises> findByFloorContaining(Integer floor);
 
     Premises save(Premises premises);
 

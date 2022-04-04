@@ -16,27 +16,27 @@ public class Customer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cusId;
+    private Integer Id;
 
-    private String cusName;
+    private String name;
 
-    private String cusDob;
+    private String dob;
 
-    private String cusPhone;
+    private String phone;
 
-    private String cusEmail;
+    private String email;
 
-    private boolean cusGender;
+    private boolean gender;
 
-    private Integer cusRole;
+    private Integer role;
 
-    private Integer cusUsId;
+    private Integer usId;
 
-    private String cusAvatar;
+    private String avatar;
 
-    private String cusDes;
+    private String des;
 
-    private boolean cusStatus;
+    private boolean status;
 
-    private String cusFile;
+    private String file;
 }

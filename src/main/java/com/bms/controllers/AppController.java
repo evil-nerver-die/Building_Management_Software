@@ -26,7 +26,7 @@ public class AppController {
 
 
     @GetMapping("/")
-    String home() {
+    String index() {
         return "home";
     }
 

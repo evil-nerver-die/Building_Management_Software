@@ -15,18 +15,18 @@ public class ServicesImplement implements ServicesService {
     }
 
     @Override
-    public List<Services> findBySerName(String serName) {
-        return repo.findBySerName(serName);
+    public List<Services> findByName(String serName) {
+        return repo.findByName(serName);
     }
 
     @Override
-    public List<Services> findBySerPrice(String serPrice) {
-        return repo.findBySerPrice(serPrice);
+    public List<Services> findByPrice(String serPrice) {
+        return repo.findByPrice(serPrice);
     }
 
     @Override
-    public List<Services> findBySerProvider(String serProvider) {
-        return repo.findBySerProvider(serProvider);
+    public List<Services> findByProvider(String serProvider) {
+        return repo.findByProvider(serProvider);
     }
 
     @Override

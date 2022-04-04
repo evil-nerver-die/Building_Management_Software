@@ -8,13 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PremisesDto {
-  private Integer premiseId;
+  private Integer Id;
 
-  private String premiseName;
+  private String name;
 
   private Double area;
 
-  private Integer premiseFloor;
+  private Integer floor;
 
   private Integer num;
 

@@ -8,11 +8,11 @@ import lombok.Setter;
 public class SavePremisesDto {
     private Integer id;
 
-    private String premiseName;
+    private String name;
 
     private Double area;
 
-    private Integer premiseFloor;
+    private Integer floor;
 
     private Integer num;
 

@@ -7,11 +7,11 @@ import java.util.List;
 
 interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    List<Customer> findByCusNameContaining(String cusName);
+    List<Customer> findByNameContaining(String cusName);
 
-    List<Customer> findByCusPhoneContaining(String cusPhone);
+    List<Customer> findByPhoneContaining(String cusPhone);
 
-    List<Customer> findByCusEmailContaining(String cusEmail);
+    List<Customer> findByEmailContaining(String cusEmail);
 
     Customer save(Customer customer);
 

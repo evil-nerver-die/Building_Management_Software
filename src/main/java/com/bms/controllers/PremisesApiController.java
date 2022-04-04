@@ -49,14 +49,14 @@ public class PremisesApiController {
 
     @GetMapping("/findName")
     List<PremisesDto> findName(String input) {
-        return premiseService.findByPremiseName(input).stream()
+        return premiseService.findByName(input).stream()
                 .map(premises -> modelMapper.map(premises, PremisesDto.class))
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/findFloor")
     List<PremisesDto> findFloor(Integer input) {
-        return premiseService.findByPremiseFloor(input).stream()
+        return premiseService.findByFloor(input).stream()
                 .map(premises -> modelMapper.map(premises, PremisesDto.class))
                 .collect(Collectors.toList());
     }

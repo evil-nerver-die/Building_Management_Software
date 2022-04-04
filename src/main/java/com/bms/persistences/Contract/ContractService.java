@@ -5,11 +5,11 @@ import com.bms.models.Contract;
 import java.util.List;
 
 public interface ContractService {
-    List<Contract> findByConNameContaining(String conName);
+    List<Contract> findByNameContaining(String Name);
 
-    List<Contract> findByConCodeContaining(String conCode);
+    List<Contract> findByCodeContaining(String Code);
 
-    List<Contract> findByConCreatedContaining(String conCreated);
+    List<Contract> findByDateCreatedContaining(String Created);
 
     List<Contract> findAll();
 

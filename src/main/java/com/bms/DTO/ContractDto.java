@@ -7,13 +7,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ContractDto {
-    private Integer conId;
+    private Integer Id;
 
-    String conName;
+    String name;
 
-    String conCode;
+    String code;
 
-    String conCreated;
+    String dateCreated;
 
 //    public ContractDto(Contract contract){
 //        this.conName = contract.getConName();

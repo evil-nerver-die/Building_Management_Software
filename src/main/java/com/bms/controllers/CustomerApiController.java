@@ -35,7 +35,7 @@ public class CustomerApiController {
 
     @GetMapping("/findName")
     List<CustomerDto> findName(String input) {
-        return customerService.findByCusNameContaining(input).stream()
+        return customerService.findByNameContaining(input).stream()
                 .map(customer -> modelMapper.map(customer, CustomerDto.class))
                 .collect(Collectors.toList());
 
@@ -43,7 +43,7 @@ public class CustomerApiController {
 
     @GetMapping("/findCode")
     List<CustomerDto> findPhone(String input) {
-        return customerService.findByCusPhoneContaining(input).stream()
+        return customerService.findByPhoneContaining(input).stream()
                 .map(customer -> modelMapper.map(customer, CustomerDto.class))
                 .collect(Collectors.toList());
 
@@ -51,7 +51,7 @@ public class CustomerApiController {
 
     @GetMapping("/findConCreated")
     List<CustomerDto> findEmail(String input) {
-        return customerService.findByCusEmailContaining(input).stream()
+        return customerService.findByEmailContaining(input).stream()
                 .map(customer -> modelMapper.map(customer, CustomerDto.class))
                 .collect(Collectors.toList());
     }

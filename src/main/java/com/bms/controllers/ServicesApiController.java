@@ -82,9 +82,9 @@ public class ServicesApiController {
 //    }
 
     @GetMapping
-    List<PremisesDto> premises() {
+    List<ServicesDto> services() {
         return servicesService.findAll().stream()
-                .map(premises -> modelMapper.map(premises, PremisesDto.class))
+                .map(services -> modelMapper.map(services, ServicesDto.class))
                 .collect(Collectors.toList());
     }
 

@@ -7,9 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public interface PremiseService {
-    List<Premises> findByPremiseName(String premiseName);
+    List<Premises> findByName(String premiseName);
 
-    List<Premises> findByPremiseFloor(Integer floor);
+    List<Premises> findByFloor(Integer floor);
 
     List<Premises> findAll();
 

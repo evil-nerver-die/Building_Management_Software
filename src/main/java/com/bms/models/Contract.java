@@ -9,45 +9,46 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Data
+
 @Entity
+@Data
 public class Contract {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer conId;
+    private Integer Id;
 
-    private String conName;
+    private String name;
 
-    private String conCode;
+    private String code;
 
-    private Double conPrice;
+    private Double price;
 
-    private String conProvider;
+    private String provider;
 
-    private Integer conStatus;
+    private Integer status;
 
-    private Integer conType;
+    private Integer type;
 
-    private String conCreated;
+    private String dateCreated;
 
-    private String conSigned;
+    private String Signed;
 
-    private String conUpdated;
+    private String Updated;
 
-    private String conEnded;
+    private String Ended;
 
     private Integer usIdSigned;
 
-    private String conDes;
+    private String Des;
 
-    private String conFile;
+    private String File;
 
     private Integer usIdCreated;
 
-    public void loadFromDto(ContractDto dto){
-        this.conName = dto.getConName();
-        this.conCode = dto.getConCode();
-        this.conCreated = dto.getConCreated();
-    }
+//    public void loadFromDto(ContractDto dto){
+//        this.Name = dto.getConName();
+//        this.Code = dto.getConCode();
+//        this.Created = dto.getConCreated();
+//    }
 }

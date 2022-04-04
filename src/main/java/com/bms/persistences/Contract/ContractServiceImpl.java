@@ -15,18 +15,18 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public List<Contract> findByConNameContaining(String conName) {
-        return repository.findByConNameContaining(conName);
+    public List<Contract> findByNameContaining(String conName) {
+        return repository.findByNameContaining(conName);
     }
 
     @Override
-    public List<Contract> findByConCodeContaining(String conCode) {
-        return repository.findByConCodeContaining(conCode);
+    public List<Contract> findByCodeContaining(String conCode) {
+        return repository.findByCodeContaining(conCode);
     }
 
     @Override
-    public List<Contract> findByConCreatedContaining(String conCreated) {
-        return repository.findByConCreatedContaining(conCreated);
+    public List<Contract> findByDateCreatedContaining(String conCreated) {
+        return repository.findByDateCreatedContaining(conCreated);
     }
 
     @Override

@@ -6,33 +6,33 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SaveContractDto {
-    private Integer conId;
+    private Integer Id;
 
-    private String conName;
+    private String name;
 
-    private String conCode;
+    private String code;
 
-    private Double conPrice;
+    private Double price;
 
-    private String conProvider;
+    private String provider;
 
-    private Integer conStatus;
+    private Integer status;
 
-    private Integer conType;
+    private Integer type;
 
-    private String conCreated;
+    private String dateCreated;
 
-    private String conSigned;
+    private String Signed;
 
-    private String conUpdated;
+    private String Updated;
 
-    private String conEnded;
+    private String Ended;
 
     private Integer usIdSigned;
 
-    private String conDes;
+    private String Des;
 
-    private String conFile;
+    private String File;
 
     private Integer usIdCreated;
 }

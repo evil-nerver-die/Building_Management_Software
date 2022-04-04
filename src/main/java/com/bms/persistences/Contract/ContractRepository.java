@@ -8,11 +8,11 @@ import java.util.List;
 
 interface ContractRepository extends JpaRepository<Contract, Integer> {
 
-    List<Contract> findByConNameContaining(String conName);
+    List<Contract> findByNameContaining(String Name);
 
-    List<Contract> findByConCodeContaining(String conCode);
+    List<Contract> findByCodeContaining(String Code);
 
-    List<Contract> findByConCreatedContaining(String conCreated);
+    List<Contract> findByDateCreatedContaining(String Created);
 
     Contract save(Contract contract);
 

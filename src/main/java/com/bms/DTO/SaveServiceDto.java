@@ -6,19 +6,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SaveServiceDto {
-    private Integer serId;
+    private Integer id;
 
-    private String serName;
+    private String name;
 
-    private String serCode;
+    private String code;
 
-    private Double serPrice;
+    private Double price;
 
-    private String serProvider;
+    private String provider;
 
-    private boolean serStatus;
+    private boolean status;
 
-    private String serDes;
-
-    private String serContractFile;
+    private String des;
 }

@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface CustomerService {
-    List<Customer> findByCusNameContaining(String cusName);
+    List<Customer> findByNameContaining(String cusName);
 
-    List<Customer> findByCusPhoneContaining(String cusPhone);
+    List<Customer> findByPhoneContaining(String cusPhone);
 
-    List<Customer> findByCusEmailContaining(String cusEmail);
+    List<Customer> findByEmailContaining(String cusEmail);
 
     List<Customer> findAll();
 

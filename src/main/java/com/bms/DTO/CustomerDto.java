@@ -7,17 +7,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerDto {
-    private Integer cusId;
+    private Integer Id;
 
-    private String cusName;
+    private String name;
 
-    private String cusDob;
+    private String dob;
 
-    private String cusPhone;
+    private String phone;
 
-    private String cusEmail;
+    private String email;
 
-    private boolean cusGender;
+    private boolean gender;
 
 
 

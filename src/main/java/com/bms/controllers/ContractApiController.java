@@ -38,7 +38,7 @@ public class ContractApiController {
 
     @GetMapping("/findName")
     List<ContractDto> findName(String input) {
-        return contractService.findByConNameContaining(input).stream()
+        return contractService.findByNameContaining(input).stream()
                 .map(contract -> modelMapper.map(contract, ContractDto.class))
                 .collect(Collectors.toList());
 
@@ -46,7 +46,7 @@ public class ContractApiController {
 
     @GetMapping("/findCode")
     List<ContractDto> findCode(String input) {
-        return contractService.findByConCodeContaining(input).stream()
+        return contractService.findByCodeContaining(input).stream()
                 .map(contract -> modelMapper.map(contract, ContractDto.class))
                 .collect(Collectors.toList());
 
@@ -54,7 +54,7 @@ public class ContractApiController {
 
     @GetMapping("/findConCreated")
     List<ContractDto> findConCreated(String input) {
-        return contractService.findByConCreatedContaining(input).stream()
+        return contractService.findByDateCreatedContaining(input).stream()
                 .map(contract -> modelMapper.map(contract, ContractDto.class))
                 .collect(Collectors.toList());
     }

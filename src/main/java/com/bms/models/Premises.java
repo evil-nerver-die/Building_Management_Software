@@ -13,13 +13,13 @@ public class Premises {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer premiseId;
+    private Integer Id;
 
-    private String premiseName;
+    private String name;
 
     private Double area;
 
-    private Integer premiseFloor;
+    private Integer floor;
 
     private Integer num;
 
