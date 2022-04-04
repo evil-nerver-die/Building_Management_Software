@@ -1,11 +1,8 @@
 package com.bms.controllers;
 
-import com.bms.DTO.PremisesDto;
-import com.bms.DTO.SaveCustomerDto;
-import com.bms.DTO.SaveServiceDto;
+import com.bms.DTO.*;
 import com.bms.models.Customer;
 import com.bms.models.Services;
-import com.bms.DTO.ServicesDto;
 import com.bms.persistences.Services.ServicesService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +83,30 @@ public class ServicesApiController {
         return servicesService.findAll().stream()
                 .map(services -> modelMapper.map(services, ServicesDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/findName")
+    List<CustomerDto> findName(String input) {
+        return servicesService.findByName(input).stream()
+                .map(services -> modelMapper.map(services, CustomerDto.class))
+                .collect(Collectors.toList());
+
+    }
+
+    @GetMapping("/findPrice")
+    List<CustomerDto> findPrice(String input) {
+        return servicesService.findByPrice(input).stream()
+                .map(services -> modelMapper.map(services, CustomerDto.class))
+                .collect(Collectors.toList());
+
+    }
+
+    @GetMapping("/findProvider")
+    List<CustomerDto> findProvider(String input) {
+        return servicesService.findByProvider(input).stream()
+                .map(services -> modelMapper.map(services, CustomerDto.class))
+                .collect(Collectors.toList());
+
     }
 
     @PostMapping(value = "/reserve")

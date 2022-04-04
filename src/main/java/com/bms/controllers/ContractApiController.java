@@ -29,7 +29,7 @@ public class ContractApiController {
 
 
     @GetMapping
-    List<ContractDto> customers() {
+    List<ContractDto> contracts() {
         return contractService.findAll().stream()
                 .map(contract -> modelMapper.map(contract, ContractDto.class))
                 .collect(Collectors.toList());

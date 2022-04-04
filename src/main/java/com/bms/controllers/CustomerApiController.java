@@ -41,7 +41,7 @@ public class CustomerApiController {
 
     }
 
-    @GetMapping("/findCode")
+    @GetMapping("/findPhone")
     List<CustomerDto> findPhone(String input) {
         return customerService.findByPhoneContaining(input).stream()
                 .map(customer -> modelMapper.map(customer, CustomerDto.class))
@@ -49,7 +49,7 @@ public class CustomerApiController {
 
     }
 
-    @GetMapping("/findConCreated")
+    @GetMapping("/findEmail")
     List<CustomerDto> findEmail(String input) {
         return customerService.findByEmailContaining(input).stream()
                 .map(customer -> modelMapper.map(customer, CustomerDto.class))
