@@ -17,4 +17,6 @@ interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     void deleteById(Integer Id);
 
+    Customer getById(Integer id);
+
 }

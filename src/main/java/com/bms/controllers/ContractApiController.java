@@ -2,6 +2,7 @@ package com.bms.controllers;
 
 import com.bms.DTO.ContractDto;
 import com.bms.DTO.CustomerDto;
+import com.bms.DTO.PremisesDto;
 import com.bms.DTO.SaveContractDto;
 import com.bms.models.Contract;
 import com.bms.persistences.Contract.ContractService;
@@ -63,6 +64,11 @@ public class ContractApiController {
     ResponseEntity<?> reserve(@RequestBody SaveContractDto contractDto) {
         contractService.save(modelMapper.map(contractDto, Contract.class));
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/{id}")
+    ContractDto getById(@PathVariable Integer id) {
+        return modelMapper.map(contractService.getById(id),ContractDto.class);
     }
 
     @DeleteMapping("/{id}")

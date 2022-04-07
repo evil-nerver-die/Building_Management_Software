@@ -1,6 +1,7 @@
 package com.bms.controllers;
 
 import com.bms.DTO.CustomerDto;
+import com.bms.DTO.PremisesDto;
 import com.bms.DTO.SaveCustomerDto;
 import com.bms.models.Customer;
 import com.bms.persistences.Customer.CustomerService;
@@ -54,6 +55,11 @@ public class CustomerApiController {
         return customerService.findByEmailContaining(input).stream()
                 .map(customer -> modelMapper.map(customer, CustomerDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping(value = "/{id}")
+    CustomerDto getById(@PathVariable Integer id) {
+        return modelMapper.map(customerService.getById(id),CustomerDto.class);
     }
 
 //    @PostMapping("/api/customers/search")

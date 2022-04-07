@@ -17,5 +17,7 @@ public interface ContractService {
 
     void deleteByID(Integer conId);
 
+    Contract getById(Integer id);
+
 
 }

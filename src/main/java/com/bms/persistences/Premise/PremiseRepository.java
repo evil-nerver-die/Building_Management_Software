@@ -12,5 +12,7 @@ public interface PremiseRepository extends JpaRepository<Premises, Integer> {
 
     Premises save(Premises premises);
 
+    Premises getById(Integer id);
+
     void deleteById(Integer id);
 }

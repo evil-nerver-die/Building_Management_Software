@@ -13,6 +13,8 @@ public interface PremiseService {
 
     List<Premises> findAll();
 
+    Premises getById(Integer id);
+
     Premises save(Premises premises);
 
     void deleteByID(Integer id);

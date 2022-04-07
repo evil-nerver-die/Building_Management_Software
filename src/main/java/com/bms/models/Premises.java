@@ -1,5 +1,6 @@
 package com.bms.models;
 
+import com.bms.DTO.PremisesDto;
 import lombok.Data;
 
 import javax.persistence.Entity;

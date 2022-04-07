@@ -1,6 +1,6 @@
 import './index.css';
 
-import React from 'react'
+import React from 'react';
 
 const Customer = () => {
   return (

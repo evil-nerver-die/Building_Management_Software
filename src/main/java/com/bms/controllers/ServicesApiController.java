@@ -85,6 +85,11 @@ public class ServicesApiController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping(value = "/{id}")
+    ServicesDto getById(@PathVariable Integer id) {
+        return modelMapper.map(servicesService.getById(id),ServicesDto.class);
+    }
+
     @GetMapping("/findName")
     List<CustomerDto> findName(String input) {
         return servicesService.findByName(input).stream()

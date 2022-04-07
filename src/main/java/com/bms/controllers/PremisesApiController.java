@@ -31,15 +31,17 @@ public class PremisesApiController {
 
     }
 
+
+
     @GetMapping
     List<PremisesByFloorDto> premises() {
         Map<Integer, List<Premises>> floorMap = new HashMap<>();
         var premiseList = premiseService.findAll();
-        for (var promise : premiseList) {
-            if (floorMap.get(promise.getFloor()) == null) {
-                floorMap.put(promise.getFloor(), new ArrayList<Premises>());
+        for (var premise : premiseList) {
+            if (floorMap.get(premise.getFloor()) == null) {
+                floorMap.put(premise.getFloor(), new ArrayList<Premises>());
             }
-            floorMap.get(promise.getFloor()).add(promise);
+            floorMap.get(premise.getFloor()).add(premise);
         }
 
         List<PremisesByFloorDto> result = new ArrayList<>();
@@ -68,6 +70,11 @@ public class PremisesApiController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping(value = "/{id}")
+    PremisesDto getById(@PathVariable Integer id) {
+        return modelMapper.map(premiseService.getById(id),PremisesDto.class);
+    }
+
     @GetMapping("/findName")
     List<PremisesDto> findName(String input) {
         return premiseService.findByName(input).stream()
@@ -81,6 +88,8 @@ public class PremisesApiController {
                 .map(premises -> modelMapper.map(premises, PremisesDto.class))
                 .collect(Collectors.toList());
     }
+
+
 
 //    @PostMapping(value = "/api/premises/search")
 //    ArrayList<PremisesDto> searchPremisesName(String input) {

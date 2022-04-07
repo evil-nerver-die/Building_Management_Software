@@ -20,4 +20,6 @@ public interface ServicesRepository extends JpaRepository<Services, Long> {
     Services save(Services services);
 
     void deleteById(Integer Id);
+
+    Services getById(Integer id);
 }

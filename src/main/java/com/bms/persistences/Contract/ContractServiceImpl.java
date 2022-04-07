@@ -39,7 +39,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    public Contract getById(Integer id){return repository.getById(id);}
 
+    @Override
     public void deleteByID(Integer conId) {
         repository.deleteById(conId);
     }

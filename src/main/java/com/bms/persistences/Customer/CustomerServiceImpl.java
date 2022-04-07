@@ -39,6 +39,9 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public Customer getById(Integer id){return repository.getById(id);}
+
+    @Override
     public void deleteByID(Integer cusId) {
         repository.deleteById(cusId);
     }

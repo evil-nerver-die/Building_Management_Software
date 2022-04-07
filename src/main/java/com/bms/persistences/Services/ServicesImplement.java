@@ -35,6 +35,9 @@ public class ServicesImplement implements ServicesService {
     }
 
     @Override
+    public Services getById(Integer id){return repo.getById(id);}
+
+    @Override
     public Services save(Services services) {
         return repo.save(services);
     }

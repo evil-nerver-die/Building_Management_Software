@@ -18,4 +18,6 @@ interface ContractRepository extends JpaRepository<Contract, Integer> {
 
     void deleteById(Integer conId);
 
+    Contract getById(Integer id);
+
 }

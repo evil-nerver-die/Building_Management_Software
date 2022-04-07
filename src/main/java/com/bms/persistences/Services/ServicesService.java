@@ -18,4 +18,6 @@ public interface ServicesService {
     Services save(Services services);
 
     void deleteById(Integer serId);
+
+    Services getById(Integer id);
 }

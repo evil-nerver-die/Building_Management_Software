@@ -18,6 +18,10 @@ public class PremisesDto {
 
   private Integer num;
 
+  private boolean status = false;
+
+  private boolean disable = false;
+
   private Double price;
 
   private String des;
