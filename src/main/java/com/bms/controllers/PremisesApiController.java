@@ -1,5 +1,6 @@
 package com.bms.controllers;
 
+import com.bms.DTO.PremisesByFloorDto;
 import com.bms.DTO.PremisesDto;
 import com.bms.models.Premises;
 import com.bms.persistences.Premise.PremiseService;
@@ -8,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -28,10 +32,27 @@ public class PremisesApiController {
     }
 
     @GetMapping
-    List<PremisesDto> premises() {
-        return premiseService.findAll().stream()
-                .map(premises -> modelMapper.map(premises, PremisesDto.class))
-                .collect(Collectors.toList());
+    List<PremisesByFloorDto> premises() {
+        Map<Integer, List<Premises>> floorMap = new HashMap<>();
+        var premiseList = premiseService.findAll();
+        for (var promise : premiseList) {
+            if (floorMap.get(promise.getFloor()) == null) {
+                floorMap.put(promise.getFloor(), new ArrayList<Premises>());
+            }
+            floorMap.get(promise.getFloor()).add(promise);
+        }
+
+        List<PremisesByFloorDto> result = new ArrayList<>();
+        for (var key : floorMap.keySet()) {
+            result.add(new PremisesByFloorDto(key,
+                    floorMap.get(key)
+                            .stream()
+                            .map(premises -> modelMapper.map(premises, PremisesDto.class))
+                            .collect(Collectors.toList())
+                    )
+            );
+        }
+        return result;
     }
 
     @PostMapping(value = "/reserve")
