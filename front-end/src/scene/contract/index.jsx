@@ -1,8 +1,11 @@
 import './index.css'
 
-import React from 'react';
-import { Card, Modal, Table, Tag } from 'antd';
+import React,{ useState } from 'react';
+import * as ReactDOM from 'react-dom';
+import { Card, Modal, Table, Space } from 'antd';
 import { CheckCircleOutlined, SyncOutlined } from '@ant-design/icons';
+import editContract from './components/editContract';
+const { Column} = Table;
 
 const data = [
     {
@@ -25,66 +28,58 @@ const data = [
     },
 ];
 
-const selectedContract = {}
-
-const [isDesModalVisible, setIsDesModalVisible] = useState(false);
-const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-
-const toggleInfoModal = () => {
-    setIsDesModalVisible(true);
-};
-
-const handleInfoOk = () => {
-    setIsDesModalVisible(false);
-    setIsEditModalVisible(true);
-};
-const handleEditOk = () => {
-    setIsEditModalVisible(false);
-};
-
-const handleInfoCancel = () => {
-    setIsDesModalVisible(false);
-};
-const handleEditCancel = () => {
-    setIsEditModalVisible(false);
-};
-
-const columnsUser = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-        render: text => <a onClick={toggleInfoModal} >{text}</a>
-    },
-    {
-        title: 'Code',
-        dataIndex: 'code',
-        key: 'code'
-    },
-    {
-        title: 'Date created',
-        dataIndex: 'datecreated',
-        key: 'datecreated'
-    },
-];
-
-
-const Contract = () => {
-    return(
-        <React.Fragment>
-            <Table columns={columnsUser} dataSource={data} />
-            <Modal
-                title="Contract Information"
-                visible={isDesModalVisible}
-                onOk={handleInfoOk}
-                onCancel={handleInfoCancel}
-                cancelText={'Close'}
-                okText={'Edit'}
-            >
-                <SelectedContract contract={selectedContract} />
-            </Modal>
-        </React.Fragment>
-    )
+const selectedContract = {
+    name: 'Hop dong mua Duc Beo',
+    code: 'B1',
+    dateEnd: '2018-01-09',
+    provider: '',
+    des: 'Hop dong lang nhang vcl',
+    id: 3
 }
 
-export default Contract
+const Contract = () => {
+    const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+
+    const toggleEditModal = () =>{
+        setIsEditModalVisible(true);
+    };
+    const handleEditOk = () =>{
+        setIsEditModalVisible(false);
+    };
+    const handleEditCancel = () =>{
+        setIsEditModalVisible(false);
+    };
+
+    return (
+        <React.Fragment>
+            <Table dataSource={data} >
+                <Column title="Name" dataIndex="name" key="name" />
+                <Column title="Code" dataIndex="code" key="code" />
+                <Column title="Date Created" dataIndex="datecreated" key="datecreated" />
+                <Column 
+                    title="Edit" 
+                    key="edit"
+                    render={(text) => (
+                        <Space size ="middle">
+                            <a onClick={toggleEditModal}>Edit</a>
+                        </Space> 
+                    )}    
+                />
+            </Table>
+            <Modal
+                title="Edit Contract Request"
+                visible={isEditModalVisible}
+                onOk={handleEditOk}
+                onCancel={handleEditCancel}
+                cancelText={'Cancel'}
+                okText={'Confirm'}
+            >
+                <editContract contract={selectedContract} />
+            </Modal>
+        </React.Fragment>
+            
+    );
+    
+}
+
+export default Contract;
