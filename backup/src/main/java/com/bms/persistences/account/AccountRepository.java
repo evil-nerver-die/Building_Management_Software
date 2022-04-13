@@ -1,6 +1,5 @@
 package com.bms.persistences.account;
 
-import com.bms.models.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
