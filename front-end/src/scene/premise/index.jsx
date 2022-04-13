@@ -30,7 +30,7 @@ const data = [
 	}
 ];
 
-const seletedPremise = {
+const selectedPremise = {
 	name: 'Thu ky',
 	area: 321321,
 	floor: 3,
@@ -84,17 +84,18 @@ const Premise = () => {
 								cancelText={'Đóng'}
 								okText={'Sửa'}
 							>
-								<SelectedPremise premise={seletedPremise} />
+								<SelectedPremise premise={selectedPremise} />
 							</Modal>
 							<Modal
 								title="Sửa mặt bằng"
 								visible={isEditModalVisible}
 								onOk={handleEditOk}
 								onCancel={handleEditCancel}
-								cancelText={'Hủy'}
+								cancelText={'Xóa'}
 								okText={'Xác nhận'}
+								cancelButtonProps={{ type: 'primary', danger: true }}
 							>
-								<EditPremise premise={seletedPremise} />
+								<EditPremise premise={selectedPremise} />
 							</Modal>
 						</Card>
 					);
