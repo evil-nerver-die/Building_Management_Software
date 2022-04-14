@@ -36,7 +36,7 @@ const Account = () => {
 		setIsShowChange(false);
 	};
 	return (
-		<React.Fragment className="account">
+		<div className="account">
 			<Card bordered={false} bodyStyle={{ borderStyle: 'groove' }}>
 				<Card className="account-info" bordered={false}>
 					<div className="account-line">
@@ -88,7 +88,7 @@ const Account = () => {
 					</Modal>
 				</Card>
 			</Card>
-		</React.Fragment>
+		</div>
 	);
 };
 
