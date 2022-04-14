@@ -76,17 +76,51 @@ public class PremisesApiController {
     }
 
     @GetMapping("/findName")
-    List<PremisesDto> findName(String input) {
-        return premiseService.findByName(input).stream()
-                .map(premises -> modelMapper.map(premises, PremisesDto.class))
-                .collect(Collectors.toList());
+    List<PremisesByFloorDto> findName(String input) {
+        Map<Integer, List<Premises>> floorMap = new HashMap<>();
+        var premiseList = premiseService.findByName(input);
+        for (var premise : premiseList) {
+            if (floorMap.get(premise.getFloor()) == null) {
+                floorMap.put(premise.getFloor(), new ArrayList<Premises>());
+            }
+            floorMap.get(premise.getFloor()).add(premise);
+        }
+
+        List<PremisesByFloorDto> result = new ArrayList<>();
+        for (var key : floorMap.keySet()) {
+            result.add(new PremisesByFloorDto(key,
+                            floorMap.get(key)
+                                    .stream()
+                                    .map(premises -> modelMapper.map(premises, PremisesDto.class))
+                                    .collect(Collectors.toList())
+                    )
+            );
+        }
+        return result;
     }
 
     @GetMapping("/findFloor")
-    List<PremisesDto> findFloor(Integer input) {
-        return premiseService.findByFloor(input).stream()
-                .map(premises -> modelMapper.map(premises, PremisesDto.class))
-                .collect(Collectors.toList());
+    List<PremisesByFloorDto> findFloor(Integer input) {
+        Map<Integer, List<Premises>> floorMap = new HashMap<>();
+        var premiseList = premiseService.findByFloor(input);
+        for (var premise : premiseList) {
+            if (floorMap.get(premise.getFloor()) == null) {
+                floorMap.put(premise.getFloor(), new ArrayList<Premises>());
+            }
+            floorMap.get(premise.getFloor()).add(premise);
+        }
+
+        List<PremisesByFloorDto> result = new ArrayList<>();
+        for (var key : floorMap.keySet()) {
+            result.add(new PremisesByFloorDto(key,
+                            floorMap.get(key)
+                                    .stream()
+                                    .map(premises -> modelMapper.map(premises, PremisesDto.class))
+                                    .collect(Collectors.toList())
+                    )
+            );
+        }
+        return result;
     }
 
 
