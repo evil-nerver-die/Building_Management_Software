@@ -6,7 +6,6 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from './scene/home';
 import Premise from './scene/premise';
 import Customer from './scene/customer';
-import Contract from './scene/contract';
 import Account from './scene/account';
 
 ReactDOM.render(
@@ -17,7 +16,7 @@ ReactDOM.render(
 					{/* Đổi tên element component sau khi code xong scene */}
 					<Route path="/home" element={<Home />} />
 					<Route path="/premise" element={<Premise />} />
-					<Route path="/contract" element={<Contract />} />
+					<Route path="/contract" element={<App />} />
 					<Route path="/service" element={<App />} />
 					<Route path="/customer" element={<Customer />} />
 					<Route path="/employee" element={<App />} />
