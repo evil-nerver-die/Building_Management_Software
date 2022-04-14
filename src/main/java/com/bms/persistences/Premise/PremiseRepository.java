@@ -8,7 +8,7 @@ import java.util.List;
 public interface PremiseRepository extends JpaRepository<Premises, Integer> {
     List<Premises> findByNameContaining(String premiseName);
 
-    List<Premises> findByFloorContaining(Integer floor);
+    List<Premises> findByFloorContaining(String floor);
 
     Premises save(Premises premises);
 

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PremisesByFloorDto {
-    private Integer floor;
+    private String floor;
 
     private List<PremisesDto> premises;
 }

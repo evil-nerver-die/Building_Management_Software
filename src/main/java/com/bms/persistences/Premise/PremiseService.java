@@ -9,7 +9,7 @@ import java.util.List;
 public interface PremiseService {
     List<Premises> findByName(String premiseName);
 
-    List<Premises> findByFloor(Integer floor);
+    List<Premises> findByFloor(String floor);
 
     List<Premises> findAll();
 

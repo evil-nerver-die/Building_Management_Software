@@ -22,7 +22,7 @@ public class PremiseServiceImpl implements PremiseService {
     }
 
     @Override
-    public List<Premises> findByFloor(Integer floor) {
+    public List<Premises> findByFloor(String floor) {
         return repository.findByFloorContaining(floor);
     }
 

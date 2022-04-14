@@ -35,7 +35,7 @@ public class PremisesApiController {
 
     @GetMapping
     List<PremisesByFloorDto> premises() {
-        Map<Integer, List<Premises>> floorMap = new HashMap<>();
+        Map<String, List<Premises>> floorMap = new HashMap<>();
         var premiseList = premiseService.findAll();
         for (var premise : premiseList) {
             if (floorMap.get(premise.getFloor()) == null) {
@@ -77,7 +77,7 @@ public class PremisesApiController {
 
     @GetMapping("/findName")
     List<PremisesByFloorDto> findName(String input) {
-        Map<Integer, List<Premises>> floorMap = new HashMap<>();
+        Map<String, List<Premises>> floorMap = new HashMap<>();
         var premiseList = premiseService.findByName(input);
         for (var premise : premiseList) {
             if (floorMap.get(premise.getFloor()) == null) {
@@ -100,8 +100,9 @@ public class PremisesApiController {
     }
 
     @GetMapping("/findFloor")
-    List<PremisesByFloorDto> findFloor(Integer input) {
-        Map<Integer, List<Premises>> floorMap = new HashMap<>();
+    List<PremisesByFloorDto> findFloor(String input) {
+        Map<String, List<Premises>> floorMap = new HashMap<>();
+//        int numInput = Integer.parseInt(input);
         var premiseList = premiseService.findByFloor(input);
         for (var premise : premiseList) {
             if (floorMap.get(premise.getFloor()) == null) {

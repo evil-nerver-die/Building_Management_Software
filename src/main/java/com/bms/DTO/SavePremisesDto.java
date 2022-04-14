@@ -12,7 +12,7 @@ public class SavePremisesDto {
 
     private Double area;
 
-    private Integer floor;
+    private String floor;
 
     private Integer num;
 
