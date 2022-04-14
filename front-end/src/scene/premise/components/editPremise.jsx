@@ -13,22 +13,22 @@ const EditPremise = prop => {
 		<div>
 			<Form form={form} onFinish={onFinish}>
 				<Form.Item name="name" label="Tên mặt bằng:">
-					<Input defaultValue={prop.name} />
+					<Input defaultValue={prop.premise.name} />
 				</Form.Item>
 				<Form.Item name="floor" label="Tầng:">
-					<InputNumber defaultValue={prop.floor} />
+					<InputNumber defaultValue={prop.premise.floor} />
 				</Form.Item>
 				<Form.Item name="num" label="Mã phòng:">
-					<InputNumber defaultValue={prop.num} />
+					<InputNumber defaultValue={prop.premise.num} />
 				</Form.Item>
 				<Form.Item name="area" label="Diện tích:">
-					<InputNumber defaultValue={prop.area} />
+					<InputNumber defaultValue={prop.premise.area} />
 				</Form.Item>
 				<Form.Item name="price" label="Giá:">
-					<InputNumber defaultValue={prop.price} />
+					<InputNumber defaultValue={prop.premise.price} />
 				</Form.Item>
 				<Form.Item name="des" label="Thông tin chi tiết:">
-					<TextArea rows={4} defaultValue={prop.des} />
+					<TextArea rows={4} defaultValue={prop.premise.des} />
 				</Form.Item>
 			</Form>
 		</div>
