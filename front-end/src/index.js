@@ -7,6 +7,7 @@ import Home from './scene/home';
 import Premise from './scene/premise';
 import Customer from './scene/customer';
 import Account from './scene/account';
+import Contract from './scene/contract';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -20,7 +21,7 @@ ReactDOM.render(
 					<Route path="/service" element={<App />} />
 					<Route path="/customer" element={<Customer />} />
 					<Route path="/employee" element={<App />} />
-					<Route path="/account" element={<Account />} />
+					<Route path="/account" element={<App />} />
 				</Route>
 			</Routes>
 		</HashRouter>
