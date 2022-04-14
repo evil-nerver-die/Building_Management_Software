@@ -3,8 +3,8 @@ import './index.css'
 import React,{ useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Card, Modal, Table, Space } from 'antd';
-import { CheckCircleOutlined, SyncOutlined } from '@ant-design/icons';
-import editContract from './components/editContract';
+import { EditOutlined } from '@ant-design/icons';
+import EditContract from './components/editContract';
 const { Column} = Table;
 
 const data = [
@@ -61,7 +61,7 @@ const Contract = () => {
                     key="edit"
                     render={(text) => (
                         <Space size ="middle">
-                            <a onClick={toggleEditModal}>Edit</a>
+                            <button onClick={toggleEditModal}>Edit <EditOutlined /></button>
                         </Space> 
                     )}    
                 />
@@ -74,7 +74,7 @@ const Contract = () => {
                 cancelText={'Cancel'}
                 okText={'Confirm'}
             >
-                <editContract contract={selectedContract} />
+                <EditContract contract={selectedContract} />
             </Modal>
         </React.Fragment>
             
