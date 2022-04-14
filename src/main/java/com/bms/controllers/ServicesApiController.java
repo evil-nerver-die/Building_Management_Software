@@ -91,25 +91,25 @@ public class ServicesApiController {
     }
 
     @GetMapping("/findName")
-    List<CustomerDto> findName(String input) {
+    List<ServicesDto> findName(String input) {
         return servicesService.findByName(input).stream()
-                .map(services -> modelMapper.map(services, CustomerDto.class))
+                .map(services -> modelMapper.map(services, ServicesDto.class))
                 .collect(Collectors.toList());
 
     }
 
     @GetMapping("/findPrice")
-    List<CustomerDto> findPrice(String input) {
+    List<ServicesDto> findPrice(String input) {
         return servicesService.findByPrice(input).stream()
-                .map(services -> modelMapper.map(services, CustomerDto.class))
+                .map(services -> modelMapper.map(services, ServicesDto.class))
                 .collect(Collectors.toList());
 
     }
 
     @GetMapping("/findProvider")
-    List<CustomerDto> findProvider(String input) {
+    List<ServicesDto> findProvider(String input) {
         return servicesService.findByProvider(input).stream()
-                .map(services -> modelMapper.map(services, CustomerDto.class))
+                .map(services -> modelMapper.map(services, ServicesDto.class))
                 .collect(Collectors.toList());
 
     }
