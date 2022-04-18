@@ -129,7 +129,14 @@ const Service = () => {
 				<Column title="Mã dịch vụ" dataIndex="code" key="code" />
 				<Column title="Giá tiền" dataIndex="price" key="price" />
 				<Column title="Bên cung cấp" dataIndex="provider" key="provider" />
-				<Column title="Tình trạng" dataIndex="status" key="status" />
+				<Column 
+					title="Tình trạng" 
+					dataIndex="status" 
+					key="status"
+					render={(status)=>(
+						<>{status === true ? 'Có':'Không'}</>
+					)} 
+				/>
 				<Column title="Thông tin chi tiết" dataIndex="des" key="des" />
 				<Column
 					title="Lựa chọn"
