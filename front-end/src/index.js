@@ -9,6 +9,7 @@ import Customer from './scene/customer';
 import Account from './scene/account';
 import Contract from './scene/contract';
 import Service from './scene/service';
+import Employee from './scene/employee';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -21,7 +22,7 @@ ReactDOM.render(
 					<Route path="/contract" element={<Contract />} />
 					<Route path="/service" element={<Service />} />
 					<Route path="/customer" element={<Customer />} />
-					<Route path="/employee" element={<App />} />
+					<Route path="/employee" element={<Employee />} />
 					<Route path="/account" element={<Account />} />
 				</Route>
 			</Routes>
