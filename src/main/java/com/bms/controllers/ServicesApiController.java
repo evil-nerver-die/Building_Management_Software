@@ -100,7 +100,7 @@ public class ServicesApiController {
 
     @GetMapping("/findPrice")
     List<ServicesDto> findPrice(String input) {
-        return servicesService.findByPrice(input).stream()
+        return servicesService.findByPrice(Double.parseDouble(input)).stream()
                 .map(services -> modelMapper.map(services, ServicesDto.class))
                 .collect(Collectors.toList());
 

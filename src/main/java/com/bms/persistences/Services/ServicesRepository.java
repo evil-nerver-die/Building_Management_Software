@@ -11,7 +11,7 @@ import com.bms.models.Services;
 public interface ServicesRepository extends JpaRepository<Services, Long> {
     List<Services> findByName(String serName);
 
-    List<Services> findByPrice(String serPrice);
+    List<Services> findByPrice(Double serPrice);
 
     List<Services> findByProvider(String serProvider);
 
