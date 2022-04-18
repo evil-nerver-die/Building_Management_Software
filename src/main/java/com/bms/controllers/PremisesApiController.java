@@ -102,7 +102,6 @@ public class PremisesApiController {
     @GetMapping("/findFloor")
     List<PremisesByFloorDto> findFloor(String input) {
         Map<String, List<Premises>> floorMap = new HashMap<>();
-//        int numInput = Integer.parseInt(input);
         var premiseList = premiseService.findByFloor(input);
         for (var premise : premiseList) {
             if (floorMap.get(premise.getFloor()) == null) {

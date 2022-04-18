@@ -20,7 +20,7 @@ public class ServicesImplement implements ServicesService {
     }
 
     @Override
-    public List<Services> findByPrice(String serPrice) {
+    public List<Services> findByPrice(Double serPrice) {
         return repo.findByPrice(serPrice);
     }
 
