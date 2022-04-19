@@ -1,7 +1,7 @@
 import { Table, Space, Button, Popconfirm, Modal } from 'antd';
 import React from 'react';
 import { useState } from 'react';
-import { EditFilled, DeleteFilled, InfoCircleFilled } from '@ant-design/icons';
+import { /*EditFilled,*/ DeleteFilled, InfoCircleFilled } from '@ant-design/icons';
 import EditEmployee from './component/editEmployee';
 import InforEmployee from './component/inforEmployee';
 
@@ -44,7 +44,7 @@ const testedEmployeeData = {
 	email: 'abc@xyz.com',
 	phone: '0123456789',
 	gender: false,
-	des: 'Nothing to mention'
+	des: 'Chó chăn cừu Đức, là một giống chó kích cỡ lớn, xuất xứ từ Đức. Tại Việt Nam, giống chó này được gọi là chó Berger, phiên âm từ tiếng Pháp berger cũng có nghĩa là chó chăn cừu. Chó chăn cừu Đức là một giống chó tương đối mới, từ năm 1899.'
 };
 
 const Employee = () => {
@@ -69,6 +69,7 @@ const Employee = () => {
 	};
 	const handleEditCancel = () => {
 		setIsEditModalVisible(false);
+		setIsInfoModalVisible(true);
 	};
 
 	const confirm = () =>

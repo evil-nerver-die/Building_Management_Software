@@ -19,25 +19,25 @@ const EditEmployee = prop => {
 		<div>
 			<Form form={form} onFinish={onFinish}>
 				<Form.Item name="name" label="Tên nhân viên:">
-					<Input defaultValue={prop.name} />
+					<Input defaultValue={prop.employee.name} />
 				</Form.Item>
 				<Form.Item name="dob" label="Tuổi:">
-					<Input defaultValue={prop.code} />
+					<Input defaultValue={prop.employee.dob} />
 				</Form.Item>
 				<Form.Item name="email" label="Email:">
-					<InputNumber defaultValue={prop.price} />
+					<InputNumber defaultValue={prop.employee.email} />
 				</Form.Item>
 				<Form.Item name="phone" label="Điện thoại:">
-					<Input defaultValue={prop.provider} />
+					<Input defaultValue={prop.employee.phone} />
 				</Form.Item>
 				<Form.Item name="gender" label="Giới tính:">
-					<Radio.Group onChange={onChange} defaultValue={prop.status}>
-						<Radio value={1}>Nam</Radio>
-						<Radio value={2}>Nữ</Radio>
+					<Radio.Group onChange={onChange} defaultValue={prop.employee.gender}>
+						<Radio value={true}>Nam</Radio>
+						<Radio value={false}>Nữ</Radio>
 					</Radio.Group>
 				</Form.Item>
 				<Form.Item name="des" label="Thông tin chi tiết:">
-					<TextArea rows={4} defaultValue={prop.des} />
+					<TextArea rows={4} defaultValue={prop.employee.des} />
 				</Form.Item>
 			</Form>
 		</div>

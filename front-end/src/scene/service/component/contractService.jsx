@@ -9,6 +9,8 @@ const ContractService = prop => {
 			<div className="floor-value">{prop.service.code}</div>
 			<div className="num">Giá tiền:</div>
 			<div className="num-value">{prop.service.price}</div>
+			<div className="area">Tình trạng:</div>
+			<div className="area-value">{prop.service.status === true ? 'Có' : 'Không'}</div>
 			<div className="price">Bên cung cấp:</div>
 			<div className="price-value">{prop.service.provider}</div>
 			<div className="des">Thông tin chi tiết:</div>
