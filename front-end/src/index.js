@@ -16,7 +16,6 @@ ReactDOM.render(
 		<HashRouter>
 			<Routes>
 				<Route path="/" element={<App />}>
-					{/* Đổi tên element component sau khi code xong scene */}
 					<Route path="/home" element={<Home />} />
 					<Route path="/premise" element={<Premise />} />
 					<Route path="/contract" element={<Contract />} />
