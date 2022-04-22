@@ -1,12 +1,15 @@
 import './index.css';
 import React from 'react';
-import { Card, Modal, Tag } from 'antd';
+import { Card, Modal, Tag, Input } from 'antd';
 import SelectedPremise from './components/selectedPremise';
-import EditPremise from './components/editPremise';
 import { CheckCircleOutlined, SyncOutlined } from '@ant-design/icons';
-import { PremiseStore } from '../../store/premiseStore';
+import { stores } from '../../store/storeInitializer';
+import EditPremise from './components/editPremise';
+
+const { Search } = Input;
 
 let data = [];
+
 export default class Premise extends React.Component {
 	constructor(prop) {
 		super(prop);
@@ -17,17 +20,20 @@ export default class Premise extends React.Component {
 		};
 	}
 
-	premiseStore = new PremiseStore();
 	selectedPremiseId = -1;
 
 	async componentDidMount() {
 		await this.getAllPremise();
-		data = this.premiseStore.premiseListResult;
+		data = stores.premiseStore.premiseListResult;
 		this.setState({ isLoad: true });
 	}
 
 	getAllPremise = async () => {
-		await this.premiseStore.getAll();
+		await stores.premiseStore.getAll();
+	};
+
+	onSearch = value => {
+		console.log(value);
 	};
 
 	toggleInfoModal = id => {
@@ -38,21 +44,27 @@ export default class Premise extends React.Component {
 	handleInfoOk = () => {
 		this.setState({ isDesModalVisible: false, isEditModalVisible: true });
 	};
-	handleEditOk = () => {
-		this.setState({ isEditModalVisible: false });
-	};
 
 	handleInfoCancel = () => {
 		this.setState({ isDesModalVisible: false });
 	};
+
 	handleEditCancel = () => {
+		this.setState({ isEditModalVisible: false });
+	};
+
+	handleEditOk = () => {
 		this.setState({ isEditModalVisible: false });
 	};
 
 	render() {
 		return (
 			<React.Fragment>
-				<Card title="Mặt bằng" style={{ height: '100vh', width: '100vw' }}>
+				<Card
+					className="premise-container"
+					title={<Search placeholder="Nhập từ khóa" onSearch={this.onSearch} enterButton style={{ width: '35vw' }} className={'card-title'} />}
+					style={{ height: '100vh', width: '100vw' }}
+				>
 					{data.map(item => {
 						return (
 							<Card key={item.floor} title={'Tầng ' + item.floor}>

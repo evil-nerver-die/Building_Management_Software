@@ -61,3 +61,7 @@
 .ant-form-item-label > label {
 	width: 120px;
 }
+
+.premise-inputnumber {
+	width: 10rem;
+}

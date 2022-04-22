@@ -1,33 +1,31 @@
 import React from 'react';
-import { PremiseStore } from '../../../store/premiseStore';
-import './selectedPremise.css';
+import { stores } from '../../../store/storeInitializer';
+import './index.css';
 let data = {};
 export default class SelectedPremise extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor(prop) {
+		super(prop);
 		this.state = {
 			isLoad: false
 		};
 	}
-	premiseStore = new PremiseStore();
 
 	async componentDidMount() {
 		await this.getPremiseById();
-		data = this.premiseStore.premiseSelected;
+		data = stores.premiseStore.premiseSelected;
 		this.setState({ isLoad: !this.state.isLoad });
 	}
 
 	async componentDidUpdate(prevProps) {
 		if (this.props.id !== prevProps.id) {
 			await this.getPremiseById();
-			data = this.premiseStore.premiseSelected;
+			data = stores.premiseStore.premiseSelected;
 			this.setState({ isLoad: !this.state.isLoad });
 		}
 	}
 
 	getPremiseById = async () => {
-		console.log(this.props.id);
-		await this.premiseStore.getById(this.props.id);
+		await stores.premiseStore.getById(this.props.id);
 	};
 
 	render() {

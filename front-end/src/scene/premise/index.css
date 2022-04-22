@@ -1,0 +1,4 @@
+.premise-container ant-card-head {
+	display: flex!;
+	flex-direction: row-reverse!;
+}
