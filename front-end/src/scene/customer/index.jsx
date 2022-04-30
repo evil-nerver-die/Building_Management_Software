@@ -35,7 +35,7 @@ export default class Customer extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Table dataSource={data}>
+                <Table dataSource={data} rowKey={"id"} >
                     <Col title="Tên Khách Hàng" dataIndex="name" key="name" />
                     <Col title="Ngày Sinh" dataIndex="dob" key="dob" />
                     <Col 
