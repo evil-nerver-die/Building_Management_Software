@@ -15,6 +15,9 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     Optional<Account> findByUsername(String username);
     Optional<Account> findByEmail(String email);
 
+    Account getById(Integer id);
+    void deleteById(Integer id);
+
     @Transactional
     @Modifying
     @Query("UPDATE Account a " + "SET a.enabled = TRUE WHERE a.username = ?1")
