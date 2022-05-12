@@ -1,56 +1,55 @@
 import './index.css';
 
 import React from 'react';
-import { Table, Tag, Space } from 'antd';
+import { Table, Col, Input } from 'antd';
+import { stores } from '../../store/storeInitializer';
 
-const { Columns } = Table;
+const { Search } = Input;
 
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    dob: 32,
-    phone: 'New York No. 1 Lake Park',
-    email: 'lol',
-    gender: true,
-  },
-  {
-    key: '2',
-    name: 'Duc Beo',
-    dob: 32,
-    phone: 'New York No. 1 Lake Park',
-    email: 'lol',
-    gender: true,
-  },
-  {
-    key: '3',
-    name: 'Mia Kalifax',
-    dob: 32,
-    phone: 'New York No. 1 Lake Park',
-    email: 'lol',
-    gender: false,
-  },
-];
+let data = [];
 
-const Customer = () => {
-  return (
-    <React.Fragment>
-      <Table dataSource={data}>
-            <Columns title="Name" dataIndex="name" key="name" />
-            <Columns title="Date of birth" dataIndex="dob" key="dob" />
-            <Columns
-                title="Gender"
-                dataIndex="name"
-                key="name"
-                render={(gender)=>(
-                    <>{gender === true ? 'Male':'Female'}</>
-                )}
-            />
-            <Columns title="Phone" dataIndex="phone" key="phone" />
-            <Columns title="Email" dataIndex="email" key="email" />
-      </Table>
-    </React.Fragment>
-  )
+export default class Customer extends React.Component {
+    constructor(prop) {
+        super(prop);
+        this.state = {
+            isLoad: false
+        };
+    }
+
+    selectedCustomerId = -1;
+
+    async componentDidMount() {
+        await this.getAllCustomer();
+        data = stores.customerStore.customerListResult;
+        this.setState({ isLoad: true });
+    }
+
+    getAllCustomer = async () => {
+        await stores.customerStore.getAll();
+    };
+
+    onSearch = value => {
+        console.log(value);
+    };
+
+    render() {
+        return (
+            <React.Fragment>
+                <Table dataSource={data} rowKey={"id"} >
+                    <Col title="Tên Khách Hàng" dataIndex="name" key="name" />
+                    <Col title="Ngày Sinh" dataIndex="dob" key="dob" />
+                    <Col 
+                        title="Giới Tính" 
+                        dataIndex="gender" 
+                        key="gender"
+                        render={(gender)=>(
+                            <>{gender === true ? 'Male':'Female'}</>
+                        )}
+                     />
+                    <Col title="Điện thoại" dataIndex="phone" key="phone" />
+                    <Col title="Email" dataIndex="email" key="email" />
+                </Table>
+            </React.Fragment>
+        );
+    }
 }
-
-export default Customer
