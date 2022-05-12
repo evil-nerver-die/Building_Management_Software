@@ -6,7 +6,7 @@ export class PremiseService {
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'http://localhost:8080';
+		this.baseUrl = 'https://vast-badlands-46030.herokuapp.com/https://bms-1.herokuapp.com/';
 	}
 
 	getAll() {
