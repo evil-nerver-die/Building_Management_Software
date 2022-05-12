@@ -18,6 +18,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     Account getById(Integer id);
     void deleteById(Integer id);
 
+
     @Transactional
     @Modifying
     @Query("UPDATE Account a " + "SET a.enabled = TRUE WHERE a.username = ?1")

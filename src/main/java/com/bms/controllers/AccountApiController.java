@@ -1,13 +1,17 @@
 package com.bms.controllers;
 
+import com.bms.DTO.AccountDto;
 import com.bms.DTO.ContractDto;
+import com.bms.DTO.SaveAccountDto;
+import com.bms.DTO.SaveContractDto;
+import com.bms.models.Account;
+import com.bms.models.Contract;
 import com.bms.persistences.Contract.ContractService;
 import com.bms.persistences.account.AccountService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,9 +30,28 @@ public class AccountApiController {
     }
 
     @GetMapping
-    List<ContractDto> accounts() {
+    List<AccountDto> accounts() {
         return accountService.findAll().stream()
-                .map(contract -> modelMapper.map(contract, ContractDto.class))
+                .map(account -> modelMapper.map(account, AccountDto.class))
                 .collect(Collectors.toList());
     }
+
+    @PostMapping(value = "/reserve")
+    ResponseEntity<?> reserve(@RequestBody SaveAccountDto accountDto) {
+        accountService.save(modelMapper.map(accountDto, Account.class));
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/{id}")
+    ContractDto getById(@PathVariable Integer id) {
+        return modelMapper.map(accountService.getById(id),ContractDto.class);
+    }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteById(@PathVariable Integer id) {
+        accountService.deleteByID(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 }
