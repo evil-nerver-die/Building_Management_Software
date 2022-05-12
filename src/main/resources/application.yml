@@ -5,9 +5,9 @@ server:
 
 spring:
   datasource:
-    password:
-    url: jdbc:mysql://localhost:3306/test3
-    username: root
+    password: 65423299
+    url: jdbc:mysql://b85198980ba0c3:65423299@us-cdbr-east-05.cleardb.net/heroku_ec1dbd646442805?reconnect=true
+    username: b85198980ba0c3
   jpa:
     hibernate:
       ddl-auto: update
