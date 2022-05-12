@@ -2,6 +2,7 @@ package com.bms.persistences.account;
 
 
 import com.bms.models.Account;
+import com.bms.models.Contract;
 import com.bms.persistences.account.registration.token.ConfirmationToken;
 import com.bms.persistences.account.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,7 +24,14 @@ public class AccountService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
 
+    public List<Account> findAll() {
+        return accountRepository.findAll();
+    }
 
+    public Account getById(Integer id){return accountRepository.getById(id);}
+    public void deleteByID(Integer id){accountRepository.deleteById(id);}
+
+    public Account save(Account account){return accountRepository.save(account);}
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return accountRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, username)));

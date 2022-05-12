@@ -1,8 +1,6 @@
 package com.bms.controllers;
 
 import com.bms.DTO.ContractDto;
-import com.bms.DTO.CustomerDto;
-import com.bms.DTO.PremisesDto;
 import com.bms.DTO.SaveContractDto;
 import com.bms.models.Contract;
 import com.bms.persistences.Contract.ContractService;
