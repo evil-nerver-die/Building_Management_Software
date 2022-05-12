@@ -39,8 +39,7 @@ export default class Contract extends React.Component {
     };
 
     toggleInfoModal = id => {
-		this.selectedContractId = id;
-        console.log(id);
+		this.selectedPremiseId = id;
 		this.setState({ isDesModalVisible: true });
 	};
 
