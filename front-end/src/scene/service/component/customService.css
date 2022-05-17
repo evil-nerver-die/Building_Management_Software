@@ -15,11 +15,11 @@
 	width: 120px;
 	grid-area: name;
 }
-.floor {
+.code {
 	width: 120px;
 	grid-area: floor;
 }
-.num {
+.price {
 	width: 120px;
 	grid-area: num;
 }
@@ -27,7 +27,7 @@
 	width: 120px;
 	grid-area: area;
 }
-.price {
+.provider {
 	width: 120px;
 	grid-area: price;
 }
@@ -38,17 +38,17 @@
 .name-value {
 	grid-area: name-value;
 }
-.floor-value {
-	grid-area: floor-value;
+.code-value {
+	grid-area: code-value;
 }
-.num-value {
-	grid-area: num-value;
+.price-value {
+	grid-area: price-value;
 }
 .area-value {
 	grid-area: area-value;
 }
-.price-value {
-	grid-area: price-value;
+.provider-value {
+	grid-area: provider-value;
 }
 .des-value {
 	grid-area: des-value;
