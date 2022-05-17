@@ -1,12 +1,9 @@
 package com.bms.controllers;
 
 import com.bms.DTO.AccountDto;
-import com.bms.DTO.ContractDto;
+import com.bms.DTO.ChangePasswordDto;
 import com.bms.DTO.SaveAccountDto;
-import com.bms.DTO.SaveContractDto;
 import com.bms.models.Account;
-import com.bms.models.Contract;
-import com.bms.persistences.Contract.ContractService;
 import com.bms.persistences.account.AccountService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/contract")
+@RequestMapping("/api/account")
 public class AccountApiController {
     @Autowired
     private ModelMapper modelMapper;
@@ -42,9 +39,19 @@ public class AccountApiController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping(value = "/reserve")
+    ResponseEntity<?> changePassword(@RequestBody ChangePasswordDto changePasswordDto) {
+        Account temp = accountService.getById(changePasswordDto.getId());
+        if(temp.getPassword() == changePasswordDto.getOldPassword()){
+            temp.setPassword(changePasswordDto.getNewPassword());
+            accountService.save(modelMapper.map(temp, Account.class));
+        }
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping(value = "/{id}")
-    ContractDto getById(@PathVariable Integer id) {
-        return modelMapper.map(accountService.getById(id),ContractDto.class);
+    AccountDto getById(@PathVariable Integer id) {
+        return modelMapper.map(accountService.getById(id),AccountDto.class);
     }
 
     @DeleteMapping("/{id}")
