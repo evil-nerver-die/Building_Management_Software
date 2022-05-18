@@ -13,6 +13,8 @@ public class ServicesDto {
 
     private String code;
 
+    private String des;
+
     private Double price;
 
     private String provider;
