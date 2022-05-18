@@ -22,4 +22,12 @@ export class ServiceStore {
 			this.serviceSelected = result;
 		}
 	};
+
+	deleteById = async id => {
+		await this.serviceService.deleteById(id);
+	};
+
+	add_update = async data => {
+		await this.serviceService.add_update(data);
+	};
 }

@@ -6,19 +6,22 @@ import React, { useState } from 'react';
 import EditService from './component/editService';
 import ContractService from './component/contractService';
 import { stores } from '../../store/storeInitializer';
-import * as ReactDOM from 'react-dom';
 
 const { Search } = Input;
 
 let data = [];
+let selectedServiceData = {};
+let postServiceData = {};
 
 export default class Service extends React.Component {
 	constructor(prop) {
 		super(prop);
 		this.state = {
 			isLoad: false,
+			isDeleted: false,
 			isDesModalVisible: false,
-			isEditModalVisible: false
+			isEditModalVisible: false,
+			isCreateModalVisible: false
 		};
 	}
 
@@ -27,20 +30,46 @@ export default class Service extends React.Component {
 	async componentDidMount() {
 		await this.getAllService();
 		data = stores.serviceStore.serviceListResult;
-		this.setState({ isLoad: true });
+		this.setState({ isLoad: !this.state.isLoad });
+	}
+
+	async componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevState.isDeleted !== this.state.isDeleted) {
+			await this.getAllService();
+			data = stores.serviceStore.serviceListResult;
+			this.setState({isLoad: !this.state.isLoad});
+		}
 	}
 
 	getAllService = async () => {
 		await stores.serviceStore.getAll();
 	};
 
+	getServiceById = async id => {
+		await stores.serviceStore.getById(id);
+	};
+
+	deleteServiceById = async () => {
+		await stores.serviceStore.deleteById(this.selectedServiceId);
+		this.componentDidMount();
+		this.setState({isDesModalVisible: false, isDeleted: !this.state.isDeleted});
+	};
+
+	create_update = async () => {};
+
 	onSearch = value => {
 		console.log(value);
 	};
 
-	toggleInfoModal = id => {
+	toggleInfoModal = async id => {
+		await this.getServiceById(id);
+		selectedServiceData = stores.serviceStore.serviceSelected;
 		this.selectedServiceId = id;
 		this.setState({ isDesModalVisible: true });
+	};
+
+	toggleCreateModal = () => {
+		this.setState({isCreateModalVisible: true});
 	};
 
 	handelInfoOk = () => {
@@ -56,7 +85,13 @@ export default class Service extends React.Component {
 	};
 
 	handleEditOk = () => {
+		this.componentDidMount();
 		this.setState({ isEditModalVisible: false });
+	};
+
+	handleCreateOk = () => {
+		this.componentDidMount();
+		this.setState({isCreateModalVisible: false});
 	};
 
 	render() {
@@ -82,12 +117,18 @@ export default class Service extends React.Component {
 				<Modal
 					title="Thông tin dịch vụ"
 					visible={this.state.isDesModalVisible}
-					onOk={this.handelInfoOk}
+					// onOk={this.handelInfoOk}
 					onCancel={this.handelInfoCancel}
 					cancelText={'Đóng'}
-					okText={'Sửa'}
+					// okText={'Sửa'}
+					footer={null}
 				>
-					<ContractService id={this.selectedServiceId} />
+					<ContractService 
+						id={this.selectedServiceId}
+						data={selectedServiceData}
+						okClick={() => this.handelInfoOk()}
+						closeClick={() => this.deleteServiceById()}
+					/>
 				</Modal>
 				<Modal
 					title="Yêu cầu sửa dịch vụ"
