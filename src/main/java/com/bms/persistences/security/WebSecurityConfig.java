@@ -1,5 +1,6 @@
 package com.bms.persistences.security;
 
+import com.bms.CorsFilter;
 import com.bms.persistences.account.AccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.web.session.SessionManagementFilter;
 
 @Configuration
 @AllArgsConstructor
@@ -19,9 +21,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final AccountService accountService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
+    @Bean
+    CorsFilter corsFilter() {
+        CorsFilter filter = new CorsFilter();
+        return filter;
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .addFilterBefore(corsFilter(), SessionManagementFilter.class)
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")

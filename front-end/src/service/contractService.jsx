@@ -6,14 +6,19 @@ export class ContractService {
     id = -1;
 
     constructor() {
-        this.baseUrl = 'https://vast-badlands-46030.herokuapp.com/https://bms-1.herokuapp.com/';
+        this.baseUrl = 'https://bms-2.herokuapp.com/';
     }
 
     getAll() {
-        let url_ = this.baseUrl + 'api/contract';
+        let url_ = this.baseUrl + 'api/contract/';
 
         let data = axios
-            .get(url_)
+            .get(url_, {
+							auth: {
+								username: 'admin',
+								password: 'password'
+							}
+						})
             .then(function(respond) {
                 return respond.data;
             })
