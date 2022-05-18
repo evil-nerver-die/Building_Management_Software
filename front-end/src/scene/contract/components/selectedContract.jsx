@@ -39,6 +39,8 @@ export default class SelectedContract extends React.Component {
                 <div className="code-value">{data.code}</div>
                 <div className="dateCreated">Ngày tạo:</div>
                 <div className="dateCreated-value">{data.dateCreated}</div>
+                <div className="des">Thông tin:</div>
+                <div className="des-value">{data.des}</div>
                 
             </div>
         );
