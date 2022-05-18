@@ -6,11 +6,11 @@ export class ServiceService {
 	id = -1;
 
 	constructor() {
-		this.baseUrl = '';
+		this.baseUrl = 'https://vast-badlands-46030.herokuapp.com/https://bms-1.herokuapp.com/';
 	}
 
 	getAll() {
-		let url_ = this.baseUrl + '/api/service';
+		let url_ = this.baseUrl + '/api/services';
 
 		let data = axios
 			.get(url_)
@@ -24,7 +24,7 @@ export class ServiceService {
 	}
 
 	getById(id) {
-		let url_ = this.baseUrl + 'api/service' + id;
+		let url_ = this.baseUrl + 'api/services' + id;
 		let data = axios
 			.get(url_)
 			.then(function (respond) {

@@ -1,6 +1,6 @@
 import './index.css';
 
-import { Table, Space, Button, Popconfirm, Modal, Col } from 'antd';
+import { Table, Space, Button, Popconfirm, Modal, Col, Input } from 'antd';
 import { EditFilled, DeleteFilled, FileTextFilled, InfoCircleOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import EditService from './component/editService';
