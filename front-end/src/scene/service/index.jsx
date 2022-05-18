@@ -70,10 +70,10 @@ export default class Service extends React.Component {
 					<Col
 						title="Lựa chọn"
 						key="option"
-						render={(text) => (
+						render={(text, record) => (
 							<Space size={'middle'}>
-								<Button type="primary" onClick={this.toggleInfoModal}>
-									Thông tin <InfoCircleOutlined />
+								<Button type="primary" onClick={ () => this.toggleInfoModal(record.id)}>
+									<InfoCircleOutlined /> Thông tin
 								</Button>
 							</Space>
 						)}

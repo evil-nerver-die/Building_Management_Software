@@ -39,7 +39,7 @@ export default class Contract extends React.Component {
     };
 
     toggleInfoModal = id => {
-		this.selectedPremiseId = id;
+		this.selectedContractId = id;
 		this.setState({ isDesModalVisible: true });
 	};
 
@@ -69,13 +69,13 @@ export default class Contract extends React.Component {
                     <Col 
                         title="Lựa chọn"
                         key="option"
-                        render={(text) =>(
+                        render={(text, record) =>(
                             <Space size={'middle'}>
                                 <Button 
                                     type='primary' 
-                                    onClick={this.toggleInfoModal}
+                                    onClick= {() => this.toggleInfoModal(record.id)}
                                 >
-                                    Thông tin <InfoCircleOutlined />
+                                    <InfoCircleOutlined /> Thông tin 
                                 </Button>
                             </Space>
                         )} 

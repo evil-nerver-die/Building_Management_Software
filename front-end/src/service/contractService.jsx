@@ -10,7 +10,7 @@ export class ContractService {
     }
 
     getAll() {
-        let url_ = this.baseUrl + '/api/contract';
+        let url_ = this.baseUrl + 'api/contract';
 
         let data = axios
             .get(url_)
@@ -24,7 +24,7 @@ export class ContractService {
     }
 
     getById(id) {
-        let url_ = this.baseUrl + 'api/contract' + id;
+        let url_ = this.baseUrl + 'api/contract/' + id;
         let data = axios
             .get(url_)
             .then(function(respond) {

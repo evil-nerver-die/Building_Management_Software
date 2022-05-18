@@ -24,7 +24,7 @@ export class ServiceService {
 	}
 
 	getById(id) {
-		let url_ = this.baseUrl + 'api/services' + id;
+		let url_ = this.baseUrl + 'api/services/' + id;
 		let data = axios
 			.get(url_)
 			.then(function (respond) {
