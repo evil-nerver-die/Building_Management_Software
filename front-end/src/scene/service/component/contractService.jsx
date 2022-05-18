@@ -35,12 +35,12 @@ export default class ContractService extends React.Component {
 			<div className="container">
 				<div className="name">Tên dịch vụ:</div>
 				<div className="name-value">{data.name}</div>
-				<div className="code">Mã dịch vụ:</div>
-				<div className="code-value">{data.code}</div>
-				<div className="price">Giá tiền:</div>
-				<div className="price-value">{data.price}</div>
-				<div className="provider">Bên cung cấp:</div>
-				<div className="provider-value">{data.provider}</div>
+				<div className="floor">Mã dịch vụ:</div>
+				<div className="floor-value">{data.code}</div>
+				<div className="num">Giá tiền:</div>
+				<div className="num-value">{data.price}</div>
+				<div className="price">Bên cung cấp:</div>
+				<div className="price-value">{data.provider}</div>
 				<div className="des">Thông tin chi tiết:</div>
 				<div className="des-value">{data.des}</div>
 			</div>

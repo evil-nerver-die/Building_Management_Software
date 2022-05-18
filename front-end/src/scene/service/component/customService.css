@@ -15,11 +15,11 @@
 	width: 120px;
 	grid-area: name;
 }
-.code {
+.floor {
 	width: 120px;
 	grid-area: floor;
 }
-.price {
+.num {
 	width: 120px;
 	grid-area: num;
 }
@@ -27,7 +27,7 @@
 	width: 120px;
 	grid-area: area;
 }
-.provider {
+.price {
 	width: 120px;
 	grid-area: price;
 }
@@ -38,17 +38,17 @@
 .name-value {
 	grid-area: name-value;
 }
-.code-value {
-	grid-area: code-value;
+.floor-value {
+	grid-area: floor-value;
 }
-.price-value {
-	grid-area: price-value;
+.num-value {
+	grid-area: num-value;
 }
 .area-value {
 	grid-area: area-value;
 }
-.provider-value {
-	grid-area: provider-value;
+.price-value {
+	grid-area: price-value;
 }
 .des-value {
 	grid-area: des-value;
@@ -60,4 +60,8 @@
 
 .ant-form-item-label > label {
 	width: 120px;
+}
+
+.premise-inputnumber {
+	width: 10rem;
 }
