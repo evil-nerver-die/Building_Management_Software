@@ -40,4 +40,23 @@ export class ContractService {
             });
         return data;
     }
+
+    deleteById(id) {
+        let url_ = this.baseUrl + 'api/contract/' + id;
+        axios.delete(url_).catch(function (error) {
+			console.log(error);
+		});
+    }
+
+    createUpdate(data) {
+        let url_ = this.baseUrl +'api/contract/reserve/';
+        axios
+            .post(url_, data)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 }

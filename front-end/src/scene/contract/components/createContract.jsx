@@ -1,37 +1,36 @@
+import { Button, Form, Input, InputNumber } from 'antd';
 import React from 'react';
-import {Button, Form, Input, InputNumber} from 'antd';
 import './selectedContract.css';
 import { stores } from '../../../store/storeInitializer';
 
 const { TextArea } = Input;
 
-export default class EditContract extends React.Component {
-	constructor(props) {
+export default class CreateContract extends React.Component {
+    constructor(props) {
 		super(props);
 		this.state = {
 			isLoad: false
 		};
 	}
 
-	fromRef = React.createRef();
+    fromRef = React.createRef();
 
-	async componentDidMount() {
+    async componentDidMount() {
 		this.setState({ isLoad: !this.state.isLoad });
 	}
 
-	async updateContract(data) {
+	async createContract(data) {
 		await stores.contractStore.createUpdate(data);
 	}
 
-	onFinish = async value => {
+    onFinish = async value => {
 		let temp = {
-			id: this.props.data.id,
-			disable: this.props.data.disable,
-			status: this.props.data.status
+			disable: true,
+			status: true
 		};
 		let data = Object.assign(value, temp);
-		console.log(data);
-		await this.updateContract(data);
+		await this.createContract(data);
+		this.handleEdit();
 	};
 
 	handleEdit = () => {
@@ -43,10 +42,10 @@ export default class EditContract extends React.Component {
 		this.formRef.current.resetFields();
 	};
 
-	render() {
-		return(
-			<div>
-				<Form
+    render() {
+        return(
+            <div>
+                <Form
 					onFinish={this.onFinish}
 					initialValues={{
 						name: this.data.name,
@@ -86,7 +85,7 @@ export default class EditContract extends React.Component {
 						</div>
 					</Form.Item>
 				</Form>
-			</div>
-		);
-	}
+            </div>
+        )
+    }
 }

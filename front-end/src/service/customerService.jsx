@@ -10,7 +10,7 @@ export class CustomerService {
     }
 
     getAll() {
-        let url_ = this.baseUrl + '/api/customer';
+        let url_ = this.baseUrl + 'api/customer';
 
         let data = axios
             .get(url_)

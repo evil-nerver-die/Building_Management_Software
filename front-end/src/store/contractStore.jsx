@@ -22,4 +22,12 @@ export class ContractStore {
             this.contractSelected = result;
         }
     };
+
+    deleteById = async id => {
+        await this.contractService.deleteById(id);
+    };
+
+    createUpdate = async data => {
+        await this.contractService.createUpdate(data);
+    };
 }

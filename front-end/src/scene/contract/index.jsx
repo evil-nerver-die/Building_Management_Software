@@ -3,22 +3,27 @@ import './index.css'
 import React,{ useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import { Col, Modal, Table, Space, Input, Button } from 'antd';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { stores } from '../../store/storeInitializer';
 import EditContract from './components/editContract';
 import SelectedContract from './components/selectedContract';
+import CreateContract from './components/createContract';
 
 const { Search } = Input;
 
 let data = [];
+let selectedContractData = [];
+let postContractData = [];
 
 export default class Contract extends React.Component {
     constructor(prop) {
         super(prop);
         this.state = {
             isLoad: false,
+            isDeleted: false,
             isDesModalVisible: false,
-			isEditModalVisible: false
+			isEditModalVisible: false,
+            isCreateModalVisible: false
         };
     }
 
@@ -27,20 +32,46 @@ export default class Contract extends React.Component {
     async componentDidMount() {
         await this.getAllContract();
         data = stores.contractStore.contractListResult;
-        this.setState({ isLoaded: true });
+        this.setState({ isLoad: !this.state.isLoad });
+    }
+
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.isDeleted !== this.state.isDelete){
+            await this.getAllContract();
+            data = stores.contractStore.contractListResult;
+            this.setState({ isLoad: !this.state.isLoad});
+        }
     }
 
     getAllContract = async () => {
         await stores.contractStore.getAll();
     };
 
+    getContractById = async id => {
+        await stores.contractStore.getById(id);
+    };
+
+    deleteContractById = async () => {
+        await stores.contractStore.deleteById(this.selectedContractId);
+        this.componentDidMount();
+        this.setState({isDesModalVisible: false, isDeleted: !this.state.isDeleted});
+    };
+
+    updateContract = async () => {};
+
     onSearch = value => {
         console.log(value);
     };
 
-    toggleInfoModal = id => {
+    toggleInfoModal = async id => {
+        await this.getContractById(id);
+        selectedContractData = stores.contractStore.contractSelected;
 		this.selectedContractId = id;
 		this.setState({ isDesModalVisible: true });
+	};
+
+    toggleCreateModal = () => {
+		this.setState({ isCreateModalVisible: true });
 	};
 
 	handleInfoOk = () => {
@@ -56,12 +87,28 @@ export default class Contract extends React.Component {
 	};
 
 	handleEditOk = () => {
+        this.componentDidMount();
 		this.setState({ isEditModalVisible: false });
+	};
+
+    handleCreateCancel = () => {
+		this.setState({ isCreateModalVisible: false });
+	};
+
+	handleCreateOk = () => {
+		this.componentDidMount();
+		this.setState({ isCreateModalVisible: false });
 	};
 
     render() {
         return (
             <React.Fragment>
+                <div className="searchBar-addBar" style={{ height: '60px' }}>
+                    <Search placeholder="Nhập từ khóa" onSearch={this.onSearch} enterButton style={{ width: '35vw' }} className={'card-title'} />
+                    <Button type={'primary'} shape={'circle'} onClick={this.toggleCreateModal}>
+                        <PlusOutlined />
+                    </Button>
+                </div>
                 <Table dataSource={data} rowKey={"id"}>
                     <Col title="Tên Hợp Đồng" dataIndex="name" key="name" />
                     <Col title="Code" dataIndex="code" key="code" />
@@ -85,22 +132,36 @@ export default class Contract extends React.Component {
                 <Modal
                     title="Thông tin hợp đồng"
                     visible={this.state.isDesModalVisible}
-                    onOk={this.handleInfoOk}
                     onCancel={this.handleInfoCancel}
-                    cancelText={'Đóng'}
-                    okText={'Sửa'}
+                    footer={null}
                 >
-                    <SelectedContract id={this.selectedContractId} />
+                    <SelectedContract 
+                        id={this.selectedContractId}
+                        data={selectedContractData}
+                        okClick={() => this.handleInfoOk()}
+                        cancelClick={() => this.deleteContractById()}
+                    />
                 </Modal>
                 <Modal
-                    title="Yêu cầu sửa hợp đồng"
+                    title="Sửa hợp đồng"
                     visible={this.state.isEditModalVisible}
-                    onOk={this.handleEditOk}
                     onCancel={this.handleEditCancel}
-                    cancelText={'Hủy'}
-                    okText={'Xác Nhận'}
+                    footer={null}
                 >
-                    <EditContract id={this.selectedContractId} />
+                    <EditContract 
+                        id={this.selectedContractId}
+                        data={selectedContractData} 
+                        okClick={() => this.handleEditOk()}
+						cancelClick={() => this.handleEditCancel()}
+                    />
+                </Modal>
+                <Modal 
+                    title="Thêm mới hợp đồng" 
+                    visible={this.state.isCreateModalVisible} 
+                    onCancel={this.handleCreateCancel} 
+                    footer={null}
+                >
+                    <CreateContract okClick={() => this.handleCreateOk()} cancelClick={() => this.handleCreateCancel()} />
                 </Modal>
             </React.Fragment>
         );
