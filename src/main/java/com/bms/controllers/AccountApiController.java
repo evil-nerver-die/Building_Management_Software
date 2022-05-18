@@ -8,6 +8,7 @@ import com.bms.persistences.account.AccountService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,9 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/account")
 public class AccountApiController {
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
     private ModelMapper modelMapper;
 
@@ -39,11 +43,12 @@ public class AccountApiController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping(value = "/reserve")
+    @PostMapping(value = "/changePassword")
     ResponseEntity<?> changePassword(@RequestBody ChangePasswordDto changePasswordDto) {
         Account temp = accountService.getById(changePasswordDto.getId());
-        if(temp.getPassword() == changePasswordDto.getOldPassword()){
-            temp.setPassword(changePasswordDto.getNewPassword());
+        String encodedPassword = bCryptPasswordEncoder.encode(changePasswordDto.getOldPassword());
+        if(temp.getPassword() == encodedPassword){
+            temp.setPassword(encodedPassword);
             accountService.save(modelMapper.map(temp, Account.class));
         }
         return ResponseEntity.ok().build();
