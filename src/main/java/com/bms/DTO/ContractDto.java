@@ -11,6 +11,8 @@ public class ContractDto {
 
     String name;
 
+    String des;
+
     String code;
 
     String dateCreated;
