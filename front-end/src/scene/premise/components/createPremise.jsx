@@ -5,7 +5,7 @@ import { stores } from '../../../store/storeInitializer';
 
 const { TextArea } = Input;
 
-export default class EditPremise extends React.Component {
+export default class CreatePremise extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -19,19 +19,18 @@ export default class EditPremise extends React.Component {
 		this.setState({ isLoad: !this.state.isLoad });
 	}
 
-	async updatePrem(data) {
+	async createPrem(data) {
 		await stores.premiseStore.create_update(data);
 	}
 
 	onFinish = async value => {
 		let temp = {
-			id: this.props.data.id,
-			disable: this.props.data.disable,
-			status: this.props.data.status
+			disable: true,
+			status: true
 		};
 		let data = Object.assign(value, temp);
-		console.log(data);
-		await this.updatePrem(data);
+		await this.createPrem(data);
+		this.handleEdit();
 	};
 
 	handleEdit = () => {
@@ -46,37 +45,7 @@ export default class EditPremise extends React.Component {
 	render() {
 		return (
 			<div>
-				<Form
-					onFinish={this.onFinish}
-					ref={this.formRef}
-					name={'edit-premise'}
-					fields={[
-						{
-							name: ['name'],
-							value: this.props.data.name
-						},
-						{
-							name: ['floor'],
-							value: this.props.data.floor
-						},
-						{
-							name: ['num'],
-							value: this.props.data.num
-						},
-						{
-							name: ['area'],
-							value: this.props.data.area
-						},
-						{
-							name: ['price'],
-							value: this.props.data.price
-						},
-						{
-							name: ['des'],
-							value: this.props.data.des
-						}
-					]}
-				>
+				<Form onFinish={this.onFinish} ref={this.formRef} name={'create-premise'}>
 					<Form.Item
 						name="name"
 						label="Tên mặt bằng:"
@@ -125,7 +94,7 @@ export default class EditPremise extends React.Component {
 					<Form.Item>
 						<div className="button-container">
 							<div className="edit-pre-butt">
-								<Button htmlType="submit" onClick={this.handleEdit} type={'primary'} style={{ width: '90px' }}>
+								<Button htmlType="submit" type={'primary'} style={{ width: '90px' }}>
 									Xác nhận
 								</Button>
 							</div>

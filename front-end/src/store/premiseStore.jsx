@@ -22,4 +22,12 @@ export class PremiseStore {
 			this.premiseSelected = result;
 		}
 	};
+
+	deleteById = async id => {
+		await this.premiseService.deleteById(id);
+	};
+
+	create_update = async data => {
+		await this.premiseService.create_update(data);
+	};
 }

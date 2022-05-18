@@ -42,4 +42,23 @@ export class PremiseService {
 			});
 		return data;
 	}
+
+	deleteById(id) {
+		let url_ = this.baseUrl + '/api/premises/' + id; //api xoa mat bang theo id
+		axios.delete(url_).catch(function (error) {
+			console.log(error);
+		});
+	}
+
+	create_update(data) {
+		let url_ = this.baseUrl + '/api/premises/reserve/'; //api tao mat bang moi
+		axios
+			.post(url_, data)
+			.then(function (response) {
+				console.log(response);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	}
 }
