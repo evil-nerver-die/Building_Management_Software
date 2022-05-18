@@ -63,6 +63,22 @@ public class PremisesApiController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping(value = "/rent")
+    ResponseEntity<?> rent(@RequestBody Integer id) {
+        Premises premises = premiseService.getById(id);
+        premises.setStatus(true);
+        premiseService.save(premises);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value = "/checkout")
+    ResponseEntity<?> checkout(@RequestBody Integer id) {
+        Premises premises = premiseService.getById(id);
+        premises.setStatus(false);
+        premiseService.save(premises);
+        return ResponseEntity.ok().build();
+    }
+
 
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteById(@PathVariable Integer id) {
