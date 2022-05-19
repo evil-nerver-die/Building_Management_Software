@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class SaveAccountDto {
     private Integer id;
     private String name;
-    private LocalDate dob;
+    private String dob;
     private String email;
     private String phone;
     private Boolean gender;

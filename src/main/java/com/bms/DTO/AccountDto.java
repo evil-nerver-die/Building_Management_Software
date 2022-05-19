@@ -11,11 +11,12 @@ import java.time.LocalDate;
 public class AccountDto {
     private Integer id;
     private String name;
-    private LocalDate dob;
+    private String dob;
     private String email;
     private String phone;
     private Boolean gender;
     private String username;
+    private String password;
     private Role roles;
     private Boolean locked = false;
     private Boolean enabled = false;
