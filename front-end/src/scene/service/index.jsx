@@ -127,6 +127,7 @@ export default class Service extends React.Component {
 					/>
 				</Table>
 				<Modal
+					afterClose={() => this.componentDidMount()}
 					title="Thông tin dịch vụ"
 					visible={this.state.isDesModalVisible}
 					// onOk={this.handelInfoOk}
@@ -143,6 +144,7 @@ export default class Service extends React.Component {
 					/>
 				</Modal>
 				<Modal
+					afterClose={() => this.componentDidMount()}
 					title="Sửa dịch vụ"
 					visible={this.state.isEditModalVisible}
 					//onOk={this.handleEditOk}
@@ -158,7 +160,13 @@ export default class Service extends React.Component {
 						cancelClick={() => this.handleEditCancel}
 					/>
 				</Modal>
-				<Modal title="Thêm dịch vụ" visible={this.state.isCreateModalVisible} onCancel={this.handleCreateCancel} footer={null}>
+				<Modal
+					afterClose={() => this.componentDidMount()}
+					title="Thêm dịch vụ"
+					visible={this.state.isCreateModalVisible}
+					onCancel={this.handleCreateCancel}
+					footer={null}
+				>
 					<AddService okClick={() => this.handleCreateOk()} cancelClick={() => this.handleCreateCancel} />
 				</Modal>
 			</React.Fragment>
