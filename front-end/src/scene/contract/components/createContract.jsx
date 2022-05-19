@@ -13,7 +13,7 @@ export default class CreateContract extends React.Component {
 		};
 	}
 
-    fromRef = React.createRef();
+    formRef = React.createRef();
 
     async componentDidMount() {
 		this.setState({ isLoad: !this.state.isLoad });
@@ -47,13 +47,8 @@ export default class CreateContract extends React.Component {
             <div>
                 <Form
 					onFinish={this.onFinish}
-					initialValues={{
-						name: this.data.name,
-						code: this.data.code,
-						ended: this.data.ended,
-						provider: this.data.provider,
-						des: this.data.des
-					}}
+					ref={this.formRef}
+					name={'create-contract'}
 				>
 					<Form.Item name="name" label="Tên hợp đồng">
 						<Input />
