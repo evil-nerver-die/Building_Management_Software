@@ -1,7 +1,7 @@
 import React from 'react';
 import { stores } from '../../../store/storeInitializer';
 import './customService.css';
-import {Alert, Button, Popconfirm} from 'antd';
+import { Alert, Button, Popconfirm } from 'antd';
 
 export default class ContractService extends React.Component {
 	constructor(props) {
@@ -52,13 +52,15 @@ export default class ContractService extends React.Component {
 				</div>
 				<div className="button-container">
 					<div className="edit-pre-butt">
-						<Button onClick={this.handleEdit} type={'primary'} style={{width: '90px'}}>
+						<Button onClick={this.handleEdit} type={'primary'} style={{ width: '90px' }}>
 							Sửa
 						</Button>
 					</div>
 					<div className="del-pre-butt">
 						<Popconfirm placement="top" title={'Xóa dịch vụ này'} onConfirm={this.handleDelete} okText="Xác nhận" cancelText="Hủy">
-							Xóa
+							<Button type={'primary'} danger style={{ width: '90px' }}>
+								Xóa
+							</Button>
 						</Popconfirm>
 					</div>
 				</div>

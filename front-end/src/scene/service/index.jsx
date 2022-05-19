@@ -31,6 +31,7 @@ export default class Service extends React.Component {
 		await this.getAllService();
 		data = stores.serviceStore.serviceListResult;
 		this.setState({ isLoad: !this.state.isLoad });
+		console.log(data);
 	}
 
 	async componentDidUpdate(prevProps, prevState, snapshot) {
@@ -90,8 +91,8 @@ export default class Service extends React.Component {
 	};
 
 	handleCreateCancel = () => {
-		this.setState({isCreateModalVisible: false});
-	}
+		this.setState({ isCreateModalVisible: false });
+	};
 
 	handleCreateOk = () => {
 		this.componentDidMount();
@@ -101,16 +102,17 @@ export default class Service extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div className="searchBar-addBar" style={{height: '60px'}}>
-					<Search placeholder="Nhập từ khóa" onSearch={this.onSearch} enterButton style={{width: '35vw'}} className={'card-title'}/>
+				<div className="searchBar-addBar" style={{ height: '60px' }}>
+					<Search placeholder="Nhập từ khóa" onSearch={this.onSearch} enterButton style={{ width: '35vw' }} className={'card-title'} />
 					<Button type={'primary'} shape={'circle'} onClick={this.toggleCreateModal}>
-						<PlusOutlined/>
+						<PlusOutlined />
 					</Button>
 				</div>
 				<Table dataSource={data} rowKey={'id'}>
 					<Col title="Tên dịch vụ" dataIndex="name" key="name" />
 					<Col title="Mã dịch vụ" dataIndex="code" key="code" />
 					<Col title="Giá tiền" dataIndex="price" key="price" />
+					<Col title="Bên cung cấp" dataIndex="provider" key="provider" />
 					<Col title="Thông tin chi tiết" dataIndex="des" key="des" />
 					<Col
 						title="Lựa chọn"
@@ -149,24 +151,16 @@ export default class Service extends React.Component {
 					//okText={'Lưu'}
 					footer={null}
 				>
-					<EditService 
+					<EditService
 						id={this.selectedServiceId}
 						data={selectedServiceData}
 						okClick={() => this.handleEditOk()}
-						cancelClick={() => this.handleEditCancel} 
+						cancelClick={() => this.handleEditCancel}
 					/>
 				</Modal>
-				<Modal
-					title="Thêm dịch vụ"
-					visible={this.state.isCreateModalVisible}
-					onCancel={this.handleCreateCancel}
-					footer={null}
-				>
-					<AddService
-						okClick={() => this.handleCreateOk()}
-						cancelClick={() => this.handleCreateCancel}
-					/>
-				</Modal>	
+				<Modal title="Thêm dịch vụ" visible={this.state.isCreateModalVisible} onCancel={this.handleCreateCancel} footer={null}>
+					<AddService okClick={() => this.handleCreateOk()} cancelClick={() => this.handleCreateCancel} />
+				</Modal>
 			</React.Fragment>
 		);
 	}
