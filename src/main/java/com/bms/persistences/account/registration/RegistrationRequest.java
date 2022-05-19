@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @ToString
 public class RegistrationRequest {
     private final String name;
-    private LocalDate dob;
+    private String dob;
     private String email;
     private String phone;
     private Boolean gender;

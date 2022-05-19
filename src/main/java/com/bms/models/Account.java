@@ -31,7 +31,7 @@ public class Account implements UserDetails {
     )
     private Integer id;
     private String name;
-    private LocalDate dob;
+    private String dob;
     private String email;
     private String phone;
     private Boolean gender;
@@ -45,7 +45,7 @@ public class Account implements UserDetails {
 
 
     public Account(String name,
-                   LocalDate dob,
+                   String dob,
                    String email,
                    String phone,
                    Boolean gender,
@@ -74,7 +74,7 @@ public class Account implements UserDetails {
         return name;
     }
 
-    public LocalDate getDob() {
+    public String getDob() {
         return dob;
     }
 
