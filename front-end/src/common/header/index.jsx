@@ -40,7 +40,7 @@ const AppHeader = () => {
 						Wayne Enterprise
 					</Link>
 				</div>
-				<Menu mode="horizontal" defaultSelectedKeys={[url]}>
+				<Menu mode="horizontal" defaultSelectedKeys={[url]} style={{ width: '570px' }}>
 					<Menu.Item key={'home'}>
 						<Link to={''}>Trang Chủ</Link>
 					</Menu.Item>
@@ -56,9 +56,9 @@ const AppHeader = () => {
 					<Menu.Item key={'customer'}>
 						<Link to={'/customer'}>Khách Hàng</Link>
 					</Menu.Item>
-					<Menu.Item key={'employee'}>
+					{/* <Menu.Item key={'employee'}>
 						<Link to={'/employee'}>Nhân viên</Link>
-					</Menu.Item>
+					</Menu.Item> */}
 					<Menu.Item key={'account'}>
 						<Link to={'/account'}>
 							<UserOutlined />

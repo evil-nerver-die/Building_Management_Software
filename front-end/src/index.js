@@ -21,7 +21,7 @@ ReactDOM.render(
 					<Route path="/contract" element={<Contract />} />
 					<Route path="/service" element={<Service />} />
 					<Route path="/customer" element={<Customer />} />
-					<Route path="/employee" element={<Employee />} />
+					{/* <Route path="/employee" element={<Employee />} /> */}
 					<Route path="/account" element={<Account />} />
 				</Route>
 			</Routes>

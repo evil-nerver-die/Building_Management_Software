@@ -30,7 +30,6 @@ export default class EditPremise extends React.Component {
 			status: this.props.data.status
 		};
 		let data = Object.assign(value, temp);
-		console.log(data);
 		await this.updatePrem(data);
 	};
 

@@ -22,25 +22,15 @@ export class AccountService {
 
 	updateInfo(data) {
 		let url_ = this.baseUrl + 'api/account/reserve';
-		axios
-			.post(url_, data)
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	changePassword(data) {
 		let url_ = this.baseUrl + 'api/account/changePassword';
-		axios
-			.post(url_, data)
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data).catch(function (error) {
+			console.log(error);
+		});
 	}
 }

@@ -45,14 +45,9 @@ export class PremiseService {
 
 	create_update(data) {
 		let url_ = this.baseUrl + 'api/premises/reserve'; //api tao mat bang moi
-		axios
-			.post(url_, data)
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	rent(id) {
@@ -60,14 +55,9 @@ export class PremiseService {
 		let data = {
 			id: id
 		};
-		axios
-			.post(url_, data)
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	checkout(id) {
@@ -76,13 +66,8 @@ export class PremiseService {
 		let data = {
 			id: id
 		};
-		axios
-			.post(url_, data)
-			.then(function (response) {
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data).catch(function (error) {
+			console.log(error);
+		});
 	}
 }
