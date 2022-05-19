@@ -19,16 +19,8 @@ import java.util.Collections;
 @EqualsAndHashCode
 @NoArgsConstructor
 public class Account implements UserDetails {
-    @SequenceGenerator(
-            name = "account_sequence",
-            sequenceName = "account_sequence",
-            allocationSize = 1
-    )
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "account_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String dob;

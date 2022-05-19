@@ -39,7 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated()
                 .anyRequest().permitAll()
                 .and()
-                .formLogin().and().logout(logout -> logout
+                .formLogin().defaultSuccessUrl("http://localhost:3000/#/home", true)
+                .and().logout(logout -> logout
                         .logoutUrl("/logout")
                         .addLogoutHandler(new SecurityContextLogoutHandler())
                 );

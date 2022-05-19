@@ -4,6 +4,7 @@ import com.bms.DTO.AccountDto;
 import com.bms.DTO.ChangePasswordDto;
 import com.bms.DTO.SaveAccountDto;
 import com.bms.models.Account;
+import com.bms.persistences.account.AccountRepository;
 import com.bms.persistences.account.AccountService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/account")
 public class AccountApiController {
 
+    @Autowired
+    AccountRepository accountRepository;
+
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
     AccountService accountService;
 
     // Constructor injection
@@ -39,18 +45,16 @@ public class AccountApiController {
 
     @PostMapping(value = "/reserve")
     ResponseEntity<?> reserve(@RequestBody SaveAccountDto accountDto) {
-        accountService.save(modelMapper.map(accountDto, Account.class));
+        accountRepository.save(modelMapper.map(accountDto, Account.class));
         return ResponseEntity.ok().build();
     }
 
     @PostMapping(value = "/changePassword")
     ResponseEntity<?> changePassword(@RequestBody ChangePasswordDto changePasswordDto) {
         Account temp = accountService.getById(changePasswordDto.getId());
-        String encodedPassword = bCryptPasswordEncoder.encode(changePasswordDto.getOldPassword());
-        if(temp.getPassword() == encodedPassword){
-            temp.setPassword(encodedPassword);
-            accountService.save(modelMapper.map(temp, Account.class));
-        }
+        String encrypted = bCryptPasswordEncoder.encode(changePasswordDto.getNewPassword());
+        temp.setPassword(encrypted);
+        accountRepository.save(temp);
         return ResponseEntity.ok().build();
     }
 
