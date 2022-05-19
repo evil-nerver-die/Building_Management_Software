@@ -3,6 +3,7 @@ package com.bms.controllers;
 import com.bms.DTO.PremisesByFloorDto;
 import com.bms.DTO.PremisesDto;
 import com.bms.models.Premises;
+import com.bms.models.RoomId;
 import com.bms.persistences.Premise.PremiseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,16 +65,16 @@ public class PremisesApiController {
     }
 
     @PostMapping(value = "/rent")
-    ResponseEntity<?> rent(@RequestBody Integer id) {
-        Premises premises = premiseService.getById(id);
+    ResponseEntity<?> rent(@RequestBody RoomId id) {
+        Premises premises = premiseService.getById(id.getId());
         premises.setStatus(true);
         premiseService.save(premises);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping(value = "/checkout")
-    ResponseEntity<?> checkout(@RequestBody Integer id) {
-        Premises premises = premiseService.getById(id);
+    ResponseEntity<?> checkout(@RequestBody RoomId id) {
+        Premises premises = premiseService.getById(id.getId());
         premises.setStatus(false);
         premiseService.save(premises);
         return ResponseEntity.ok().build();
