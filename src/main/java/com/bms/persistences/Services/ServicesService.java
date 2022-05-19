@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.bms.models.Services;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
 public interface ServicesService {
     List<Services> findByName(String serName);
 
