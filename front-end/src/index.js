@@ -15,8 +15,8 @@ ReactDOM.render(
 	<React.StrictMode>
 		<HashRouter>
 			<Routes>
-				<Route path="/" element={<App />}>
-					<Route path="/home" element={<Home />} />
+				<Route path="" element={<App />}>
+					<Route index element={<Home />} />
 					<Route path="/premise" element={<Premise />} />
 					<Route path="/contract" element={<Contract />} />
 					<Route path="/service" element={<Service />} />

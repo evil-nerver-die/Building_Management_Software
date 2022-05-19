@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import React from 'react';
-import { HomeOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 const AppHeader = () => {
@@ -36,13 +36,13 @@ const AppHeader = () => {
 			<div className="header">
 				<div className="logo">
 					<HomeOutlined />
-					<Link to="./" style={{ marginLeft: '10px' }}>
+					<Link to="" style={{ marginLeft: '10px' }}>
 						Wayne Enterprise
 					</Link>
 				</div>
 				<Menu mode="horizontal" defaultSelectedKeys={[url]}>
 					<Menu.Item key={'home'}>
-						<Link to={'/home'}>Trang Chủ</Link>
+						<Link to={''}>Trang Chủ</Link>
 					</Menu.Item>
 					<Menu.Item key={'premise'}>
 						<Link to={'/premise'}>Mặt Bằng</Link>
@@ -60,7 +60,9 @@ const AppHeader = () => {
 						<Link to={'/employee'}>Nhân viên</Link>
 					</Menu.Item>
 					<Menu.Item key={'account'}>
-						<Link to={'/account'}>Tài Khoản</Link>
+						<Link to={'/account'}>
+							<UserOutlined />
+						</Link>
 					</Menu.Item>
 				</Menu>
 			</div>

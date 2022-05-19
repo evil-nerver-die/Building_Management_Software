@@ -1,6 +1,7 @@
 .account {
 	display: flex;
 	justify-content: center;
+	/* width: 50vw; */
 }
 
 .avatar {
@@ -15,6 +16,8 @@
 	display: flex;
 	flex-direction: row;
 	height: 400px;
+	width: 30vw;
+	justify-content: center;
 }
 
 .account-line {

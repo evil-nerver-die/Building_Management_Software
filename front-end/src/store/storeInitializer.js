@@ -2,6 +2,7 @@ import { PremiseStore } from './premiseStore';
 import { CustomerStore } from './customerStore';
 import { ContractStore } from './contractStore';
 import { ServiceStore } from './serviceStore';
+import { AccountStore } from './accountStore';
 
 const storeInitializer = () => {
 	return {
@@ -9,7 +10,8 @@ const storeInitializer = () => {
 		premiseStore: new PremiseStore(),
 		customerStore: new CustomerStore(),
 		contractStore: new ContractStore(),
-		serviceStore: new ServiceStore()
+		serviceStore: new ServiceStore(),
+		accountStore: new AccountStore()
 	};
 };
 

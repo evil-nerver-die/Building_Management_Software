@@ -30,4 +30,12 @@ export class PremiseStore {
 	create_update = async data => {
 		await this.premiseService.create_update(data);
 	};
+
+	rent = async id => {
+		await this.premiseService.rent(id);
+	};
+
+	checkout = async id => {
+		await this.premiseService.checkout(id);
+	};
 }

@@ -98,6 +98,18 @@ export default class Premise extends React.Component {
 		this.setState({ isCreateModalVisible: false });
 	};
 
+	checkout = async () => {
+		await stores.premiseStore.checkout(this.selectedPremiseId);
+		this.componentDidMount();
+		this.setState({ isDesModalVisible: false });
+	};
+
+	rent = async () => {
+		await stores.premiseStore.rent(this.selectedPremiseId);
+		this.componentDidMount();
+		this.setState({ isDesModalVisible: false });
+	};
+
 	render() {
 		return (
 			<React.Fragment>
@@ -136,15 +148,29 @@ export default class Premise extends React.Component {
 											);
 										})}
 
-									<Modal title="Thông tin mặt bằng" visible={this.state.isDesModalVisible} onCancel={this.handleInfoCancel} footer={null}>
+									<Modal
+										afterClose={() => this.componentDidMount()}
+										title="Thông tin mặt bằng"
+										visible={this.state.isDesModalVisible}
+										onCancel={this.handleInfoCancel}
+										footer={null}
+									>
 										<SelectedPremise
 											id={this.selectedPremiseId}
 											data={selectedPremiseData}
 											okClick={() => this.handleInfoOk()}
 											closeClick={() => this.deletePremiseById()}
+											rent={() => this.rent()}
+											checkout={() => this.checkout()}
 										/>
 									</Modal>
-									<Modal title="Sửa mặt bằng" visible={this.state.isEditModalVisible} onCancel={this.handleEditCancel} footer={null}>
+									<Modal
+										afterClose={() => this.componentDidMount()}
+										title="Sửa mặt bằng"
+										visible={this.state.isEditModalVisible}
+										onCancel={this.handleEditCancel}
+										footer={null}
+									>
 										<EditPremise
 											id={this.selectedPremiseId}
 											data={selectedPremiseData}
@@ -152,7 +178,13 @@ export default class Premise extends React.Component {
 											cancelClick={() => this.handleEditCancel()}
 										/>
 									</Modal>
-									<Modal title="Thêm mới mặt bằng" visible={this.state.isCreateModalVisible} onCancel={this.handleCreateCancel} footer={null}>
+									<Modal
+										afterClose={() => this.componentDidMount()}
+										title="Thêm mới mặt bằng"
+										visible={this.state.isCreateModalVisible}
+										onCancel={this.handleCreateCancel}
+										footer={null}
+									>
 										<CreatePremise okClick={() => this.handleCreateOk()} cancelClick={() => this.handleCreateCancel()} />
 									</Modal>
 								</Card>
