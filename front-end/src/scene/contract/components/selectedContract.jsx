@@ -30,13 +30,13 @@ export default class SelectedContract extends React.Component {
             <React.Fragment>
                 <div className="pre-form-container">
                     <div className="name">Tên hợp đồng:</div>
-                    <div className="name-value">{data.name}</div>
+                    <div className="name-value">{this.props.data.name}</div>
                     <div className="code">Code:</div>
-                    <div className="code-value">{data.code}</div>
+                    <div className="code-value">{this.props.data.code}</div>
                     <div className="dateCreated">Ngày tạo:</div>
-                    <div className="dateCreated-value">{data.dateCreated}</div>
+                    <div className="dateCreated-value">{this.props.data.dateCreated}</div>
                     <div className="des">Thông tin:</div>
-                    <div className="des-value">{data.des}</div>
+                    <div className="des-value">{this.props.data.des}</div>
                     
                 </div>
                 <div className="button-container">
