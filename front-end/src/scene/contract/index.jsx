@@ -36,7 +36,7 @@ export default class Contract extends React.Component {
     }
 
     async componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevState.isDeleted !== this.state.isDelete){
+        if (prevState.isDeleted !== this.state.isDeleted){
             await this.getAllContract();
             data = stores.contractStore.contractListResult;
             this.setState({ isLoad: !this.state.isLoad});
@@ -104,7 +104,7 @@ export default class Contract extends React.Component {
         return (
             <React.Fragment>
                 <div className="searchBar-addBar" style={{ height: '60px' }}>
-                    <Search placeholder="Nhập từ khóa" onSearch={this.onSearch} enterButton style={{ width: '35vw' }} className={'card-title'} />
+                    <Search placeholder="Nhập từ khóa" onSearch={this.onSearch} enterButton style={{ width: '35vw' }} />
                     <Button type={'primary'} shape={'circle'} onClick={this.toggleCreateModal}>
                         <PlusOutlined />
                     </Button>
