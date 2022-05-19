@@ -56,6 +56,12 @@ export default class CreateContract extends React.Component {
 					<Form.Item name="code" label="Code">
 						<Input />
 					</Form.Item>
+					<Form.Item name="price" label="Giá">
+						<Input />
+					</Form.Item>
+					<Form.Item name="dateCreated" label="Ngày tạo hợp đồng">
+						<Input />
+					</Form.Item>
 					<Form.Item name="dateEnd" label="Ngày hết hạn">
 						<Input />
 					</Form.Item>
