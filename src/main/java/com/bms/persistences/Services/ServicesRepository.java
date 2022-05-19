@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import com.bms.models.Services;
+import org.springframework.transaction.annotation.Transactional;
 
-
+@Transactional
 public interface ServicesRepository extends JpaRepository<Services, Long> {
     List<Services> findByName(String serName);
 
