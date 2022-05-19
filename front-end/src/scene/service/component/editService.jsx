@@ -1,29 +1,46 @@
 import React from 'react';
-import { Form, Input, InputNumber, Radio } from 'antd';
+import { Form, Input, InputNumber, Button } from 'antd';
 import './customService.css';
 import { stores } from '../../../store/storeInitializer';
 
 const { TextArea } = Input;
 
 export default class EditService extends React.Component {
-	constructor(prop) {
-		super(prop);
+	constructor(props) {
+		super(props);
 		this.state = {
 			isLoad: false
 		};
 	}
 
-	data = stores.serviceStore.serviceSelected;
+	formRef = React.createRef();
 
-	componentDidUpdate(prevProps) {
-		if (this.props.id !== prevProps.id) {
-			this.data = stores.serviceStore.serviceSelected;
-			this.setState({ isLoad: !this.state.isLoad });
-		}
+	async componentDidMount() {
+		this.setState({isLoad: !this.state.isLoad});
 	}
 
-	onFinish = value => {
+	async updateService(data) {
+		await stores.serviceStore.add_update(data);
+	}
+
+	onFinish = async value => {
+		let temp = {
+			id: this.props.data.id,
+			disable: this.props.data.disable,
+			status: this.props.data.status
+		};
+		let data = Object.assign(value, temp);
 		console.log(value);
+		await this.updateService(data);
+	};
+
+	handleEdit = () => {
+		this.props.okClick();
+	};
+
+	handleClose = () => {
+		this.props.cancelClick();
+		this.formRef.current.resetFields();
 	};
 
 	render() {
@@ -31,14 +48,30 @@ export default class EditService extends React.Component {
 			<div>
 				<Form
 					onFinish={this.onFinish}
-					initialValues={{
-						name: this.data.name,
-						code: this.data.code,
-						price: this.data.price,
-						provider: this.data.provider,
-						status: this.data.status,
-						des: this.data.des
-					}}
+					ref={this.formRef}
+					name={'edit-service'}
+					fields={[
+						{
+							name: ['name'],
+							value: this.props.data.name
+						},
+						{
+							name: ['code'],
+							value: this.props.data.code
+						},
+						{
+							name: ['price'],
+							value: this.props.data.price
+						},
+						{
+							name: ['provider'],
+							value: this.props.data.provider
+						},
+						{
+							name: ['des'],
+							value: this.props.data.des
+						}
+					]}
 				>
 					<Form.Item name="name" label="Tên dịch vụ">
 						<Input />
@@ -54,6 +87,20 @@ export default class EditService extends React.Component {
 					</Form.Item>
 					<Form.Item name="des" label="Thông tin chi tiết">
 						<TextArea rows={4} />
+					</Form.Item>
+					<Form.Item>
+						<div className="button-container">
+							<div className="edit-pre-butt">
+								<Button htmlType="submit" onClick={this.handleEdit} type={'primary'} style={{width: '90px'}}>
+									Xác nhận
+								</Button>
+							</div>
+							<div className="del-pre-butt">
+								<Button htmlType="button" onClick={this.handleClose} style={{width: '90px'}}>
+									Hủy
+								</Button>
+							</div>
+						</div>
 					</Form.Item>
 				</Form>
 			</div>

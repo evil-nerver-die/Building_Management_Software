@@ -1,11 +1,11 @@
 import './index.css';
-
 import { Table, Space, Button, Popconfirm, Modal, Col, Input } from 'antd';
-import { EditFilled, DeleteFilled, FileTextFilled, InfoCircleOutlined } from '@ant-design/icons';
+import { EditFilled, DeleteFilled, FileTextFilled, InfoCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import EditService from './component/editService';
 import ContractService from './component/contractService';
 import { stores } from '../../store/storeInitializer';
+import AddService from './component/addService';
 
 const { Search } = Input;
 
@@ -37,7 +37,7 @@ export default class Service extends React.Component {
 		if (prevState.isDeleted !== this.state.isDeleted) {
 			await this.getAllService();
 			data = stores.serviceStore.serviceListResult;
-			this.setState({isLoad: !this.state.isLoad});
+			this.setState({ isLoad: !this.state.isLoad });
 		}
 	}
 
@@ -52,7 +52,7 @@ export default class Service extends React.Component {
 	deleteServiceById = async () => {
 		await stores.serviceStore.deleteById(this.selectedServiceId);
 		this.componentDidMount();
-		this.setState({isDesModalVisible: false, isDeleted: !this.state.isDeleted});
+		this.setState({ isDesModalVisible: false, isDeleted: !this.state.isDeleted });
 	};
 
 	create_update = async () => {};
@@ -69,7 +69,7 @@ export default class Service extends React.Component {
 	};
 
 	toggleCreateModal = () => {
-		this.setState({isCreateModalVisible: true});
+		this.setState({ isCreateModalVisible: true });
 	};
 
 	handelInfoOk = () => {
@@ -89,14 +89,24 @@ export default class Service extends React.Component {
 		this.setState({ isEditModalVisible: false });
 	};
 
+	handleCreateCancel = () => {
+		this.setState({isCreateModalVisible: false});
+	}
+
 	handleCreateOk = () => {
 		this.componentDidMount();
-		this.setState({isCreateModalVisible: false});
+		this.setState({ isCreateModalVisible: false });
 	};
 
 	render() {
 		return (
 			<React.Fragment>
+				<div className="searchBar-addBar" style={{height: '60px'}}>
+					<Search placeholder="Nhập từ khóa" onSearch={this.onSearch} enterButton style={{width: '35vw'}} className={'card-title'}/>
+					<Button type={'primary'} shape={'circle'} onClick={this.toggleCreateModal}>
+						<PlusOutlined/>
+					</Button>
+				</div>
 				<Table dataSource={data} rowKey={'id'}>
 					<Col title="Tên dịch vụ" dataIndex="name" key="name" />
 					<Col title="Mã dịch vụ" dataIndex="code" key="code" />
@@ -107,7 +117,7 @@ export default class Service extends React.Component {
 						key="option"
 						render={(text, record) => (
 							<Space size={'middle'}>
-								<Button type="primary" onClick={ () => this.toggleInfoModal(record.id)}>
+								<Button type="primary" onClick={() => this.toggleInfoModal(record.id)}>
 									<InfoCircleOutlined /> Thông tin
 								</Button>
 							</Space>
@@ -119,11 +129,11 @@ export default class Service extends React.Component {
 					visible={this.state.isDesModalVisible}
 					// onOk={this.handelInfoOk}
 					onCancel={this.handelInfoCancel}
-					cancelText={'Đóng'}
+					//cancelText={'Đóng'}
 					// okText={'Sửa'}
 					footer={null}
 				>
-					<ContractService 
+					<ContractService
 						id={this.selectedServiceId}
 						data={selectedServiceData}
 						okClick={() => this.handelInfoOk()}
@@ -131,15 +141,32 @@ export default class Service extends React.Component {
 					/>
 				</Modal>
 				<Modal
-					title="Yêu cầu sửa dịch vụ"
+					title="Sửa dịch vụ"
 					visible={this.state.isEditModalVisible}
-					onOk={this.handleEditOk}
+					//onOk={this.handleEditOk}
 					onCancel={this.handleEditCancel}
-					cancelText={'Hủy'}
-					okText={'Lưu'}
+					//cancelText={'Hủy'}
+					//okText={'Lưu'}
+					footer={null}
 				>
-					<EditService id={this.selectedServiceId} />
+					<EditService 
+						id={this.selectedServiceId}
+						data={selectedServiceData}
+						okClick={() => this.handleEditOk()}
+						cancelClick={() => this.handleEditCancel} 
+					/>
 				</Modal>
+				<Modal
+					title="Thêm dịch vụ"
+					visible={this.state.isCreateModalVisible}
+					onCancel={this.handleCreateCancel}
+					footer={null}
+				>
+					<AddService
+						okClick={() => this.handleCreateOk()}
+						cancelClick={() => this.handleCreateCancel}
+					/>
+				</Modal>	
 			</React.Fragment>
 		);
 	}
