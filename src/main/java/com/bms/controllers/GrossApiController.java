@@ -31,18 +31,6 @@ public class GrossApiController {
     }
 
 
-    @PostMapping(value = "/api/save_gross")
-    ResponseEntity<?> reserve(Gross gross) {
-        grossService.save(gross);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @PostMapping(value = "/api/delete_gross_by_id")
-    ResponseEntity<?> deleteGrossById(Integer id) {
-        grossService.deleteByGroID(id);
-        return ResponseEntity.ok().build();
-    }
 
 
 

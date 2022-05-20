@@ -3,6 +3,8 @@ package com.bms.DTO;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 @Getter
 @Setter
 public class SavePremisesDto {
@@ -17,6 +19,8 @@ public class SavePremisesDto {
     private Integer num;
 
     private Double price;
+
+    private ArrayList<String> subscribedServices;
 
     private boolean status = false;
 

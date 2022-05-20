@@ -1,15 +1,22 @@
 package com.bms.controllers;
 
 import com.bms.DTO.ContractDto;
+import com.bms.DTO.PremisesByFloorDto;
+import com.bms.DTO.PremisesDto;
 import com.bms.DTO.SaveContractDto;
 import com.bms.models.Contract;
+import com.bms.models.Premises;
 import com.bms.persistences.Contract.ContractService;
+import com.bms.persistences.Premise.PremiseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -18,9 +25,14 @@ public class ContractApiController {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    PremiseService premiseService;
+
+    @Autowired
     ContractService contractService;
 
     // Constructor injection
+    @Autowired
     public ContractApiController(ContractService contractService) {
         this.contractService = contractService;
     }
@@ -28,6 +40,8 @@ public class ContractApiController {
 
     @GetMapping
     List<ContractDto> contracts() {
+        
+
         return contractService.findAll().stream()
                 .map(contract -> modelMapper.map(contract, ContractDto.class))
                 .collect(Collectors.toList());

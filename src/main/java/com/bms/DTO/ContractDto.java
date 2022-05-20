@@ -15,7 +15,17 @@ public class ContractDto {
 
     String code;
 
+    Integer type;
+
+    Double price;
+
+    String provider;
+
+    String Signed;
+
     String dateCreated;
+
+    String dateEnded;
 
 //    public ContractDto(Contract contract){
 //        this.conName = contract.getConName();

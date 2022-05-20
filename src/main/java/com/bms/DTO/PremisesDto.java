@@ -5,6 +5,8 @@ import com.bms.models.Premises;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 @Getter
 @Setter
 public class PremisesDto {
@@ -17,6 +19,8 @@ public class PremisesDto {
   private String floor;
 
   private Integer num;
+
+  private ArrayList<String> subscribedServices;
 
   private boolean status = false;
 

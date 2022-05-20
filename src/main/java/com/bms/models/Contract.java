@@ -36,7 +36,7 @@ public class Contract {
 
     private String Updated;
 
-    private String Ended;
+    private String dateEnded;
 
     private Integer usIdSigned;
 
