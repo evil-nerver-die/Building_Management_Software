@@ -1,4 +1,4 @@
-import { Button, Form, Input, InputNumber } from 'antd';
+import { Button, Form, Input, InputNumber, Radio } from 'antd';
 import React from 'react';
 import './selectedContract.css';
 import { stores } from '../../../store/storeInitializer';
@@ -9,7 +9,8 @@ export default class CreateContract extends React.Component {
     constructor(props) {
 		super(props);
 		this.state = {
-			isLoad: false
+			isLoad: false,
+			value: 0
 		};
 	}
 
@@ -23,9 +24,13 @@ export default class CreateContract extends React.Component {
 		await stores.contractStore.createUpdate(data);
 	}
 
+	onChange = e =>{
+		this.setState({
+			value: e.target.value,
+		})
+	}
     onFinish = async value => {
 		let temp = {
-			disable: true,
 			status: true
 		};
 		let data = Object.assign(value, temp);
@@ -50,22 +55,31 @@ export default class CreateContract extends React.Component {
 					ref={this.formRef}
 					name={'create-contract'}
 				>
-					<Form.Item name="name" label="Tên hợp đồng">
+					<Form.Item name="name" label="Tên hợp đồng:">
 						<Input />
 					</Form.Item>
-					<Form.Item name="code" label="Code">
+					<Form.Item name="code" label="Code:">
 						<Input />
 					</Form.Item>
-					<Form.Item name="price" label="Giá">
+					<Form.Item name="price" label="Giá:">
+						<InputNumber min={0} />
+					</Form.Item>
+					<Form.Item name="type" label="Loại hợp đồng:" >
+						<Radio.Group onChange={this.onChange}>
+							<Radio value={0}>Mặt bằng</Radio>
+							<Radio value={1}>Dịch vụ</Radio>
+						</Radio.Group>
+					</Form.Item>
+					<Form.Item name="dateCreated" label="Ngày tạo hợp đồng:">
 						<Input />
 					</Form.Item>
-					<Form.Item name="dateCreated" label="Ngày tạo hợp đồng">
+					<Form.Item name="dateEnded" label="Ngày hết hạn:">
 						<Input />
 					</Form.Item>
-					<Form.Item name="dateEnd" label="Ngày hết hạn">
+					<Form.Item name="provider" label="Nhà cung cấp:">
 						<Input />
 					</Form.Item>
-					<Form.Item name="provider" label="Nhà cung cấp">
+					<Form.Item name="signed" label="Người ký:">
 						<Input />
 					</Form.Item>
 					<Form.Item name="des" label="Thông tin chi tiết:">
