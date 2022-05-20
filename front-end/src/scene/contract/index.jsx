@@ -110,8 +110,9 @@ export default class Contract extends React.Component {
                     </Button>
                 </div>
                 <Table dataSource={data} rowKey={"id"}>
-                    <Col title="Tên Hợp Đồng" dataIndex="name" key="name" />
+                    <Col title="Tên hợp đồng" dataIndex="name" key="name" />
                     <Col title="Code" dataIndex="code" key="code" />
+                    <Col title="Giá" dataIndex="price" key="price"/>
                     <Col title="Ngày tạo " dataIndex="dateCreated" key="dateCreated" />
                     <Col 
                         title="Lựa chọn"
