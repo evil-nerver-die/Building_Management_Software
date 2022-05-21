@@ -6,14 +6,19 @@ export class CustomerService {
     id = -1;
 
     constructor() {
-        this.baseUrl ='https://bms-2.herokuapp.com/';
+        this.baseUrl ='http://localhost:8080/';
     }
 
     getAll() {
         let url_ = this.baseUrl + 'api/customer';
 
         let data = axios
-            .get(url_)
+					.get(url_, {
+						auth: {
+							username: 'admin',
+							password: 'password'
+						}
+					})
             .then(function(response) {
                 return response.data;
             })
