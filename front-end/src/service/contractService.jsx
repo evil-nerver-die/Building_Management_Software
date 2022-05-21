@@ -6,7 +6,7 @@ export class ContractService {
     id = -1;
 
     constructor() {
-        this.baseUrl = 'https://bms-2.herokuapp.com/';
+        this.baseUrl = 'http://localhost:8080/';
     }
 
     getAll() {

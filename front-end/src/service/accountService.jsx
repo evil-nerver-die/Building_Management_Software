@@ -4,7 +4,7 @@ export class AccountService {
 	baseUrl = '';
 
 	constructor() {
-		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
+		this.baseUrl = 'https://bms-2.herokuapp.com/';
 	}
 
 	getInfo() {

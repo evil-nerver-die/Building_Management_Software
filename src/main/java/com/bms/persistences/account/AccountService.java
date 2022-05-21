@@ -28,6 +28,8 @@ public class AccountService implements UserDetailsService {
         return accountRepository.findAll();
     }
 
+    public Account findAccountByUsername(String username){return  accountRepository.findAccountByUsername(username);}
+
     public Account getById(Integer id){return accountRepository.getById(id);}
     public void deleteByID(Integer id){accountRepository.deleteById(id);}
 

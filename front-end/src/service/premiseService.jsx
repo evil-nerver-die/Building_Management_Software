@@ -6,14 +6,19 @@ export class PremiseService {
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
+		this.baseUrl = 'http://localhost:8080/';
 	}
 
 	getAll() {
 		let url_ = this.baseUrl + 'api/premises'; //api goi toan bo data cac mat bang
 
 		let data = axios
-			.get(url_)
+			.get(url_, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
 			.then(function (respond) {
 				return respond.data;
 			})
