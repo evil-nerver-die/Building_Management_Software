@@ -11,7 +11,6 @@ const { Search } = Input;
 
 let data = [];
 let selectedPremiseData = {};
-let postPremiseData = {};
 
 export default class Premise extends React.Component {
 	constructor(prop) {

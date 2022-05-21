@@ -70,4 +70,17 @@ export class PremiseService {
 			console.log(error);
 		});
 	}
+
+	findByFloor(id) {
+		let url_ = this.baseUrl + 'api/premises/findFloor' + id; //api goi data mat bang theo floor
+		let data = axios
+			.get(url_)
+			.then(function (respond) {
+				return respond.data;
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		return data;
+	}
 }
