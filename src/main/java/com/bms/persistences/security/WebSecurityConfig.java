@@ -55,13 +55,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .addLogoutHandler(new SecurityContextLogoutHandler())
                 ).httpBasic();
     }
+
+
+
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
         configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS","DELETE"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
