@@ -10,7 +10,7 @@ import Account from './scene/account';
 import Contract from './scene/contract';
 import Service from './scene/service';
 import Employee from './scene/employee';
-import { Login } from './common/login';
+import Login from './common/login';
 
 ReactDOM.render(
 	<React.StrictMode>

@@ -1,9 +1,11 @@
-import { Button, Form, Input, InputNumber } from 'antd';
+import { Button, Form, Input, InputNumber, Select } from 'antd';
 import React from 'react';
-import './customService.css';
+import './register.css';
 import { stores } from '../../../store/storeInitializer';
 
-export default class AddService extends React.Component {
+const { Option } = Select;
+
+export default class Register extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -17,8 +19,8 @@ export default class AddService extends React.Component {
 		this.setState({ isLoad: !this.state.isLoad });
 	}
 
-	async addService(data) {
-		await stores.serviceStore.add_update(data);
+	async register(data) {
+		await stores.loginStore.registerAcc(data);
 	}
 
 	onFinish = async value => {
@@ -27,7 +29,7 @@ export default class AddService extends React.Component {
 			status: true
 		};
 		let data = Object.assign(value, temp);
-		await this.addService(data);
+		await this.register(data);
 		this.handleEdit();
 	};
 
@@ -43,32 +45,36 @@ export default class AddService extends React.Component {
 	render() {
 		return (
 			<div>
-				<Form onFinish={this.onFinish} ref={this.formRef} name={'add-service'}>
-					<Form.Item name="name" label="Tên dịch vụ">
+				<Form onFinish={this.onFinish} ref={this.formRef} name={'register-acc'}>
+					<Form.Item name="name" label="Tên người dùng">
 						<Input />
 					</Form.Item>
-					<Form.Item name="code" label="Mã dịch vụ">
+					<Form.Item name="dob" label="Ngày sinh">
 						<Input />
 					</Form.Item>
-					<Form.Item name="price" label="Giá tiền">
-						<InputNumber />
-					</Form.Item>
-					<Form.Item name="provider" label="Bên cung cấp">
+					<Form.Item name="email" label="Email">
 						<Input />
 					</Form.Item>
-					<Form.Item name="des" label="Thông tin chi tiết">
+					<Form.Item name="phone" label="Điện thoại" >
+						<InputNumber style={{ width: '200px' }} />
+					</Form.Item>
+					<Form.Item name="gender" label="Giới tính">
+						<Select>
+							<Option value={true}>Nam</Option>
+							<Option value={false}>Nữ</Option>
+						</Select>
+					</Form.Item>
+					<Form.Item name="username" label="Tên đăng nhập">
 						<Input />
+					</Form.Item>
+					<Form.Item name="password" label="Mật khẩu">
+						<Input type="password"/>
 					</Form.Item>
 					<Form.Item>
 						<div className="button-container">
 							<div className="edit-pre-butt">
 								<Button htmlType="submit" onClick={this.handleEdit} type={'primary'} style={{ width: '90px' }}>
 									Xác nhận
-								</Button>
-							</div>
-							<div className="del-pre-butt">
-								<Button htmlType="button" onClick={this.handleClose} style={{ width: '90px' }}>
-									Hủy
 								</Button>
 							</div>
 						</div>

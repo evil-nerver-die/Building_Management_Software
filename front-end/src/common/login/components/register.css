@@ -1,0 +1,76 @@
+.pre-form-container {
+	display: grid;
+	grid-template-columns: 0.5fr 1.5fr;
+	grid-template-rows: 3em 3em 3em 3em 3em 6em;
+	gap: 10px 10px;
+	grid-template-areas:
+		'name name-value'
+		'floor floor-value'
+		'num num-value'
+		'area area-value'
+		'price price-value'
+		'des des-value';
+}
+.name {
+	width: 120px;
+	grid-area: name;
+}
+.floor {
+	width: 120px;
+	grid-area: floor;
+}
+.num {
+	width: 120px;
+	grid-area: num;
+}
+.area {
+	width: 120px;
+	grid-area: area;
+}
+.price {
+	width: 120px;
+	grid-area: price;
+}
+.des {
+	width: 120px;
+	grid-area: des;
+}
+.name-value {
+	grid-area: name-value;
+}
+.floor-value {
+	grid-area: floor-value;
+}
+.num-value {
+	grid-area: num-value;
+}
+.area-value {
+	grid-area: area-value;
+}
+.price-value {
+	grid-area: price-value;
+}
+.des-value {
+	grid-area: des-value;
+}
+
+.ant-form-item-label {
+	display: flex;
+}
+
+.ant-form-item-label > label {
+	width: 120px;
+}
+
+.premise-inputnumber {
+	width: 10rem;
+}
+
+.button-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-evenly;
+	align-items: center;
+}

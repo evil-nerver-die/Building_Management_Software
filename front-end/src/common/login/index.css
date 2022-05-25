@@ -1,0 +1,28 @@
+.login-form {
+    max-width: 300px;
+    border: 1px solid rgb(0, 140, 255);
+    width: 50%;
+    padding: 30px;
+}
+.login-form-forgot {
+    float: right;
+}
+.ant-col-rtl .login-form-forgot {
+    float: left;
+}
+.login-form-button {
+    width: 100%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.lab {
+    margin: auto;
+    margin-bottom: 50px;
+    font-weight: 900;
+}
+.lab1 {
+    font-size: larger;
+}

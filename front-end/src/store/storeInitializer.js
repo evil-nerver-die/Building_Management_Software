@@ -3,6 +3,7 @@ import { CustomerStore } from './customerStore';
 import { ContractStore } from './contractStore';
 import { ServiceStore } from './serviceStore';
 import { AccountStore } from './accountStore';
+import { LoginStore } from './loginStore';
 
 const storeInitializer = () => {
 	return {
@@ -11,7 +12,8 @@ const storeInitializer = () => {
 		customerStore: new CustomerStore(),
 		contractStore: new ContractStore(),
 		serviceStore: new ServiceStore(),
-		accountStore: new AccountStore()
+		accountStore: new AccountStore(),
+		loginStore: new LoginStore()
 	};
 };
 
