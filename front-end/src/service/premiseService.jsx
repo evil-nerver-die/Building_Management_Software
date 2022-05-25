@@ -6,7 +6,7 @@ export class PremiseService {
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'http://localhost:8080/';
+		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
 	}
 
 	getAll() {
@@ -31,7 +31,12 @@ export class PremiseService {
 	getById(id) {
 		let url_ = this.baseUrl + 'api/premises/' + id; //api goi data mat bang theo id
 		let data = axios
-			.get(url_)
+			.get(url_, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
 			.then(function (respond) {
 				return respond.data;
 			})
@@ -43,16 +48,30 @@ export class PremiseService {
 
 	deleteById(id) {
 		let url_ = this.baseUrl + 'api/premises/' + id; //api xoa mat bang theo id
-		axios.delete(url_).catch(function (error) {
-			console.log(error);
-		});
+		axios
+			.delete(url_, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	}
 
 	create_update(data) {
 		let url_ = this.baseUrl + 'api/premises/reserve'; //api tao mat bang moi
-		axios.post(url_, data).catch(function (error) {
-			console.log(error);
-		});
+		axios
+			.post(url_, data, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	}
 
 	rent(id) {
@@ -60,9 +79,16 @@ export class PremiseService {
 		let data = {
 			id: id
 		};
-		axios.post(url_, data).catch(function (error) {
-			console.log(error);
-		});
+		axios
+			.post(url_, data, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	}
 
 	checkout(id) {
@@ -71,15 +97,27 @@ export class PremiseService {
 		let data = {
 			id: id
 		};
-		axios.post(url_, data).catch(function (error) {
-			console.log(error);
-		});
+		axios
+			.post(url_, data, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	}
 
 	findByFloor(id) {
 		let url_ = this.baseUrl + 'api/premises/findFloor' + id; //api goi data mat bang theo floor
 		let data = axios
-			.get(url_)
+			.get(url_, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
 			.then(function (respond) {
 				return respond.data;
 			})

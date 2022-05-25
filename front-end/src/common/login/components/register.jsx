@@ -1,6 +1,7 @@
 import { Button, Form, Input, InputNumber, Select } from 'antd';
 import React from 'react';
 import './register.css';
+import bcrypt from 'bcryptjs';
 import { stores } from '../../../store/storeInitializer';
 
 const { Option } = Select;
@@ -28,6 +29,7 @@ export default class Register extends React.Component {
 			disable: true,
 			status: true
 		};
+		console.log(value.password);
 		let data = Object.assign(value, temp);
 		await this.register(data);
 		this.handleEdit();
@@ -55,8 +57,8 @@ export default class Register extends React.Component {
 					<Form.Item name="email" label="Email">
 						<Input />
 					</Form.Item>
-					<Form.Item name="phone" label="Điện thoại" >
-						<InputNumber style={{ width: '200px' }} />
+					<Form.Item name="phone" label="Điện thoại">
+						<Input style={{ width: '200px' }} />
 					</Form.Item>
 					<Form.Item name="gender" label="Giới tính">
 						<Select>
@@ -68,7 +70,13 @@ export default class Register extends React.Component {
 						<Input />
 					</Form.Item>
 					<Form.Item name="password" label="Mật khẩu">
-						<Input type="password"/>
+						<Input.Password />
+					</Form.Item>
+					<Form.Item name="enabled" label="Kích hoạt">
+						<Select>
+							<Option value={true}>Có</Option>
+							<Option value={false}>Không</Option>
+						</Select>
 					</Form.Item>
 					<Form.Item>
 						<div className="button-container">

@@ -6,7 +6,7 @@ export class ServiceService {
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'http://localhost:8080/';
+		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
 	}
 
 	getAll() {
@@ -31,7 +31,12 @@ export class ServiceService {
 	getById(id) {
 		let url_ = this.baseUrl + 'api/services/' + id;
 		let data = axios
-			.get(url_)
+			.get(url_, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
 			.then(function (respond) {
 				return respond.data;
 			})
@@ -43,15 +48,27 @@ export class ServiceService {
 
 	deleteById(id) {
 		let url_ = this.baseUrl + 'api/services/' + id;
-		axios.delete(url_).catch(function (error) {
-			console.log(error);
-		});
+		axios
+			.delete(url_, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	}
 
 	add_update(data) {
 		let url_ = this.baseUrl + 'api/services/reserve/';
 		axios
-			.post(url_, data)
+			.post(url_, data, {
+				auth: {
+					username: 'admin',
+					password: 'password'
+				}
+			})
 			.then(function (response) {
 				console.log(response);
 			})
