@@ -8,10 +8,10 @@ export default class AppFooter extends React.Component {
 			<React.Fragment>
 				<div>
 					<Row justify="space-between">
-						<Col span={8}>
+						<Col span={5}>
 							<img src={require('./logo.png')}></img>
 						</Col>
-						<Col span={8}>
+						<Col span={11}>
 							<label className="label1">THÔNG TIN TÒA NHÀ</label>
 							<Row>
 								<label>Tòa nhà Đức béo</label>
