@@ -1,4 +1,4 @@
-import { Menu } from 'antd';
+import { Menu, Image } from 'antd';
 import React from 'react';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
@@ -35,14 +35,15 @@ const AppHeader = () => {
 		<div className="container-fluid">
 			<div className="header">
 				<div className="logo">
-					<HomeOutlined />
 					<Link to="" style={{ marginLeft: '10px' }}>
 						Wayne Enterprise
 					</Link>
 				</div>
 				<Menu mode="horizontal" defaultSelectedKeys={[url]} style={{ width: '570px' }}>
 					<Menu.Item key={'home'}>
-						<Link to={''}>Trang Chủ</Link>
+						<Link to={''}>
+							<HomeOutlined />
+						</Link>
 					</Menu.Item>
 					<Menu.Item key={'premise'}>
 						<Link to={'/premise'}>Mặt Bằng</Link>

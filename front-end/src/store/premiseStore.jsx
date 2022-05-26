@@ -11,6 +11,11 @@ export class PremiseStore {
 
 	getAll = async () => {
 		let result = await this.premiseService.getAll();
+		result.sort((a, b) => (a.floor > b.floor ? 1 : -1));
+		result.map(item => {
+			return item.premises.sort((a, b) => (a.num > b.num ? 1 : -1));
+		});
+
 		if (result !== undefined) {
 			this.premiseListResult = result;
 		}

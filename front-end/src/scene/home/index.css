@@ -2,7 +2,7 @@
 	padding-top: 3rem;
 }
 
-.gross-line {
+.gross-block {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -76,4 +76,11 @@
 
 .home-counter-title {
 	margin-top: 0.25rem;
+}
+
+.home-chart {
+	display: flex;
+	gap: 2.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
 }

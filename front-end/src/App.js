@@ -4,6 +4,7 @@ import AppHeader from './common/header';
 import 'antd/dist/antd.css';
 import './App.css';
 import { Outlet } from 'react-router';
+import AppFooter from './common/footer/footer';
 
 const { Header, Content, Footer } = Layout;
 
@@ -17,6 +18,9 @@ const App = () => {
 				<Content>
 					<Outlet />
 				</Content>
+				<Footer>
+					<AppFooter />
+				</Footer>
 			</Layout>
 		</React.Fragment>
 	);
