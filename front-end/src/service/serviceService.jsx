@@ -2,23 +2,23 @@ import axios from 'axios';
 
 export class ServiceService {
 	baseUrl = '';
-	apiConfig = {};
+	apiConfig = {
+		auth: {
+			username: 'admin',
+			password: 'password'
+		}
+	};
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
+		this.baseUrl = 'https://bms-2.herokuapp.com/';
 	}
 
 	getAll() {
 		let url_ = this.baseUrl + 'api/services/';
 
 		let data = axios
-			.get(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.get(url_, this.apiConfig)
 			.then(function (respond) {
 				return respond.data;
 			})
@@ -31,12 +31,7 @@ export class ServiceService {
 	getById(id) {
 		let url_ = this.baseUrl + 'api/services/' + id;
 		let data = axios
-			.get(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.get(url_, this.apiConfig)
 			.then(function (respond) {
 				return respond.data;
 			})
@@ -48,27 +43,15 @@ export class ServiceService {
 
 	deleteById(id) {
 		let url_ = this.baseUrl + 'api/services/' + id;
-		axios
-			.delete(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.delete(url_, this.apiConfig).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	add_update(data) {
 		let url_ = this.baseUrl + 'api/services/reserve/';
 		axios
-			.post(url_, data, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.post(url_, data, this.apiConfig)
 			.then(function (response) {
 				console.log(response);
 			})

@@ -7,7 +7,6 @@ const ChangePassword = props => {
 	const [form] = Form.useForm();
 
 	const onFinish = value => {
-		console.log(value);
 		bcrypt.compare(value.old_pass, props.data.password).then(async res => {
 			if (res) {
 				if (value.new_pass === value.rewrite) {

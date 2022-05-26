@@ -2,23 +2,23 @@ import axios from 'axios';
 
 export class PremiseService {
 	baseUrl = '';
-	apiConfig = {};
+	apiConfig = {
+		auth: {
+			username: 'admin',
+			password: 'password'
+		}
+	};
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
+		this.baseUrl = 'https://bms-2.herokuapp.com/';
 	}
 
 	getAll() {
 		let url_ = this.baseUrl + 'api/premises'; //api goi toan bo data cac mat bang
 
 		let data = axios
-			.get(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.get(url_, this.apiConfig)
 			.then(function (respond) {
 				return respond.data;
 			})
@@ -31,12 +31,7 @@ export class PremiseService {
 	getById(id) {
 		let url_ = this.baseUrl + 'api/premises/' + id; //api goi data mat bang theo id
 		let data = axios
-			.get(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.get(url_, this.apiConfig)
 			.then(function (respond) {
 				return respond.data;
 			})
@@ -48,30 +43,16 @@ export class PremiseService {
 
 	deleteById(id) {
 		let url_ = this.baseUrl + 'api/premises/' + id; //api xoa mat bang theo id
-		axios
-			.delete(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.delete(url_, this.apiConfig).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	create_update(data) {
 		let url_ = this.baseUrl + 'api/premises/reserve'; //api tao mat bang moi
-		axios
-			.post(url_, data, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data, this.apiConfig).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	rent(id) {
@@ -79,45 +60,25 @@ export class PremiseService {
 		let data = {
 			id: id
 		};
-		axios
-			.post(url_, data, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data, this.apiConfig).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	checkout(id) {
 		let url_ = this.baseUrl + 'api/premises/checkout'; //api ngung thue mat bang
-		console.log(url_);
 		let data = {
 			id: id
 		};
-		axios
-			.post(url_, data, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		axios.post(url_, data, this.apiConfig).catch(function (error) {
+			console.log(error);
+		});
 	}
 
 	findByFloor(id) {
 		let url_ = this.baseUrl + 'api/premises/findFloor' + id; //api goi data mat bang theo floor
 		let data = axios
-			.get(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.get(url_, this.apiConfig)
 			.then(function (respond) {
 				return respond.data;
 			})

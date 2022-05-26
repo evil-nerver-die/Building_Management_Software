@@ -1,0 +1,79 @@
+.main-home {
+	padding-top: 3rem;
+}
+
+.gross-line {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.gross-bg {
+	height: 11rem;
+	border-radius: 0.75rem;
+	width: 30%;
+	padding: 2rem;
+	padding-top: 2.25rem;
+	margin: 0.75rem;
+	background: url('../../image/income.svg') no-repeat;
+	/* background-repeat: no-repeat; */
+	background-size: cover;
+	background-position: center;
+	border: 1px solid;
+}
+
+.gross-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.gross-title {
+	font-weight: 700;
+	--tw-text-opacity: 1;
+	color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.gross-currency {
+	font-size: 1.5rem;
+	line-height: 0rem;
+}
+
+.home-counters {
+	width: 13%;
+	display: flex;
+	margin: 0.75rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.25rem;
+	align-items: center;
+}
+
+.home-count {
+	height: 11rem;
+	padding: 1rem;
+	padding-top: 2.25rem;
+	border-radius: 1rem;
+}
+
+.home-counters-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	line-height: 2rem;
+	border-radius: 9999px;
+	padding: 1rem;
+	width: 63px;
+	height: 63px;
+}
+
+.home-counters-numb {
+	font-weight: 600;
+	/* display: flex;
+	justify-content: center; */
+}
+
+.home-counter-title {
+	margin-top: 0.25rem;
+}

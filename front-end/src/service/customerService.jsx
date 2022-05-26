@@ -2,23 +2,23 @@ import axios from 'axios';
 
 export class CustomerService {
 	baseUrl = '';
-	apiConfig = {};
+	apiConfig = {
+		auth: {
+			username: 'admin',
+			password: 'password'
+		}
+	};
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
+		this.baseUrl = 'https://bms-2.herokuapp.com/';
 	}
 
 	getAll() {
 		let url_ = this.baseUrl + 'api/customer';
 
 		let data = axios
-			.get(url_, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.get(url_, this.apiConfig)
 			.then(function (response) {
 				return response.data;
 			})

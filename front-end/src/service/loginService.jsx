@@ -2,22 +2,22 @@ import axios from 'axios';
 
 export class LoginService {
 	baseUrl = '';
-	apiConfig = {};
+	apiConfig = {
+		auth: {
+			username: 'admin',
+			password: 'password'
+		}
+	};
 	id = -1;
 
 	constructor() {
-		this.baseUrl = 'https://bms-2.herokuapp.com:443/';
+		this.baseUrl = 'https://bms-2.herokuapp.com/';
 	}
 
 	validateInfo(data) {
 		let url_ = this.baseUrl + 'api/account/login/';
 		axios
-			.post(url_, data, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.post(url_, data, this.apiConfig)
 			.then(function (response) {
 				console.log(response);
 			})
@@ -29,12 +29,7 @@ export class LoginService {
 	registerAcc(data) {
 		let url_ = this.baseUrl + 'api/account/reserve/';
 		axios
-			.post(url_, data, {
-				auth: {
-					username: 'admin',
-					password: 'password'
-				}
-			})
+			.post(url_, data, this.apiConfig)
 			.then(function (response) {
 				console.log(response);
 			})

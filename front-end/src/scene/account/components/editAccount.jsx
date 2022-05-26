@@ -7,7 +7,7 @@ const dateFormat = 'DD/MM/YYYY';
 
 const EditAccount = prop => {
 	const [form] = Form.useForm();
-	
+
 	const onFinish = async value => {
 		let date = moment(value.dob._d.toDateString()).format(dateFormat);
 		let temp = {
@@ -45,7 +45,7 @@ const EditAccount = prop => {
 					},
 					{
 						name: 'dob',
-						value: prop.data.dob
+						value: moment(prop.data.dob, dateFormat)
 					},
 					{
 						name: 'email',

@@ -11,7 +11,6 @@ export class PremiseStore {
 
 	getAll = async () => {
 		let result = await this.premiseService.getAll();
-		result.sort();
 		if (result !== undefined) {
 			this.premiseListResult = result;
 		}

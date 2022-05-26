@@ -3,6 +3,7 @@ import { AccountService } from '../service/accountService';
 export class AccountStore {
 	accountService;
 	accountData = [];
+	accountStat = {};
 
 	constructor() {
 		this.accountService = new AccountService();
@@ -21,5 +22,12 @@ export class AccountStore {
 
 	changePassword = async data => {
 		await this.accountService.changePassword(data);
+	};
+
+	getStat = async () => {
+		let result = await this.accountService.getStat();
+		if (result !== undefined) {
+			this.accountStat = result;
+		}
 	};
 }
