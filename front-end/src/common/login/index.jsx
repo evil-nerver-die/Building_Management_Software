@@ -5,11 +5,9 @@ import './index.css';
 import Register from './components/register';
 import { stores } from '../../store/storeInitializer';
 
-const onFinish = values => {
-	console.log('Received values of form: ', values);
-};
-
-let data = [];
+// const onFinish = values => {
+// 	console.log(values.username);
+// };
 
 export default class Login extends React.Component {
 	constructor(prop) {
@@ -21,9 +19,19 @@ export default class Login extends React.Component {
 		};
 	}
 
+	async validateInfo(data) {
+		await stores.loginStore.validateInfo(data);
+	}
+
 	async componentDidMount() {
 		this.setState({ isLoad: !this.state.isLoad });
 	}
+
+	onFinish = async value => {
+		let data = Object.assign(value);
+		let check = this.validateInfo(data);
+		console.log(check);
+	};
 
 	register_update = async () => {};
 
@@ -49,7 +57,7 @@ export default class Login extends React.Component {
 					initialValues={{
 						remember: true
 					}}
-					onFinish={onFinish}
+					onFinish={this.onFinish}
 				>
 					<Form.Item className="lab">
 						<label className="lab1">BUILDING MANAGEMENT</label>

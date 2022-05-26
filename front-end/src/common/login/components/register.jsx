@@ -1,7 +1,7 @@
 import { Button, Form, Input, InputNumber, Select } from 'antd';
 import React from 'react';
 import './register.css';
-import bcrypt from 'bcryptjs';
+import bcrypt, { hash } from 'bcryptjs';
 import { stores } from '../../../store/storeInitializer';
 
 const { Option } = Select;
@@ -29,7 +29,8 @@ export default class Register extends React.Component {
 			disable: true,
 			status: true
 		};
-		console.log(value.password);
+		value.password = bcrypt.hashSync(value.password);
+		// console.log(value.password);
 		let data = Object.assign(value, temp);
 		await this.register(data);
 		this.handleEdit();
@@ -76,6 +77,11 @@ export default class Register extends React.Component {
 						<Select>
 							<Option value={true}>Có</Option>
 							<Option value={false}>Không</Option>
+						</Select>
+					</Form.Item>
+					<Form.Item name="roles" label="Vai trò">
+						<Select>
+							<Option value={'ADMIN'}>Quản trị viên</Option>
 						</Select>
 					</Form.Item>
 					<Form.Item>
