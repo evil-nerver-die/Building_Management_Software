@@ -41,7 +41,7 @@ export default class SelectedContract extends React.Component {
                     <div className="signed-value">{this.props.data.signed}</div>
                     <div className="dateCreated">Ngày tạo:</div>
                     <div className="dateCreated-value">{this.props.data.dateCreated}</div>
-                    <div className="dateEnded">Ngày tạo:</div>
+                    <div className="dateEnded">Ngày hết hạn:</div>
                     <div className="dateEnded-value">{this.props.data.dateEnded}</div>
                     <div className="des">Thông tin:</div>
                     <div className="des-value">{this.props.data.des}</div>
