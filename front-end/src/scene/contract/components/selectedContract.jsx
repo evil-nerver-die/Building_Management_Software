@@ -35,6 +35,8 @@ export default class SelectedContract extends React.Component {
                     <div className="code-value">{this.props.data.code}</div>
                     <div className="type">Loại hợp đồng:</div>
                     <div className="type-value">{this.props.data.type === 0 ? 'Mặt bằng':'Dịch vụ'}</div>
+                    <div className="price">Giá trị:</div>
+                    <div className="price-value">{this.props.data.price} VNĐ</div>
                     <div className="provider">Nhà cung cấp:</div>
                     <div className="provider-value">{this.props.data.provider}</div>
                     <div className="signed">Người ký:</div>

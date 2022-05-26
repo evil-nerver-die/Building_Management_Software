@@ -1,35 +1,46 @@
 .pre-form-container {
 	display: grid;
 	grid-template-columns: 0.5fr 1.5fr;
-	grid-template-rows: 3em 3em 3em 3em 3em 6em;
+	grid-template-rows: 3em 3em 3em 3em 3em 3em 3em 6em;
 	gap: 10px 10px;
 	grid-template-areas:
 		'name name-value'
-		'floor floor-value'
-		'num num-value'
-		'area area-value'
+		'code code-value'
+		'type type-value'
 		'price price-value'
+		'provider provider-value'
+		'signed signed-value'
+		'dateCreated dateCreated-value'
+		'dateEnded dateEnded-value'
 		'des des-value';
 }
 .name {
 	width: 120px;
 	grid-area: name;
 }
-.floor {
+.code {
 	width: 120px;
-	grid-area: floor;
+	grid-area: code;
 }
-.num {
+.type {
 	width: 120px;
-	grid-area: num;
+	grid-area: type;
 }
-.area {
+.provider {
 	width: 120px;
-	grid-area: area;
+	grid-area: provider;
 }
-.price {
+.signed {
 	width: 120px;
-	grid-area: price;
+	grid-area: signed;
+}
+.dateCreated {
+	width: 120px;
+	grid-area: dateCreated;
+}
+.dateEnded {
+	width: 120px;
+	grid-area: dateEnded;
 }
 .des {
 	width: 120px;
@@ -38,17 +49,23 @@
 .name-value {
 	grid-area: name-value;
 }
-.floor-value {
-	grid-area: floor-value;
+.code-value {
+	grid-area: code-value;
 }
-.num-value {
-	grid-area: num-value;
+.type-value {
+	grid-area: type-value;
 }
-.area-value {
-	grid-area: area-value;
+.provider-value {
+	grid-area: provider-value;
 }
-.price-value {
-	grid-area: price-value;
+.signed-value {
+	grid-area: signed-value;
+}
+.dateCreated-value {
+	grid-area: dateCreated-value;
+}
+.dateEnded-value {
+	grid-area: dateEnded-value;
 }
 .des-value {
 	grid-area: des-value;
