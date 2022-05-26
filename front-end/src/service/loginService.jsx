@@ -16,14 +16,16 @@ export class LoginService {
 
 	validateInfo(data) {
 		let url_ = this.baseUrl + 'api/account/login/';
-		axios
+		let temp = axios
 			.post(url_, data, this.apiConfig)
 			.then(function (response) {
-				console.log(response);
+				return response.data;
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
+
+		return temp;
 	}
 
 	registerAcc(data) {

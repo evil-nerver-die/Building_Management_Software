@@ -41,10 +41,17 @@ export default class Home extends React.Component {
 
 	getSumIncome(array) {
 		let sum = 0;
-		array.map(index => {
-			return (sum += index.price);
-		});
+		if (array) {
+			array.map(index => {
+				return (sum += index.price);
+			});
+		}
 		return sum;
+	}
+
+	randomPercent(min, max) {
+		const rand = Math.round((min + Math.random() * (max - min)) * 100) / 100;
+		return rand;
 	}
 
 	currenCyFormatter = new Intl.NumberFormat('en-US', {
@@ -72,7 +79,7 @@ export default class Home extends React.Component {
 								</div>
 								<p style={{ marginTop: '0.75rem', marginBottom: '0rem' }}>
 									<span className="home-counters-numb">{stat.userCount}</span>
-									<span style={{ marginLeft: '0.5rem', color: 'green' }}>+10%</span>
+									<span style={{ marginLeft: '0.5rem', color: 'green' }}>+{this.randomPercent(1, 29)}%</span>
 								</p>
 								<p className="home-counter-title">Người dùng</p>
 							</div>
@@ -96,7 +103,7 @@ export default class Home extends React.Component {
 								</div>
 								<p style={{ marginTop: '0.75rem', marginBottom: '0rem' }}>
 									<span className="home-counters-numb">{stat.rentedPremises}</span>
-									<span style={{ marginLeft: '0.5rem', color: 'green' }}>+20%</span>
+									<span style={{ marginLeft: '0.5rem', color: 'green' }}>+{this.randomPercent(1, 80)}%</span>
 								</p>
 								<p className="home-counter-title">Đã thuê</p>
 							</div>
@@ -108,7 +115,7 @@ export default class Home extends React.Component {
 								</div>
 								<p style={{ marginTop: '0.75rem', marginBottom: '0rem' }}>
 									<span className="home-counters-numb">{stat.availablePremises}</span>
-									<span style={{ marginLeft: '0.5rem', color: 'red' }}>-50%</span>
+									<span style={{ marginLeft: '0.5rem', color: 'red' }}>-{this.randomPercent(1, 80)}%</span>
 								</p>
 								<p className="home-counter-title">Có sẵn</p>
 							</div>
@@ -152,7 +159,7 @@ export default class Home extends React.Component {
 													lineHeight: '1rem'
 												}}
 											>
-												17%
+												{this.randomPercent(1, 30)}%
 											</span>
 										</p>
 										<p style={{ textDecorationColor: '#6b7280', marginTop: '0.25rem' }}>Ngân sách</p>

@@ -2,6 +2,7 @@ import { Menu, Image } from 'antd';
 import React from 'react';
 import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const AppHeader = () => {
 	const ref = window.location.href.split('/')[4];
@@ -33,6 +34,8 @@ const AppHeader = () => {
 
 	return (
 		<div className="container-fluid">
+			{console.log(sessionStorage.getItem('loggedIn'))}
+			{sessionStorage.getItem('loggedIn') === null && <Navigate to="/login" replace={true} />}
 			<div className="header">
 				<div className="logo">
 					<Link to="" style={{ marginLeft: '10px' }}>

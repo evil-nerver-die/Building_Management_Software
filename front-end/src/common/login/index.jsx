@@ -1,23 +1,23 @@
 import React from 'react';
-import { Form, Button, Input, Modal } from 'antd';
+import { Form, Button, Input, Modal, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './index.css';
 import Register from './components/register';
 import { stores } from '../../store/storeInitializer';
-
-// const onFinish = values => {
-// 	console.log(values.username);
-// };
-
+import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router';
 export default class Login extends React.Component {
 	constructor(prop) {
 		super(prop);
 		this.state = {
 			isLoad: false,
+			user: null,
 			isDeleted: false,
 			isCreateModalVisible: false
 		};
 	}
+
+	formRef = React.createRef();
 
 	async validateInfo(data) {
 		await stores.loginStore.validateInfo(data);
@@ -29,8 +29,16 @@ export default class Login extends React.Component {
 
 	onFinish = async value => {
 		let data = Object.assign(value);
-		let check = this.validateInfo(data);
-		console.log(check);
+		await this.validateInfo(data);
+		if (!stores.loginStore.loginRespond) {
+			this.formRef.current.resetFields();
+			message.error('Tài khoản hoặc mật khẩu không chính xác.');
+		} else {
+			sessionStorage.setItem('username', value.username);
+			sessionStorage.setItem('password', value.password);
+			sessionStorage.setItem('loggedIn', true);
+			this.setState({ user: stores.loginStore.loginRespond });
+		}
 	};
 
 	register_update = async () => {};
@@ -49,9 +57,12 @@ export default class Login extends React.Component {
 	};
 
 	render() {
+		let { user } = this.state;
 		return (
 			<div className="container">
+				{user && <Navigate to="/" replace={true} />}
 				<Form
+					ref={this.formRef}
 					name="normal_login"
 					className="login-form"
 					initialValues={{
@@ -78,6 +89,8 @@ export default class Login extends React.Component {
 						rules={[
 							{
 								required: true,
+								min: 6,
+								max: 15,
 								message: 'Hãy nhập Password!'
 							}
 						]}

@@ -50,6 +50,12 @@ export default class Account extends React.Component {
 		this.setState({ isShowChange: false });
 	};
 
+	handleLogout = () => {
+		sessionStorage.removeItem('loggedIn');
+		sessionStorage.removeItem('username');
+		sessionStorage.removeItem('password');
+	};
+
 	render() {
 		return (
 			<div className="account">
@@ -87,7 +93,9 @@ export default class Account extends React.Component {
 								<Button type="primary" danger onClick={this.togglechange}>
 									Đổi mật khẩu
 								</Button>
-								<Button href={'https://bms-2.herokuapp.com/logout'}>Đăng xuất</Button>
+								<Button href={'https://bms-2.herokuapp.com/logout'} onClick={this.handleLogout}>
+									Đăng xuất
+								</Button>
 							</Space>
 						</div>
 						<Modal
