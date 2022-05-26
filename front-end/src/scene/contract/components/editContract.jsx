@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Form, Input, InputNumber} from 'antd';
-import './selectedContract.css';
+import './selectedCont.css';
 import { stores } from '../../../store/storeInitializer';
 
 const { TextArea } = Input;

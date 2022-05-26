@@ -1,7 +1,7 @@
 import { Alert, Button, Popconfirm } from 'antd';
 import React from 'react';
 import { stores } from '../../../store/storeInitializer';
-import './selectedContract.css';
+import './selectedCont.css';
 
 let data = {};
 
