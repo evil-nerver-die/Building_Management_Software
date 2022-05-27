@@ -1,12 +1,14 @@
-import { Button, Form, Input, InputNumber, Radio } from 'antd';
+import { Button, DatePicker, Form, Input, InputNumber, Radio } from 'antd';
 import React from 'react';
 import './selectedCont.css';
 import { stores } from '../../../store/storeInitializer';
+import moment from 'moment';
 
+const dateFormat = 'DD/MM/YYYY';
 const { TextArea } = Input;
 
 export default class CreateContract extends React.Component {
-    constructor(props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			isLoad: false,
@@ -14,9 +16,9 @@ export default class CreateContract extends React.Component {
 		};
 	}
 
-    formRef = React.createRef();
+	formRef = React.createRef();
 
-    async componentDidMount() {
+	async componentDidMount() {
 		this.setState({ isLoad: !this.state.isLoad });
 	}
 
@@ -24,16 +26,19 @@ export default class CreateContract extends React.Component {
 		await stores.contractStore.createUpdate(data);
 	}
 
-	onChange = e =>{
+	onChange = e => {
 		this.setState({
-			value: e.target.value,
-		})
-	}
-    onFinish = async value => {
+			value: e.target.value
+		});
+	};
+	onFinish = async value => {
 		let temp = {
 			status: 1
 		};
 		let data = Object.assign(value, temp);
+
+		data.dateEnded = moment(value.dateEnded.toString()).format(dateFormat);
+		data.dateCreated = moment(value.dateCreated.toString()).format(dateFormat);
 		console.log(data);
 		await this.createContract(data);
 		this.handleEdit();
@@ -48,14 +53,10 @@ export default class CreateContract extends React.Component {
 		this.formRef.current.resetFields();
 	};
 
-    render() {
-        return(
-            <div>
-                <Form
-					onFinish={this.onFinish}
-					ref={this.formRef}
-					name={'create-contract'}
-				>
+	render() {
+		return (
+			<div>
+				<Form onFinish={this.onFinish} ref={this.formRef} name={'create-contract'}>
 					<Form.Item name="name" label="Tên hợp đồng:">
 						<Input />
 					</Form.Item>
@@ -65,17 +66,17 @@ export default class CreateContract extends React.Component {
 					<Form.Item name="price" label="Giá:">
 						<InputNumber min={0} />
 					</Form.Item>
-					<Form.Item name="type" label="Loại hợp đồng:" >
+					<Form.Item name="type" label="Loại hợp đồng:">
 						<Radio.Group onChange={this.onChange}>
 							<Radio value={0}>Mặt bằng</Radio>
 							<Radio value={1}>Dịch vụ</Radio>
 						</Radio.Group>
 					</Form.Item>
 					<Form.Item name="dateCreated" label="Ngày tạo hợp đồng:">
-						<Input />
+						<DatePicker format={dateFormat} />
 					</Form.Item>
 					<Form.Item name="dateEnded" label="Ngày hết hạn:">
-						<Input />
+						<DatePicker format={dateFormat} />
 					</Form.Item>
 					<Form.Item name="provider" label="Nhà cung cấp:">
 						<Input />
@@ -101,7 +102,7 @@ export default class CreateContract extends React.Component {
 						</div>
 					</Form.Item>
 				</Form>
-            </div>
-        )
-    }
+			</div>
+		);
+	}
 }

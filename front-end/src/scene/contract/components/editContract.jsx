@@ -1,8 +1,10 @@
 import React from 'react';
-import {Button, Form, Input, InputNumber} from 'antd';
+import { Button, DatePicker, Form, Input, InputNumber } from 'antd';
 import './selectedCont.css';
 import { stores } from '../../../store/storeInitializer';
+import moment from 'moment';
 
+const dateFormat = 'DD/MM/YYYY';
 const { TextArea } = Input;
 
 export default class EditContract extends React.Component {
@@ -30,6 +32,7 @@ export default class EditContract extends React.Component {
 			status: this.props.data.status
 		};
 		let data = Object.assign(value, temp);
+		data.dateEnd = moment(value.dateEnd.toString()).format(dateFormat);
 		console.log(data);
 		await this.updateContract(data);
 	};
@@ -44,7 +47,7 @@ export default class EditContract extends React.Component {
 	};
 
 	render() {
-		return(
+		return (
 			<div>
 				<Form
 					onFinish={this.onFinish}
@@ -80,7 +83,7 @@ export default class EditContract extends React.Component {
 						<Input />
 					</Form.Item>
 					<Form.Item name="dateEnd" label="Ngày hết hạn">
-						<Input />
+						<DatePicker format={dateFormat} />
 					</Form.Item>
 					<Form.Item name="provider" label="Nhà cung cấp">
 						<Input />
