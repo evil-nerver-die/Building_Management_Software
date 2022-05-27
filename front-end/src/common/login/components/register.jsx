@@ -1,10 +1,11 @@
-import { Button, Form, Input, InputNumber, Select } from 'antd';
+import { Button, Form, Input, DatePicker, Select } from 'antd';
 import React from 'react';
 import './register.css';
 import bcrypt, { hash } from 'bcryptjs';
 import { stores } from '../../../store/storeInitializer';
 
 const { Option } = Select;
+const dateFormat = 'DD/MM/YYYY';
 
 export default class Register extends React.Component {
 	constructor(props) {
@@ -53,7 +54,7 @@ export default class Register extends React.Component {
 						<Input />
 					</Form.Item>
 					<Form.Item name="dob" label="Ngày sinh">
-						<Input />
+						<DatePicker format={dateFormat} />
 					</Form.Item>
 					<Form.Item name="email" label="Email">
 						<Input />
@@ -82,6 +83,7 @@ export default class Register extends React.Component {
 					<Form.Item name="roles" label="Vai trò">
 						<Select>
 							<Option value={'ADMIN'}>Quản trị viên</Option>
+							<Option value={'USER'}>Khách hàng</Option>
 						</Select>
 					</Form.Item>
 					<Form.Item>
